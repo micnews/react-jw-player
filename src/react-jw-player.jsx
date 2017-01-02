@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import createEventHandlers from './create-event-handlers';
 import defaultProps from './default-props';
 import propTypes from './prop-types';
 
@@ -12,7 +13,7 @@ class JWPlayer extends Component {
       hasPlayed: false,
       hasFired: {}
     };
-    this.onAdPlay = this.onAdPlay.bind(this);
+    this.eventHandlers = createEventHandlers(this);
     this.onClose = this.onClose.bind(this);
     this.onFullScreen = this.onFullScreen.bind(this);
     this.onMute = this.onMute.bind(this);
@@ -45,7 +46,7 @@ class JWPlayer extends Component {
       player.on('ready', this.props.onReady);
       player.on('setupError', this.onError);
       player.on('error', this.onError);
-      player.on('adPlay', this.onAdPlay);
+      player.on('adPlay', this.eventHandlers.onAdPlay);
       player.on('adPause', this.props.onAdPause);
       player.on('fullscreen', this.onFullScreen);
       player.on('pause', this.props.onPause);
@@ -77,16 +78,6 @@ class JWPlayer extends Component {
         initialize();
       };
       existingScript.onload = curriedOnLoad;
-    }
-  }
-  onAdPlay(event) {
-    if (!this.state.adHasPlayed) {
-      this.props.onAdPlay(event);
-      this.setState({
-        adHasPlayed: true
-      });
-    } else {
-      this.props.onAdResume(event);
     }
   }
   onFullScreen(event) {
