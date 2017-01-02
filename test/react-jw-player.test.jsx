@@ -1,12 +1,13 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { shallow } from 'enzyme';
-import test from 'tape-catch';
+import test from 'tape';
 
-import JWPlayer from './';
+import ReactJWPlayer from '../src/react-jw-player';
 
-test('<JWPlayer>', (t) => {
+test('<ReactJWPlayer>', (t) => {
   const testPlayerId = 'robocop';
-  const wrapper = shallow(<JWPlayer playerId={testPlayerId} />);
+  const wrapper = shallow(<ReactJWPlayer playerId={testPlayerId} />);
   const root = wrapper.first();
 
   t.is(
@@ -23,10 +24,10 @@ test('<JWPlayer>', (t) => {
   t.end();
 });
 
-test('<JWPlayer> with a supplied class', (t) => {
+test('<ReactJWPlayer> with a supplied class', (t) => {
   const testClassName = 'legumes';
   const testPlayerId = 'snek';
-  const wrapper = shallow(<JWPlayer className={testClassName} playerId={testPlayerId} />);
+  const wrapper = shallow(<ReactJWPlayer className={testClassName} playerId={testPlayerId} />);
 
   t.ok(
     wrapper.first().hasClass(testClassName),
