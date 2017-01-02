@@ -12,123 +12,18 @@ class JWPlayer extends Component {
       hasPlayed: false,
       hasFired: {}
     };
+    this.onAdPlay = this.onAdPlay.bind(this);
     this.onClose = this.onClose.bind(this);
+    this.onFullScreen = this.onFullScreen.bind(this);
+    this.onMute = this.onMute.bind(this);
+    this.onPlay = this.onPlay.bind(this);
+    this.onTime = this.onTime.bind(this);
+    this.onBeforeComplete = this.onBeforeComplete.bind(this);
+    this.onVideoLoad = this.onVideoLoad.bind(this);
+    this.onClose = this.onClose.bind(this);
+    this.setupPreroll = this.setupPreroll.bind(this);
   }
   componentDidMount() {
-    const onAdPlay = (event) => {
-      if (!this.state.adHasPlayed) {
-        this.props.onAdPlay(event);
-        this.setState({
-          adHasPlayed: true
-        });
-      } else {
-        this.props.onAdResume(event);
-      }
-    };
-
-    const onFullScreen = (event) => {
-      if (event.fullscreen) {
-        this.props.onEnterFullScreen(event);
-      } else {
-        this.props.onExitFullScreen(event);
-      }
-    };
-
-    const onMute = (event) => {
-      if (event.mute) {
-        this.props.onMute(event);
-      } else {
-        this.props.onUnmute(event);
-      }
-    };
-
-    const onPlay = (event) => {
-      if (event.playReason === 'autostart') {
-        this.setState({
-          hasPlayed: true
-        });
-        this.props.onAutoStart(event);
-      } else if (this.state.hasPlayed && event.oldstate === 'paused') {
-        this.props.onResume(event);
-      } else {
-        this.props.onPlay(event);
-        this.setState({
-          hasPlayed: true
-        });
-      }
-    };
-
-    const setUpPreRoll = (playerInstance) => {
-      playerInstance.on('beforePlay', () => {
-        const currentVideo = playerInstance.getPlaylistItem();
-
-        if (!this.state.hasPlayed) {
-          playerInstance.playAd(this.props.generatePrerollUrl(currentVideo));
-        }
-      });
-    };
-
-    const onError = (event) => {
-      this.props.onError(event);
-      this.props.onClose(event, () => {
-        window.jwplayer(this.props.playerId).remove();
-        this.setState({ closed: true });
-      });
-    };
-
-    const onTime = (event) => {
-      const { hasFired } = this.state;
-      const { position, duration } = event;
-      let hasChanged = false;
-
-      if (!hasFired.threeSeconds && position > 3) {
-        this.props.onThreeSeconds();
-        hasFired.threeSeconds = true;
-        hasChanged = true;
-      }
-
-      if (!hasFired.tenSeconds && position > 10) {
-        this.props.onTenSeconds();
-        hasFired.tenSeconds = true;
-        hasChanged = true;
-      }
-
-      if (!hasFired.thirtySeconds && position > 30) {
-        this.props.onThirtySeconds();
-        hasFired.thirtySeconds = true;
-        hasChanged = true;
-      }
-
-      if (!hasFired.fiftyPercent && ((position / duration) * 100) > 50) {
-        this.props.onFiftyPercent();
-        hasFired.fiftyPercent = true;
-        hasChanged = true;
-      }
-
-      if (!hasFired.ninetyFivePercent && ((position / duration) * 100) > 95) {
-        this.props.onNinetyFivePercent();
-        hasFired.ninetyFivePercent = true;
-        hasChanged = true;
-      }
-
-      if (hasChanged) {
-        this.setState({
-          hasFired
-        });
-      }
-    };
-
-    const onBeforeComplete = (event) => {
-      this.props.onOneHundredPercent(event);
-    };
-
-    const onVideoLoad = (event) => {
-      this.setState({
-        hasFired: {}
-      });
-      this.props.onVideoLoad(event);
-    };
-
     const initialize = () => {
       const player = window.jwplayer(this.props.playerId);
 
@@ -148,20 +43,20 @@ class JWPlayer extends Component {
       player.setup(playerOpts);
 
       player.on('ready', this.props.onReady);
-      player.on('setupError', onError);
-      player.on('error', onError);
-      player.on('adPlay', onAdPlay);
+      player.on('setupError', this.onError);
+      player.on('error', this.onError);
+      player.on('adPlay', this.onAdPlay);
       player.on('adPause', this.props.onAdPause);
-      player.on('fullscreen', onFullScreen);
+      player.on('fullscreen', this.onFullScreen);
       player.on('pause', this.props.onPause);
-      player.on('play', onPlay);
-      player.on('mute', onMute);
-      player.on('playlistItem', onVideoLoad);
-      player.on('time', onTime);
-      player.on('beforeComplete', onBeforeComplete);
+      player.on('play', this.onPlay);
+      player.on('mute', this.onMute);
+      player.on('playlistItem', this.onVideoLoad);
+      player.on('time', this.onTime);
+      player.on('beforeComplete', this.onBeforeComplete);
 
       if (this.props.generatePrerollUrl) {
-        setUpPreRoll(player);
+        this.setupPreroll(player);
       }
     };
 
@@ -184,10 +79,115 @@ class JWPlayer extends Component {
       existingScript.onload = curriedOnLoad;
     }
   }
+  onAdPlay(event) {
+    if (!this.state.adHasPlayed) {
+      this.props.onAdPlay(event);
+      this.setState({
+        adHasPlayed: true
+      });
+    } else {
+      this.props.onAdResume(event);
+    }
+  }
+  onFullScreen(event) {
+    if (event.fullscreen) {
+      this.props.onEnterFullScreen(event);
+    } else {
+      this.props.onExitFullScreen(event);
+    }
+  }
+  onMute(event) {
+    if (event.mute) {
+      this.props.onMute(event);
+    } else {
+      this.props.onUnmute(event);
+    }
+  }
+  onPlay(event) {
+    if (event.playReason === 'autostart') {
+      this.setState({
+        hasPlayed: true
+      });
+      this.props.onAutoStart(event);
+    } else if (this.state.hasPlayed && event.oldstate === 'paused') {
+      this.props.onResume(event);
+    } else {
+      this.props.onPlay(event);
+      this.setState({
+        hasPlayed: true
+      });
+    }
+  }
+  onError(event) {
+    this.props.onError(event);
+    this.props.onClose(event, () => {
+      window.jwplayer(this.props.playerId).remove();
+      this.setState({ closed: true });
+    });
+  }
+  onTime(event) {
+    const { hasFired } = this.state;
+    const { position, duration } = event;
+    let hasChanged = false;
+
+    if (!hasFired.threeSeconds && position > 3) {
+      this.props.onThreeSeconds();
+      hasFired.threeSeconds = true;
+      hasChanged = true;
+    }
+
+    if (!hasFired.tenSeconds && position > 10) {
+      this.props.onTenSeconds();
+      hasFired.tenSeconds = true;
+      hasChanged = true;
+    }
+
+    if (!hasFired.thirtySeconds && position > 30) {
+      this.props.onThirtySeconds();
+      hasFired.thirtySeconds = true;
+      hasChanged = true;
+    }
+
+    if (!hasFired.fiftyPercent && ((position / duration) * 100) > 50) {
+      this.props.onFiftyPercent();
+      hasFired.fiftyPercent = true;
+      hasChanged = true;
+    }
+
+    if (!hasFired.ninetyFivePercent && ((position / duration) * 100) > 95) {
+      this.props.onNinetyFivePercent();
+      hasFired.ninetyFivePercent = true;
+      hasChanged = true;
+    }
+
+    if (hasChanged) {
+      this.setState({
+        hasFired
+      });
+    }
+  }
+  onBeforeComplete(event) {
+    this.props.onOneHundredPercent(event);
+  }
+  onVideoLoad(event) {
+    this.setState({
+      hasFired: {}
+    });
+    this.props.onVideoLoad(event);
+  }
   onClose(event) {
     this.props.onClose(event, () => {
       window.jwplayer(this.props.playerId).remove();
       this.setState({ closed: true });
+    });
+  }
+  setupPreroll(playerInstance) {
+    playerInstance.on('beforePlay', () => {
+      const currentVideo = playerInstance.getPlaylistItem();
+
+      if (!this.state.hasPlayed) {
+        playerInstance.playAd(this.props.generatePrerollUrl(currentVideo));
+      }
     });
   }
   render() {
