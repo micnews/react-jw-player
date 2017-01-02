@@ -1,32 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
+import defaultProps from './default-props';
 import propTypes from './prop-types';
-
-const noOp = () => {};
-const defaultProps = {
-  onAdPlay: noOp,
-  onAdResume: noOp,
-  onEnterFullScreen: noOp,
-  onExitFullScreen: noOp,
-  onMute: noOp,
-  onUnmute: noOp,
-  onAutoStart: noOp,
-  onResume: noOp,
-  onPlay: noOp,
-  onClose: noOp,
-  onReady: noOp,
-  onError: noOp,
-  onAdPause: noOp,
-  onPause: noOp,
-  onVideoLoad: noOp,
-  onOneHundredPercent: noOp,
-  onThreeSeconds: noOp,
-  onTenSeconds: noOp,
-  onThirtySeconds: noOp,
-  onFiftyPercent: noOp,
-  onNinetyFivePercent: noOp
-};
-
 
 class JWPlayer extends Component {
   constructor(props) {
