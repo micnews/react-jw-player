@@ -7,7 +7,13 @@ import ReactJWPlayer from '../src/react-jw-player';
 
 test('<ReactJWPlayer>', (t) => {
   const testPlayerId = 'robocop';
-  const wrapper = shallow(<ReactJWPlayer playerId={testPlayerId} />);
+  const wrapper = shallow(
+    <ReactJWPlayer
+      playerId={testPlayerId}
+      playerScript='script'
+      playlist='playlist'
+    />
+  );
   const root = wrapper.first();
 
   t.is(
@@ -27,7 +33,14 @@ test('<ReactJWPlayer>', (t) => {
 test('<ReactJWPlayer> with a supplied class', (t) => {
   const testClassName = 'legumes';
   const testPlayerId = 'snek';
-  const wrapper = shallow(<ReactJWPlayer className={testClassName} playerId={testPlayerId} />);
+  const wrapper = shallow(
+    <ReactJWPlayer
+      className={testClassName}
+      playerId={testPlayerId}
+      playerScript='script'
+      playlist='playlist'
+    />
+  );
 
   t.ok(
     wrapper.first().hasClass(testClassName),
