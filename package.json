@@ -1,0 +1,27 @@
+{
+  "name": "react-jw-player",
+  "version": "1.0.0-alpha.1",
+  "description": "A React component for launching JW Player instances on the client.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micnews/react-jw-player.git"
+  },
+  "keywords": [
+    "react",
+    "jwplayer",
+    "jw-player",
+    "video",
+    "autoplay",
+    "events"
+  ],
+  "author": "Mic Network, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/micnews/react-jw-player/issues"
+  },
+  "homepage": "https://github.com/micnews/react-jw-player#readme"
+}
