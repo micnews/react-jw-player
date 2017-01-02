@@ -2,8 +2,11 @@
   "name": "react-jw-player",
   "version": "1.0.0-alpha.1",
   "description": "A React component for launching JW Player instances on the client.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "babel src --out-dir dist",
+    "clean": "rm -rf dist",
+    "prepublish": "npm run clean && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,5 +26,10 @@
   "bugs": {
     "url": "https://github.com/micnews/react-jw-player/issues"
   },
-  "homepage": "https://github.com/micnews/react-jw-player#readme"
+  "homepage": "https://github.com/micnews/react-jw-player#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0"
+  }
 }
