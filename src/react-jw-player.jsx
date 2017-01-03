@@ -9,18 +9,15 @@ class JWPlayer extends Component {
     super(props);
     this.state = {
       adHasPlayed: false,
-      closed: false,
       hasPlayed: false,
       hasFired: {}
     };
     this.eventHandlers = createEventHandlers(this);
-    this.onClose = this.onClose.bind(this);
     this.onFullScreen = this.onFullScreen.bind(this);
     this.onMute = this.onMute.bind(this);
     this.onTime = this.onTime.bind(this);
     this.onBeforeComplete = this.onBeforeComplete.bind(this);
     this.onVideoLoad = this.onVideoLoad.bind(this);
-    this.onClose = this.onClose.bind(this);
     this.setupPreroll = this.setupPreroll.bind(this);
   }
   componentDidMount() {
@@ -44,7 +41,7 @@ class JWPlayer extends Component {
 
       player.on('ready', this.props.onReady);
       player.on('setupError', this.onError);
-      player.on('error', this.onError);
+      player.on('error', this.props.onError);
       player.on('adPlay', this.eventHandlers.onAdPlay);
       player.on('adPause', this.props.onAdPause);
       player.on('fullscreen', this.onFullScreen);
@@ -108,13 +105,6 @@ class JWPlayer extends Component {
       });
     }
   }
-  onError(event) {
-    this.props.onError(event);
-    this.props.onClose(event, () => {
-      window.jwplayer(this.props.playerId).remove();
-      this.setState({ closed: true });
-    });
-  }
   onTime(event) {
     const { hasFired } = this.state;
     const { position, duration } = event;
@@ -165,12 +155,6 @@ class JWPlayer extends Component {
     });
     this.props.onVideoLoad(event);
   }
-  onClose(event) {
-    this.props.onClose(event, () => {
-      window.jwplayer(this.props.playerId).remove();
-      this.setState({ closed: true });
-    });
-  }
   setupPreroll(playerInstance) {
     playerInstance.on('beforePlay', () => {
       const currentVideo = playerInstance.getPlaylistItem();
@@ -181,14 +165,8 @@ class JWPlayer extends Component {
     });
   }
   render() {
-    const { className, playerId } = this.props;
-
-    if (this.state.closed) {
-      return <div />;
-    }
-
     return (
-      <div className={className} id={playerId} />
+      <div className={this.props.className} id={this.props.playerId} />
     );
   }
 }
