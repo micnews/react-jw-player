@@ -34,6 +34,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-tape-runner": "^2.0.1",
     "enzyme": "^2.7.0",
+    "faucet": "0.0.1",
     "miclint": "^3.0.0",
     "react-addons-test-utils": "^15.4.1",
     "snazzy": "^5.0.0",
