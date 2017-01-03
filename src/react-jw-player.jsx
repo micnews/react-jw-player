@@ -13,7 +13,6 @@ class JWPlayer extends Component {
       hasFired: {}
     };
     this.eventHandlers = createEventHandlers(this);
-    this.onFullScreen = this.onFullScreen.bind(this);
     this.onMute = this.onMute.bind(this);
     this.onTime = this.onTime.bind(this);
     this.onBeforeComplete = this.onBeforeComplete.bind(this);
@@ -44,7 +43,7 @@ class JWPlayer extends Component {
       player.on('error', this.props.onError);
       player.on('adPlay', this.eventHandlers.onAdPlay);
       player.on('adPause', this.props.onAdPause);
-      player.on('fullscreen', this.onFullScreen);
+      player.on('fullscreen', this.eventHandlers.onFullScreen);
       player.on('pause', this.props.onPause);
       player.on('play', this.eventHandlers.onPlay);
       player.on('mute', this.onMute);
