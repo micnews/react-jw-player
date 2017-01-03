@@ -14,7 +14,6 @@ class JWPlayer extends Component {
     };
     this.eventHandlers = createEventHandlers(this);
     this.onTime = this.onTime.bind(this);
-    this.onVideoLoad = this.onVideoLoad.bind(this);
     this.setupPreroll = this.setupPreroll.bind(this);
   }
   componentDidMount() {
@@ -45,7 +44,7 @@ class JWPlayer extends Component {
       player.on('pause', this.props.onPause);
       player.on('play', this.eventHandlers.onPlay);
       player.on('mute', this.eventHandlers.onMute);
-      player.on('playlistItem', this.onVideoLoad);
+      player.on('playlistItem', this.eventHandlers.onVideoLoad);
       player.on('time', this.onTime);
       player.on('beforeComplete', this.props.onOneHundredPercent);
 
@@ -142,12 +141,6 @@ class JWPlayer extends Component {
         hasFired
       });
     }
-  }
-  onVideoLoad(event) {
-    this.setState({
-      hasFired: {}
-    });
-    this.props.onVideoLoad(event);
   }
   setupPreroll(playerInstance) {
     playerInstance.on('beforePlay', () => {
