@@ -28,7 +28,7 @@ test('eventHandlers.onFullScreen() when player is not in fullscreen mode', (t) =
   t.end();
 });
 
-test('eventHandlers.onFullScreen() when player is not in fullscreen mode', (t) => {
+test('eventHandlers.onFullScreen() when player is in fullscreen mode', (t) => {
   let onEnterFullScreenCalled = false;
   let onExitFullScreenCalled = false;
   let onExitFullScreenArgs;
