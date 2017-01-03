@@ -8,7 +8,7 @@
     "clean": "rm -rf dist",
     "lint": "miclint | snazzy",
     "prepublish": "npm run lint && npm run test && npm run clean && npm run build",
-    "test": "babel-tape-runner ./test/*.js*"
+    "test": "babel-tape-runner ./test/*.js* | faucet"
   },
   "repository": {
     "type": "git",
