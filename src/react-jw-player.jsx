@@ -17,7 +17,6 @@ class JWPlayer extends Component {
     this.onClose = this.onClose.bind(this);
     this.onFullScreen = this.onFullScreen.bind(this);
     this.onMute = this.onMute.bind(this);
-    this.onPlay = this.onPlay.bind(this);
     this.onTime = this.onTime.bind(this);
     this.onBeforeComplete = this.onBeforeComplete.bind(this);
     this.onVideoLoad = this.onVideoLoad.bind(this);
@@ -50,7 +49,7 @@ class JWPlayer extends Component {
       player.on('adPause', this.props.onAdPause);
       player.on('fullscreen', this.onFullScreen);
       player.on('pause', this.props.onPause);
-      player.on('play', this.onPlay);
+      player.on('play', this.eventHandlers.onPlay);
       player.on('mute', this.onMute);
       player.on('playlistItem', this.onVideoLoad);
       player.on('time', this.onTime);
