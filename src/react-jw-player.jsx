@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import createEventHandlers from './create-event-handlers';
+import initialize from './helpers/initialize';
+
 import defaultProps from './default-props';
 import propTypes from './prop-types';
 
@@ -16,40 +18,10 @@ class JWPlayer extends Component {
     this.setupPreroll = this.setupPreroll.bind(this);
   }
   componentDidMount() {
-    const initialize = () => {
-      const player = window.jwplayer(this.props.playerId);
-
-      const playerOpts = {
-        playlist: this.props.playlist,
-        mute: !!this.props.muted
-      };
-
-      if (this.props.generatePrerollUrl) {
-        playerOpts.advertising = {
-          client: 'googima',
-          admessage: 'Ad — xxs left',
-          autoplayadsmuted: true
-        };
-      }
-
-      player.setup(playerOpts);
-
-      player.on('ready', this.props.onReady);
-      player.on('setupError', this.onError);
-      player.on('error', this.props.onError);
-      player.on('adPlay', this.eventHandlers.onAdPlay);
-      player.on('adPause', this.props.onAdPause);
-      player.on('fullscreen', this.eventHandlers.onFullScreen);
-      player.on('pause', this.props.onPause);
-      player.on('play', this.eventHandlers.onPlay);
-      player.on('mute', this.eventHandlers.onMute);
-      player.on('playlistItem', this.eventHandlers.onVideoLoad);
-      player.on('time', this.eventHandlers.onTime);
-      player.on('beforeComplete', this.props.onOneHundredPercent);
-
-      if (this.props.generatePrerollUrl) {
-        this.setupPreroll(player);
-      }
+    const component = this;
+    const player = window.jwplayer(this.props.playerId);
+    const _initialize = () => {
+      initialize({ component, player });
     };
 
     const scriptId = 'jw-player-script';
@@ -59,14 +31,14 @@ class JWPlayer extends Component {
       const jwPlayerScript = document.createElement('script');
       jwPlayerScript.id = scriptId;
       jwPlayerScript.src = this.props.playerScript;
-      jwPlayerScript.onload = initialize;
+      jwPlayerScript.onload = _initialize;
 
       document.head.appendChild(jwPlayerScript);
     } else {
       const previousOnload = existingScript.onload || (() => {});
       const curriedOnLoad = () => {
         previousOnload();
-        initialize();
+        _initialize();
       };
       existingScript.onload = curriedOnLoad;
     }
