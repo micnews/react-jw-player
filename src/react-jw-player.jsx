@@ -13,7 +13,6 @@ class JWPlayer extends Component {
       hasFired: {}
     };
     this.eventHandlers = createEventHandlers(this);
-    this.onTime = this.onTime.bind(this);
     this.setupPreroll = this.setupPreroll.bind(this);
   }
   componentDidMount() {
@@ -45,7 +44,7 @@ class JWPlayer extends Component {
       player.on('play', this.eventHandlers.onPlay);
       player.on('mute', this.eventHandlers.onMute);
       player.on('playlistItem', this.eventHandlers.onVideoLoad);
-      player.on('time', this.onTime);
+      player.on('time', this.eventHandlers.onTime);
       player.on('beforeComplete', this.props.onOneHundredPercent);
 
       if (this.props.generatePrerollUrl) {
@@ -98,47 +97,6 @@ class JWPlayer extends Component {
       this.props.onPlay(event);
       this.setState({
         hasPlayed: true
-      });
-    }
-  }
-  onTime(event) {
-    const { hasFired } = this.state;
-    const { position, duration } = event;
-    let hasChanged = false;
-
-    if (!hasFired.threeSeconds && position > 3) {
-      this.props.onThreeSeconds();
-      hasFired.threeSeconds = true;
-      hasChanged = true;
-    }
-
-    if (!hasFired.tenSeconds && position > 10) {
-      this.props.onTenSeconds();
-      hasFired.tenSeconds = true;
-      hasChanged = true;
-    }
-
-    if (!hasFired.thirtySeconds && position > 30) {
-      this.props.onThirtySeconds();
-      hasFired.thirtySeconds = true;
-      hasChanged = true;
-    }
-
-    if (!hasFired.fiftyPercent && ((position / duration) * 100) > 50) {
-      this.props.onFiftyPercent();
-      hasFired.fiftyPercent = true;
-      hasChanged = true;
-    }
-
-    if (!hasFired.ninetyFivePercent && ((position / duration) * 100) > 95) {
-      this.props.onNinetyFivePercent();
-      hasFired.ninetyFivePercent = true;
-      hasChanged = true;
-    }
-
-    if (hasChanged) {
-      this.setState({
-        hasFired
       });
     }
   }
