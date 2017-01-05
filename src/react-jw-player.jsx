@@ -15,12 +15,12 @@ class JWPlayer extends Component {
       hasFired: {}
     };
     this.eventHandlers = createEventHandlers(this);
-    this.setupPreroll = this.setupPreroll.bind(this);
   }
   componentDidMount() {
     const component = this;
-    const player = window.jwplayer(this.props.playerId);
+
     const _initialize = () => {
+      const player = window.jwplayer(this.props.playerId);
       initialize({ component, player });
     };
 
@@ -42,15 +42,6 @@ class JWPlayer extends Component {
       };
       existingScript.onload = curriedOnLoad;
     }
-  }
-  setupPreroll(playerInstance) {
-    playerInstance.on('beforePlay', () => {
-      const currentVideo = playerInstance.getPlaylistItem();
-
-      if (!this.state.hasPlayed) {
-        playerInstance.playAd(this.props.generatePrerollUrl(currentVideo));
-      }
-    });
   }
   render() {
     return (

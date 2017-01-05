@@ -12,8 +12,13 @@ function initialize({ component, player }) {
     };
   }
 
+  function _onBeforePlay(event) {
+    component.eventHandlers.onBeforePlay(event, player);
+  }
+
   player.setup(playerOpts);
 
+  player.on('beforePlay', _onBeforePlay);
   player.on('ready', component.props.onReady);
   player.on('setupError', component.eventHandlers.onError);
   player.on('error', component.props.onError);
@@ -26,10 +31,6 @@ function initialize({ component, player }) {
   player.on('playlistItem', component.eventHandlers.onVideoLoad);
   player.on('time', component.eventHandlers.onTime);
   player.on('beforeComplete', component.props.onOneHundredPercent);
-
-  if (component.props.generatePrerollUrl) {
-    component.setupPreroll(player);
-  }
 }
 
 export default initialize;
