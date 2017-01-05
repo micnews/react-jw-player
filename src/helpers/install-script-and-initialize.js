@@ -4,11 +4,7 @@ import initialize from './initialize';
 import installPlayerScript from './install-player-script';
 
 function installScriptAndInitialize(context, component) {
-  const playerOpts = getPlayerOpts({
-    playlist: component.props.playlist,
-    isMuted: component.props.muted,
-    hasAdvertising: !!component.props.generatePrerollUrl
-  });
+  const playerOpts = getPlayerOpts(component.props);
 
   const _initialize = () => {
     const player = context.jwplayer(component.props.playerId);

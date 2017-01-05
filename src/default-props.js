@@ -1,6 +1,7 @@
 const noOp = () => {};
 
 const defaultProps = {
+  isMuted: false,
   onAdPlay: noOp,
   onAdResume: noOp,
   onEnterFullScreen: noOp,

@@ -34,7 +34,7 @@ test('getPlayerOpts() with advertising', (t) => {
   const mockPlaylist = 'mock playlist';
 
   const actual = getPlayerOpts({
-    hasAdvertising: true,
+    generatePrerollUrl() {},
     playlist: mockPlaylist
   });
 

@@ -1,4 +1,6 @@
-function getPlayerOpts({ playlist, isMuted = false, hasAdvertising = false }) {
+function getPlayerOpts({ playlist, isMuted, generatePrerollUrl }) {
+  const hasAdvertising = !!generatePrerollUrl;
+
   const playerOpts = {
     playlist,
     mute: !!isMuted
