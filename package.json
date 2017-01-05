@@ -36,6 +36,8 @@
     "babel-tape-runner": "^2.0.1",
     "enzyme": "^2.7.0",
     "faucet": "0.0.1",
+    "jsdom": "^9.9.1",
+    "jsdom-global": "^2.1.1",
     "miclint": "^3.0.0",
     "react-addons-test-utils": "^15.4.1",
     "snazzy": "^5.0.0",
