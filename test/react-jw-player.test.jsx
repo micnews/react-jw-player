@@ -16,6 +16,11 @@ test('<ReactJWPlayer>', (t) => {
   );
   const root = wrapper.first();
 
+  const initialState = wrapper.state();
+  t.deepEqual(initialState.hasFired, {}, 'it inits state.hasFired to an empty object');
+  t.notOk(initialState.adHasPlayed, 'it inits state.asHasPlayed to false');
+  t.notOk(initialState.hasPlayed, 'it inits state.hasPlayed to false');
+
   t.is(
     root.node.type,
     'div',
