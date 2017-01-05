@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import createEventHandlers from './create-event-handlers';
 import initialize from './helpers/initialize';
+import getPlayerOpts from './helpers/get-player-opts';
 
 import defaultProps from './default-props';
 import propTypes from './prop-types';
@@ -19,9 +20,15 @@ class JWPlayer extends Component {
   componentDidMount() {
     const component = this;
 
+    const playerOpts = getPlayerOpts({
+      playlist: this.props.playlist,
+      isMuted: this.props.muted,
+      hasAdvertising: !!this.props.generatePrerollUrl
+    });
+
     const _initialize = () => {
       const player = window.jwplayer(this.props.playerId);
-      initialize({ component, player });
+      initialize({ component, player, playerOpts });
     };
 
     const scriptId = 'jw-player-script';

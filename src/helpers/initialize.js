@@ -1,17 +1,4 @@
-function initialize({ component, player }) {
-  const playerOpts = {
-    playlist: component.props.playlist,
-    mute: !!component.props.muted
-  };
-
-  if (component.props.generatePrerollUrl) {
-    playerOpts.advertising = {
-      client: 'googima',
-      admessage: 'Ad — xxs left',
-      autoplayadsmuted: true
-    };
-  }
-
+function initialize({ component, player, playerOpts }) {
   function _onBeforePlay(event) {
     component.eventHandlers.onBeforePlay(event, player);
   }
