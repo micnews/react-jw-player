@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
 import createEventHandlers from './create-event-handlers';
-import initialize from './helpers/initialize';
+import getCurriedOnLoad from './helpers/get-curried-on-load';
 import getPlayerOpts from './helpers/get-player-opts';
+import initialize from './helpers/initialize';
+import installPlayerScript from './helpers/install-player-script';
 
 import defaultProps from './default-props';
 import propTypes from './prop-types';
@@ -16,6 +18,7 @@ class JWPlayer extends Component {
       hasFired: {}
     };
     this.eventHandlers = createEventHandlers(this);
+    this.uniqueScriptID = 'jw-player-script';
   }
   componentDidMount() {
     const component = this;
@@ -31,23 +34,17 @@ class JWPlayer extends Component {
       initialize({ component, player, playerOpts });
     };
 
-    const scriptId = 'jw-player-script';
-    const existingScript = document.querySelector(`#${scriptId}`);
+    const existingScript = document.querySelector(`#${this.uniqueScriptID}`);
 
     if (!existingScript) {
-      const jwPlayerScript = document.createElement('script');
-      jwPlayerScript.id = scriptId;
-      jwPlayerScript.src = this.props.playerScript;
-      jwPlayerScript.onload = _initialize;
-
-      document.head.appendChild(jwPlayerScript);
+      installPlayerScript({
+        context: document,
+        onLoadCallback: _initialize,
+        scriptSrc: this.props.playerScript,
+        uniqueScriptID: this.uniqueScriptID
+      });
     } else {
-      const previousOnload = existingScript.onload || (() => {});
-      const curriedOnLoad = () => {
-        previousOnload();
-        _initialize();
-      };
-      existingScript.onload = curriedOnLoad;
+      existingScript.onload = getCurriedOnLoad(existingScript, _initialize);
     }
   }
   render() {
