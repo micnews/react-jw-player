@@ -18,18 +18,18 @@ class JWPlayer extends Component {
       hasFired: {}
     };
     this.eventHandlers = createEventHandlers(this);
-    this.uniqueScriptID = 'jw-player-script';
+    this.uniqueScriptId = 'jw-player-script';
     this._initialize = this._initialize.bind(this);
   }
   componentDidMount() {
-    const existingScript = document.querySelector(`#${this.uniqueScriptID}`);
+    const existingScript = document.querySelector(`#${this.uniqueScriptId}`);
 
     if (!existingScript) {
       installPlayerScript({
         context: document,
         onLoadCallback: this._initialize,
         scriptSrc: this.props.playerScript,
-        uniqueScriptID: this.uniqueScriptID
+        uniqueScriptId: this.uniqueScriptId
       });
     } else {
       existingScript.onload = getCurriedOnLoad(existingScript, this._initialize);
