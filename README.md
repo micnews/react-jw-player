@@ -1,4 +1,4 @@
-# react-jw-player :movie_camera:
+# react-jw-player :movie_camera: [![Build Status](https://travis-ci.com/micnews/react-jw-player.svg?token=oCXvx519mb3xud77T3xi&branch=master)](https://travis-ci.com/micnews/react-jw-player)
 
 `<ReactJWPlayer>` is a React Component for initializing client-side instances of JW Player. Simply give `<ReactJWPlayer>` the id of your player script, and the id of a JW Player video or playlist. The component comes with several event hooks that can be accessed through component props.
 
