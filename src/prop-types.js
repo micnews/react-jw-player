@@ -13,7 +13,6 @@ const propTypes = {
   onPlay: PropTypes.func,
   generatePrerollUrl: PropTypes.func,
   onError: PropTypes.func,
-  onClose: PropTypes.func,
   playerId: PropTypes.string.isRequired,
   playlist: PropTypes.string.isRequired,
   onReady: PropTypes.func,
