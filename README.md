@@ -1,8 +1,9 @@
-# react-jw-player
+# react-jw-player :movie_camera:
 
 `<ReactJWPlayer>` is a React Component for initializing client-side instances of JW Player. Simply give `<ReactJWPlayer>` the id of your player script, and the id of a JW Player video or playlist. The component comes with several event hooks that can be accessed through component props.
 
-# Contents
+## Contents
+
 * [Usage](#usage)
 * Props
   * [Required Props](#required-props)
@@ -12,13 +13,23 @@
       * [Advertising](#optional-advertising-event-hook-props)
       * [Player Events](#optional-player-event-hook-props)
       * [Time Events](#optional-time-event-hook-props)
+* [Example Container Component](#example-container-component)
+* [Contributing](#contributing)
+
 ## Usage
 
-```
+At the mininum, you can just fill in the following code.
+``` javascript
 <ReactJWPlayer
-
->
+  playerId='my-unique-id'
+  playerScript='https://link-to-my-jw-player/script.js'
+  playlist='https://link-to-my-playlist-or-video'
+/>
 ```
+
+For more complex interaction, check out the container component example [here](#example-container-component)
+
+To generate preroll, supply the player with the `generatePrerollUrl` prop. This prop just needs to be a function that returns a valid VAST tag! See (Optional Configuration Props)[#optional-configuration-props] for more info.
 
 ## Required Props
 
@@ -175,4 +186,64 @@ These are props that modify the basic behavior of the component.
     * `event`
       * This is the event object passed back from JW Player itself.
 
+## Example Container Component
+``` javascript
+import React from 'react';
+import ReactJWPlayer from 'react-jw-player';
 
+const displayName = 'ReactJWPlayerContainer';
+
+const propTypes = {
+  playlist: React.PropTypes.string.isRequired,
+  playerScript: React.PropTypes.string.isRequired
+};
+
+class ReactJWPlayerContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      videoTitle: '',
+    };
+
+    this.onAdPlay = this.onAdPlay.bind(this);
+    this.onVideoLoad = this.onVideoLoad.bind(this);
+
+    // each instance of <ReactJWPlayer> needs a unique id.
+    // we randomly generate it here and assign to the container instance.
+    this.playerId = someFunctionToRandomlyGenerateId();
+  }
+  onAdPlay(event) {
+    // track the ad play here
+  }
+  onVideoLoad(event) {
+    this.setState({
+      videoTitle: event.item.description // this only works with json feeds!
+    });
+  }
+  render() {
+    return (
+      <div className='react-jw-player-container'>
+        <h1>{ this.state.videoTitle }</h1>
+        <JWPlayer
+          playlist={this.props.playlist}
+          onAdPlay={this.onAdPlay}
+          onVideoLoad={this.onVideoLoad}
+          playerId={this.playerId} // bring in the randomly generated playerId
+          playerScript='https://link-to-your-jw-player-script.js'
+        />
+      </div>
+    );
+  }
+}
+
+ReactJWPlayerContainer.propTypes = propTypes;
+ReactJWPlayerContainer.defaultProps = defaultProps;
+ReactJWPlayerContainer.displayName = displayName;
+export default ReactJWPlayerContainer;
+```
+
+## Contributing
+
+**Just do it!**
+
+![shia](https://media.giphy.com/media/87xihBthJ1DkA/giphy.gif)
