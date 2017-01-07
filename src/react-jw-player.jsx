@@ -22,7 +22,7 @@ class JWPlayer extends Component {
     this._initialize = this._initialize.bind(this);
   }
   componentDidMount() {
-    const existingScript = document.querySelector(`#${this.uniqueScriptId}`);
+    const existingScript = document.getElementById(this.uniqueScriptId);
 
     if (!existingScript) {
       installPlayerScript({
