@@ -9,7 +9,9 @@ import installPlayerScript from './helpers/install-player-script';
 import defaultProps from './default-props';
 import propTypes from './prop-types';
 
-class JWPlayer extends Component {
+const displayName = 'ReactJWPlayer';
+
+class ReactJWPlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -49,6 +51,7 @@ class JWPlayer extends Component {
   }
 }
 
-JWPlayer.defaultProps = defaultProps;
-JWPlayer.propTypes = propTypes;
-export default JWPlayer;
+ReactJWPlayer.defaultProps = defaultProps;
+ReactJWPlayer.displayName = displayName;
+ReactJWPlayer.propTypes = propTypes;
+export default ReactJWPlayer;
