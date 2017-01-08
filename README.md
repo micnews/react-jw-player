@@ -4,6 +4,7 @@
 
 ## Contents
 
+* [Installation](#installation)
 * [Usage](#usage)
 * Props
   * [Required Props](#required-props)
@@ -16,15 +17,28 @@
 * [Example Container Component](#example-container-component)
 * [Contributing](#contributing)
 
+## Installation
+
+```shell
+npm install react-jw-player
+```
+
 ## Usage
 
-At the mininum, you can just fill in the following code.
+At the mininum, you can just use something like the following code.
 ``` javascript
-<ReactJWPlayer
-  playerId='my-unique-id'
-  playerScript='https://link-to-my-jw-player/script.js'
-  playlist='https://link-to-my-playlist-or-video'
-/>
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactJWPlayer from 'react-jw-player';
+
+ReactDOM.render(
+  <ReactJWPlayer
+    playerId='my-unique-id'
+    playerScript='https://link-to-my-jw-player/script.js'
+    playlist='https://link-to-my-playlist-or-video'
+  />,
+  document.getElementById('my-root-div');
+);
 ```
 
 For more complex interaction, check out the container component example [here](#example-container-component)
