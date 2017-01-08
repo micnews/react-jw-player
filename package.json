@@ -42,11 +42,11 @@
     "jsdom-global": "^2.1.1",
     "miclint": "^3.0.0",
     "react-addons-test-utils": "^15.4.1",
+    "react-dom": "^15.4.2",
     "snazzy": "^5.0.0",
     "tape": "^4.6.3"
   },
   "dependencies": {
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react": "^15.4.1"
   }
 }
