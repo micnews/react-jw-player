@@ -1,6 +1,7 @@
 import { PropTypes } from 'react';
 
 const propTypes = {
+  aspectRatio: PropTypes.oneOf(['1:1', '16:9']),
   className: PropTypes.string,
   onAdPlay: PropTypes.func,
   onAdResume: PropTypes.func,
@@ -26,7 +27,7 @@ const propTypes = {
   onThirtySeconds: PropTypes.func,
   onFiftyPercent: PropTypes.func,
   onNinetyFivePercent: PropTypes.func,
-  isMuted: PropTypes.bool
+  isMuted: PropTypes.bool,
 };
 
 export default propTypes;
