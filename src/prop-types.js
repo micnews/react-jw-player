@@ -1,7 +1,7 @@
 import { PropTypes } from 'react';
 
 const propTypes = {
-  aspectRatio: PropTypes.oneOf(['1:1', '16:9']),
+  aspectRatio: PropTypes.oneOf(['inherit', '1:1', '16:9']),
   className: PropTypes.string,
   onAdPlay: PropTypes.func,
   onAdResume: PropTypes.func,
