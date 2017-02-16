@@ -1,7 +1,7 @@
 const noOp = () => {};
 
 const defaultProps = {
-  aspectRatio: '16:9',
+  aspectRatio: 'inherit',
   isMuted: false,
   onAdPlay: noOp,
   onAdResume: noOp,

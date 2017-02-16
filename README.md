@@ -62,6 +62,8 @@ These are props that modify the basic behavior of the component.
   * Example: `https//content.jwplatform.com/feeds/abCD1234.json`
 
 ## Optional Configuration Props
+* `aspectRatio`
+  * An optional aspect ratio to give the video player. Can be `1:1` or `16:9` currently.
 * `className`
   * An optional class name to give the container div.
   * Type: `string`

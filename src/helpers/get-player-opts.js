@@ -2,10 +2,13 @@ function getPlayerOpts({ aspectRatio, playlist, isMuted, generatePrerollUrl }) {
   const hasAdvertising = !!generatePrerollUrl;
 
   const playerOpts = {
-    aspectratio: aspectRatio,
     playlist,
     mute: !!isMuted,
   };
+
+  if (aspectRatio !== 'inherit') {
+    playerOpts.aspectratio = aspectRatio;
+  }
 
   if (hasAdvertising) {
     playerOpts.advertising = {

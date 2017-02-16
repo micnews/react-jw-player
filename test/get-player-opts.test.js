@@ -5,13 +5,12 @@ test('getPlayerOpts() with defaults', (t) => {
   const mockPlaylist = 'mock playlist';
 
   const actual = getPlayerOpts({
-    aspectRatio: '1:1',
     playlist: mockPlaylist,
   });
 
   t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
   t.equal(actual.mute, false, 'it sets the mute property to false');
-  t.equal(actual.aspectratio, '1:1', 'it sets the aspect ratio properly');
+  t.notOk(actual.aspectratio, 'it does not set the aspect ratio property');
   t.notOk(actual.advertising, 'it does not set advertising properties');
 
   t.end();
