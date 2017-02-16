@@ -63,7 +63,8 @@ These are props that modify the basic behavior of the component.
 
 ## Optional Configuration Props
 * `aspectRatio`
-  * An optional aspect ratio to give the video player. Can be `1:1` or `16:9` currently.
+  * An optional aspect ratio to give the video player. Can be 'inherit', `1:1` or `16:9` currently.
+  * Defaults to 'inherit'.
 * `className`
   * An optional class name to give the container div.
   * Type: `string`
