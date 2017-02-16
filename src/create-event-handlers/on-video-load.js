@@ -1,6 +1,6 @@
 function onVideoLoad(event) {
   this.setState({
-    hasFired: {}
+    hasFired: {},
   });
   this.props.onVideoLoad(event);
 }

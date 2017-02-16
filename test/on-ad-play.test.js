@@ -13,7 +13,7 @@ test('eventHandlers.onAdPlay() when state of adHasPlayed is false', (t) => {
     },
     onAdResume() {
       onAdResumeCalled = true;
-    }
+    },
   });
 
   const mockEvent = 'event';
@@ -38,7 +38,7 @@ test('eventHandlers.onAdPlay() when state of adHasPlayed is true', (t) => {
     },
     onAdResume() {
       onAdResumeCalled = true;
-    }
+    },
   });
 
   const mockEvent = 'event';

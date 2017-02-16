@@ -3,14 +3,14 @@ function getPlayerOpts({ playlist, isMuted, generatePrerollUrl }) {
 
   const playerOpts = {
     playlist,
-    mute: !!isMuted
+    mute: !!isMuted,
   };
 
   if (hasAdvertising) {
     playerOpts.advertising = {
       client: 'googima',
       admessage: 'Ad — xxs left',
-      autoplayadsmuted: true
+      autoplayadsmuted: true,
     };
   }
 

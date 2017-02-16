@@ -5,7 +5,7 @@ test('getPlayerOpts() with defaults', (t) => {
   const mockPlaylist = 'mock playlist';
 
   const actual = getPlayerOpts({
-    playlist: mockPlaylist
+    playlist: mockPlaylist,
   });
 
   t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
@@ -20,7 +20,7 @@ test('getPlayerOpts() when muted', (t) => {
 
   const actual = getPlayerOpts({
     isMuted: true,
-    playlist: mockPlaylist
+    playlist: mockPlaylist,
   });
 
   t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
@@ -35,7 +35,7 @@ test('getPlayerOpts() with advertising', (t) => {
 
   const actual = getPlayerOpts({
     generatePrerollUrl() {},
-    playlist: mockPlaylist
+    playlist: mockPlaylist,
   });
 
   t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');

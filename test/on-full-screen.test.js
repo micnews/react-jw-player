@@ -14,7 +14,7 @@ test('eventHandlers.onFullScreen() when player is not in fullscreen mode', (t) =
     },
     onExitFullScreen() {
       onExitFullScreenCalled = true;
-    }
+    },
   });
 
   const mockEvent = { fullscreen: true };
@@ -40,7 +40,7 @@ test('eventHandlers.onFullScreen() when player is in fullscreen mode', (t) => {
     onExitFullScreen(event) {
       onExitFullScreenCalled = true;
       onExitFullScreenArgs = event;
-    }
+    },
   });
 
   const mockEvent = { fullscreen: false };

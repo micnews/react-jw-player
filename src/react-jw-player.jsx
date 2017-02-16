@@ -17,7 +17,7 @@ class ReactJWPlayer extends Component {
     this.state = {
       adHasPlayed: false,
       hasPlayed: false,
-      hasFired: {}
+      hasFired: {},
     };
     this.eventHandlers = createEventHandlers(this);
     this.uniqueScriptId = 'jw-player-script';
@@ -31,7 +31,7 @@ class ReactJWPlayer extends Component {
         context: document,
         onLoadCallback: this._initialize,
         scriptSrc: this.props.playerScript,
-        uniqueScriptId: this.uniqueScriptId
+        uniqueScriptId: this.uniqueScriptId,
       });
     } else {
       existingScript.onload = getCurriedOnLoad(existingScript, this._initialize);
