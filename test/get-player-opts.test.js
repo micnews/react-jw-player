@@ -5,11 +5,12 @@ test('getPlayerOpts() with defaults', (t) => {
   const mockPlaylist = 'mock playlist';
 
   const actual = getPlayerOpts({
-    playlist: mockPlaylist
+    playlist: mockPlaylist,
   });
 
   t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
   t.equal(actual.mute, false, 'it sets the mute property to false');
+  t.notOk(actual.aspectratio, 'it does not set the aspect ratio property');
   t.notOk(actual.advertising, 'it does not set advertising properties');
 
   t.end();
@@ -19,10 +20,12 @@ test('getPlayerOpts() when muted', (t) => {
   const mockPlaylist = 'mock playlist';
 
   const actual = getPlayerOpts({
+    aspectRatio: '1:1',
     isMuted: true,
-    playlist: mockPlaylist
+    playlist: mockPlaylist,
   });
 
+  t.equal(actual.aspectratio, '1:1', 'it sets the aspect ratio properly');
   t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
   t.equal(actual.mute, true, 'it sets the mute property to true');
   t.notOk(actual.advertising, 'it does not set advertising properties');
@@ -34,10 +37,12 @@ test('getPlayerOpts() with advertising', (t) => {
   const mockPlaylist = 'mock playlist';
 
   const actual = getPlayerOpts({
+    aspectRatio: '1:1',
     generatePrerollUrl() {},
-    playlist: mockPlaylist
+    playlist: mockPlaylist,
   });
 
+  t.equal(actual.aspectratio, '1:1', 'it sets the aspect ratio properly');
   t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
   t.equal(actual.mute, false, 'it sets the mute property to false');
   t.ok(actual.advertising, 'it sets advertising properties');

@@ -11,7 +11,7 @@ test('eventHandlers.onVideoLoad()', (t) => {
     onVideoLoad(event) {
       onVideoLoadCalled = true;
       onVideoLoadArgs = event;
-    }
+    },
   });
 
   const mockEvent = 'event';
@@ -21,7 +21,7 @@ test('eventHandlers.onVideoLoad()', (t) => {
   t.deepEqual(
     mockComponent.state.hasFired,
     {},
-    'it sets hasFired in component state to empty object'
+    'it sets hasFired in component state to empty object',
   );
   t.ok(onVideoLoadCalled, 'it calls the supplied onVideoLoad() prop');
   t.equal(onVideoLoadArgs, mockEvent, 'it passes the event to onVideoLoad()');

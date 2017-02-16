@@ -14,7 +14,7 @@ test('eventHandlers.onMute() when player is not muted', (t) => {
     },
     onUnmute() {
       onUnmuteCalled = true;
-    }
+    },
   });
 
   const mockEvent = { mute: true };
@@ -40,7 +40,7 @@ test('eventHandlers.onMute() when player is muted', (t) => {
     onUnmute(event) {
       onUnmuteCalled = true;
       onUnmuteArgs = event;
-    }
+    },
   });
 
   const mockEvent = { mute: false };

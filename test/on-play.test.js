@@ -19,7 +19,7 @@ test('eventHandlers.onPlay() when event.playReason is autostart', (t) => {
     },
     onResume() {
       onResumeCalled = true;
-    }
+    },
   });
 
   const mockEvent = { playReason: 'autostart' };
@@ -52,7 +52,7 @@ test('eventHandlers.onPlay() when video has played before and is currently pause
     onResume(event) {
       onResumeCalled = true;
       onResumeArgs = event;
-    }
+    },
   });
 
   const mockEvent = { oldstate: 'paused' };
@@ -85,7 +85,7 @@ test('eventHandlers.onPlay() when video has not yet played and user has pressed 
     },
     onResume() {
       onResumeCalled = true;
-    }
+    },
   });
 
   const mockEvent = 'event';

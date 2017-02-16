@@ -14,7 +14,7 @@ test('getCurriedOnLoad()', (t) => {
   }
 
   const mockScript = {
-    onload: first
+    onload: first,
   };
 
   const curriedOnLoad = getCurriedOnLoad(mockScript, second);

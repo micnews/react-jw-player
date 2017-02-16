@@ -1,16 +1,20 @@
-function getPlayerOpts({ playlist, isMuted, generatePrerollUrl }) {
+function getPlayerOpts({ aspectRatio, playlist, isMuted, generatePrerollUrl }) {
   const hasAdvertising = !!generatePrerollUrl;
 
   const playerOpts = {
     playlist,
-    mute: !!isMuted
+    mute: !!isMuted,
   };
+
+  if (aspectRatio !== 'inherit') {
+    playerOpts.aspectratio = aspectRatio;
+  }
 
   if (hasAdvertising) {
     playerOpts.advertising = {
       client: 'googima',
       admessage: 'Ad — xxs left',
-      autoplayadsmuted: true
+      autoplayadsmuted: true,
     };
   }
 

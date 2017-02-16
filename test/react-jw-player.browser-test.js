@@ -22,7 +22,7 @@ test('<ReactJWPlayer> when no jwplayer script is present', (t) => {
       playerId={testPlayerId}
       playerScript='script'
       playlist='playlist'
-    />
+    />,
   );
 
   const script = document.querySelector('#jw-player-script');
@@ -33,7 +33,7 @@ test('<ReactJWPlayer> when no jwplayer script is present', (t) => {
   script.onload();
   t.deepEqual(
     initializeCalls, [testPlayerId],
-    'script onload calls initialize on the mounted component'
+    'script onload calls initialize on the mounted component',
   );
 
   t.end();
@@ -55,7 +55,7 @@ test('<ReactJWPlayer> when jwplayer script is present', (t) => {
       playerId={testPlayerId}
       playerScript='script'
       playlist='playlist'
-    />
+    />,
   );
 
   mount(
@@ -63,7 +63,7 @@ test('<ReactJWPlayer> when jwplayer script is present', (t) => {
       playerId={testPlayerIdTwo}
       playerScript='script'
       playlist='playlist'
-    />
+    />,
   );
 
 
@@ -73,7 +73,7 @@ test('<ReactJWPlayer> when jwplayer script is present', (t) => {
   script.onload();
   t.deepEqual(
     initializeCalls, [testPlayerId, testPlayerIdTwo],
-    'script onload calls initialize on both mounted component'
+    'script onload calls initialize on both mounted component',
   );
 
   t.end();

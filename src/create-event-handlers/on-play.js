@@ -1,7 +1,7 @@
 function onPlay(event) {
   if (event.playReason === 'autostart') {
     this.setState({
-      hasPlayed: true
+      hasPlayed: true,
     });
     this.props.onAutoStart(event);
   } else if (this.state.hasPlayed && event.oldstate === 'paused') {
@@ -9,7 +9,7 @@ function onPlay(event) {
   } else {
     this.props.onPlay(event);
     this.setState({
-      hasPlayed: true
+      hasPlayed: true,
     });
   }
 }

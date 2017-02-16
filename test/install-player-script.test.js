@@ -19,8 +19,8 @@ test('installPlayerScript()', (t) => {
       appendChild(element) {
         appendChildCalled = true;
         appendChildElement = element;
-      }
-    }
+      },
+    },
   };
 
   const mockOnLoadCallback = 'onLoadCallback';
@@ -31,7 +31,7 @@ test('installPlayerScript()', (t) => {
     context: mockContext,
     onLoadCallback: mockOnLoadCallback,
     scriptSrc: mockScriptSrc,
-    uniqueScriptId: mockUniqueScriptId
+    uniqueScriptId: mockUniqueScriptId,
   };
 
   t.doesNotThrow(installPlayerScript.bind(null, opts), 'it does not error');

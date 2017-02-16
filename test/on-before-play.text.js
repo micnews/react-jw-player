@@ -17,7 +17,7 @@ test('eventHandlers.onBeforePlay() with preroll prop and player has not played',
       generatePrerollUrlCalled = true;
       generatePrerollUrlArgs = args;
       return mockPrerollResponse;
-    }
+    },
   });
 
   const mockJWPlayerInstance = {
@@ -27,7 +27,7 @@ test('eventHandlers.onBeforePlay() with preroll prop and player has not played',
     playAd(args) {
       playAdCalled = true;
       playAdArgs = args;
-    }
+    },
   };
 
   const mockEvent = 'event';
@@ -37,12 +37,12 @@ test('eventHandlers.onBeforePlay() with preroll prop and player has not played',
   t.ok(generatePrerollUrlCalled, 'it calls the supplied generatePrerollUrl() prop');
   t.equal(
     generatePrerollUrlArgs, mockCurrentVideo,
-    'it passes the current video to generatePrerollUrl()'
+    'it passes the current video to generatePrerollUrl()',
   );
   t.ok(playAdCalled, 'it calls playAd() on the supplied player instance');
   t.equal(
     playAdArgs, mockPrerollResponse,
-    'it passes the response from generatePrerollUrl() to playAd()'
+    'it passes the response from generatePrerollUrl() to playAd()',
   );
 
   t.end();
@@ -58,7 +58,7 @@ test('eventHandlers.onBeforePlay() with preroll prop and player has played', (t)
     initialState: { hasPlayed: true },
     generatePrerollUrl() {
       generatePrerollUrlCalled = true;
-    }
+    },
   });
 
   const mockJWPlayerInstance = {
@@ -67,7 +67,7 @@ test('eventHandlers.onBeforePlay() with preroll prop and player has played', (t)
     },
     playAd() {
       playAdCalled = true;
-    }
+    },
   };
 
   const mockEvent = 'event';
@@ -86,7 +86,7 @@ test('eventHandlers.onBeforePlay() without preroll prop and player has not playe
   const mockCurrentVideo = 'i am the current video';
 
   const mockComponent = new MockComponent({
-    initialState: { hasPlayed: false }
+    initialState: { hasPlayed: false },
   });
 
   const mockJWPlayerInstance = {
@@ -95,7 +95,7 @@ test('eventHandlers.onBeforePlay() without preroll prop and player has not playe
     },
     playAd() {
       playAdCalled = true;
-    }
+    },
   };
 
   const mockEvent = 'event';
@@ -113,7 +113,7 @@ test('eventHandlers.onBeforePlay() without preroll prop and player has played', 
   const mockCurrentVideo = 'i am the current video';
 
   const mockComponent = new MockComponent({
-    initialState: { hasPlayed: true }
+    initialState: { hasPlayed: true },
   });
 
   const mockJWPlayerInstance = {
@@ -122,7 +122,7 @@ test('eventHandlers.onBeforePlay() without preroll prop and player has played', 
     },
     playAd() {
       playAdCalled = true;
-    }
+    },
   };
 
   const mockEvent = 'event';

@@ -12,7 +12,7 @@ test('<ReactJWPlayer>', (t) => {
       playerId={testPlayerId}
       playerScript='script'
       playlist='playlist'
-    />
+    />,
   );
   const root = wrapper.first();
 
@@ -24,12 +24,12 @@ test('<ReactJWPlayer>', (t) => {
   t.is(
     root.node.type,
     'div',
-    'it renders a div as the root node'
+    'it renders a div as the root node',
   );
 
   t.ok(
     root.is(`#${testPlayerId}`),
-    'it gives the root div an id equal to the supplied playerId'
+    'it gives the root div an id equal to the supplied playerId',
   );
 
   t.end();
@@ -44,12 +44,12 @@ test('<ReactJWPlayer> with a supplied class', (t) => {
       playerId={testPlayerId}
       playerScript='script'
       playlist='playlist'
-    />
+    />,
   );
 
   t.ok(
     wrapper.first().hasClass(testClassName),
-    'it gives the outer div the supplied class name'
+    'it gives the outer div the supplied class name',
   );
 
   t.end();

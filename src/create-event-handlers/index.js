@@ -14,7 +14,7 @@ function createEventHandlers(component) {
     onMute: onMute.bind(component),
     onPlay: onPlay.bind(component),
     onTime: onTime.bind(component),
-    onVideoLoad: onVideoLoad.bind(component)
+    onVideoLoad: onVideoLoad.bind(component),
   };
 }
 
