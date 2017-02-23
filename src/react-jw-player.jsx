@@ -24,6 +24,11 @@ class ReactJWPlayer extends Component {
     this._initialize = this._initialize.bind(this);
   }
   componentDidMount() {
+    if (window.jwplayer) {
+      this._initialize();
+      return;
+    }
+
     const existingScript = document.getElementById(this.uniqueScriptId);
 
     if (!existingScript) {
