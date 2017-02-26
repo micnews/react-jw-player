@@ -25,7 +25,9 @@ npm install react-jw-player
 
 ## Usage
 
-At the mininum, you can just use something like the following code.
+At the mininum, you can just use something like the two following code snippets:
+
+### Playing a JW Player JSON Playlist
 ``` javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -35,7 +37,23 @@ ReactDOM.render(
   <ReactJWPlayer
     playerId='my-unique-id'
     playerScript='https://link-to-my-jw-player/script.js'
-    playlist='https://link-to-my-playlist-or-video'
+    playlist='https://link-to-my-playlist.json'
+  />,
+  document.getElementById('my-root-div');
+);
+```
+
+### Playing a Specific File
+``` javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactJWPlayer from 'react-jw-player';
+
+ReactDOM.render(
+  <ReactJWPlayer
+    playerId='my-unique-id'
+    playerScript='https://link-to-my-jw-player/script.js'
+    file='https://link-to-my-video.mp4'
   />,
   document.getElementById('my-root-div');
 );
@@ -56,8 +74,8 @@ These are props that modify the basic behavior of the component.
   * Link to a valid JW Player script.
   * Type: `string`
   * Example: `https://content.jwplatform.com/libraries/abCD1234.js`
-* `playlist`
-  * Link to a valid JW Player video or playlist. Cool tip: JW Player automatically generates JSON feeds for individual videos if you use the video id in place of `abCD1234`. You can use this to get meta data on the videos without loading an actual playlist.
+* `playlist` OR `file`
+  * Link to a valid JW Player playlist or video file. Cool tip: JW Player automatically generates JSON feeds for individual videos if you use the video id in place of `abCD1234`. You can use this to get meta data on the videos without loading an actual playlist.
   * Type: `string`
   * Example: `https//content.jwplatform.com/feeds/abCD1234.json`
 
