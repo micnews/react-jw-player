@@ -2,6 +2,7 @@ const noOp = () => {};
 
 const defaultProps = {
   aspectRatio: 'inherit',
+  file: '',
   isMuted: false,
   onAdPlay: noOp,
   onAdResume: noOp,
@@ -24,6 +25,7 @@ const defaultProps = {
   onThirtySeconds: noOp,
   onFiftyPercent: noOp,
   onNinetyFivePercent: noOp,
+  playlist: '',
 };
 
 export default defaultProps;
