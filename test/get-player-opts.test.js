@@ -52,3 +52,30 @@ test('getPlayerOpts() with advertising', (t) => {
 
   t.end();
 });
+
+test('getPlayerOpts() with both a file and a playlist', (t) => {
+  const mockFile = 'mock file';
+  const mockPlaylist = 'mock playlist';
+
+  const actual = getPlayerOpts({
+    file: mockFile,
+    playlist: mockPlaylist,
+  });
+
+  t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property');
+  t.notOk(actual.file, 'it does not set the file property');
+
+  t.end();
+});
+
+test('getPlayerOpts() with both only a file', (t) => {
+  const mockFile = 'mock file';
+
+  const actual = getPlayerOpts({
+    file: mockFile,
+  });
+
+  t.equal(actual.file, mockFile, 'it sets the file property');
+
+  t.end();
+});

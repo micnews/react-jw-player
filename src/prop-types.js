@@ -3,6 +3,7 @@ import { PropTypes } from 'react';
 const propTypes = {
   aspectRatio: PropTypes.oneOf(['inherit', '1:1', '16:9']),
   className: PropTypes.string,
+  file: PropTypes.string,
   onAdPlay: PropTypes.func,
   onAdResume: PropTypes.func,
   onEnterFullScreen: PropTypes.func,
@@ -15,7 +16,7 @@ const propTypes = {
   generatePrerollUrl: PropTypes.func,
   onError: PropTypes.func,
   playerId: PropTypes.string.isRequired,
-  playlist: PropTypes.string.isRequired,
+  playlist: PropTypes.string,
   onReady: PropTypes.func,
   onAdPause: PropTypes.func,
   onPause: PropTypes.func,
