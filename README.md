@@ -86,6 +86,9 @@ These are props that modify the basic behavior of the component.
 * `className`
   * An optional class name to give the container div.
   * Type: `string`
+* `isAutoPlay`
+  * Determines whether the player starts automatically or not.
+  * Type: `boolean`
 * `isMuted`
   * Determines whether the player starts muted or not.
   * Type: `boolean`

@@ -10,8 +10,43 @@ test('getPlayerOpts() with defaults', (t) => {
 
   t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
   t.equal(actual.mute, false, 'it sets the mute property to false');
-  t.notOk(actual.aspectratio, 'it does not set the aspect ratio property');
-  t.notOk(actual.advertising, 'it does not set advertising properties');
+  t.notOk(
+    Object.prototype.hasOwnProperty.call(actual, 'aspectratio'),
+    'it does not set aspectratio properties',
+  );
+  t.notOk(
+    Object.prototype.hasOwnProperty.call(actual, 'advertising'),
+    'it does not set advertising properties',
+  );
+
+  t.end();
+});
+
+test('getPlayerOpts() when isAutoPlay is not supplied', (t) => {
+  const mockPlaylist = 'mock playlist';
+
+  const actual = getPlayerOpts({
+    playlist: mockPlaylist,
+  });
+
+  t.notOk(
+    Object.prototype.hasOwnProperty.call(actual, 'autostart'),
+    'it does not set autostart properties',
+  );
+
+  t.end();
+});
+
+test('getPlayerOpts() when autoplay is on', (t) => {
+  const mockPlaylist = 'mock playlist';
+
+  const actual = getPlayerOpts({
+    isAutoPlay: true,
+    playlist: mockPlaylist,
+  });
+
+  t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
+  t.equal(actual.autostart, true, 'it sets the autostart property to true');
 
   t.end();
 });
@@ -28,7 +63,10 @@ test('getPlayerOpts() when muted', (t) => {
   t.equal(actual.aspectratio, '1:1', 'it sets the aspect ratio properly');
   t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
   t.equal(actual.mute, true, 'it sets the mute property to true');
-  t.notOk(actual.advertising, 'it does not set advertising properties');
+  t.notOk(
+    Object.prototype.hasOwnProperty.call(actual, 'advertising'),
+    'it does not set advertising properties',
+  );
 
   t.end();
 });
@@ -63,7 +101,7 @@ test('getPlayerOpts() with both a file and a playlist', (t) => {
   });
 
   t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property');
-  t.notOk(actual.file, 'it does not set the file property');
+  t.notOk(Object.prototype.hasOwnProperty.call(actual, 'file'), 'it does not set file properties');
 
   t.end();
 });
