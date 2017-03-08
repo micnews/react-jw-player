@@ -2,7 +2,6 @@ function getPlayerOpts({ aspectRatio, playlist, isAutoPlay, isMuted, generatePre
   const hasAdvertising = !!generatePrerollUrl;
 
   const playerOpts = {
-    autostart: isAutoPlay,
     mute: !!isMuted,
   };
 
@@ -12,7 +11,7 @@ function getPlayerOpts({ aspectRatio, playlist, isAutoPlay, isMuted, generatePre
     playerOpts.file = file;
   }
 
-  if (aspectRatio !== 'inherit') {
+  if (aspectRatio && aspectRatio !== 'inherit') {
     playerOpts.aspectratio = aspectRatio;
   }
 
@@ -22,6 +21,10 @@ function getPlayerOpts({ aspectRatio, playlist, isAutoPlay, isMuted, generatePre
       admessage: 'Ad — xxs left',
       autoplayadsmuted: true,
     };
+  }
+
+  if (typeof isAutoPlay !== 'undefined') {
+    playerOpts.autostart = !!isAutoPlay;
   }
 
   return playerOpts;
