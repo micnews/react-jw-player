@@ -16,6 +16,20 @@ test('getPlayerOpts() with defaults', (t) => {
   t.end();
 });
 
+test('getPlayerOpts() when autoplay is on', (t) => {
+  const mockPlaylist = 'mock playlist';
+
+  const actual = getPlayerOpts({
+    isAutoPlay: true,
+    playlist: mockPlaylist,
+  });
+
+  t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
+  t.equal(actual.autostart, true, 'it sets the autostart property to true');
+
+  t.end();
+});
+
 test('getPlayerOpts() when muted', (t) => {
   const mockPlaylist = 'mock playlist';
 

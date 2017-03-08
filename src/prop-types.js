@@ -29,6 +29,7 @@ const propTypes = {
   onFiftyPercent: PropTypes.func,
   onNinetyFivePercent: PropTypes.func,
   isMuted: PropTypes.bool,
+  isAutoPlay: PropTypes.bool,
 };
 
 export default propTypes;

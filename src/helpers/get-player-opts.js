@@ -1,7 +1,8 @@
-function getPlayerOpts({ aspectRatio, playlist, isMuted, generatePrerollUrl, file }) {
+function getPlayerOpts({ aspectRatio, playlist, isAutoPlay, isMuted, generatePrerollUrl, file }) {
   const hasAdvertising = !!generatePrerollUrl;
 
   const playerOpts = {
+    autostart: isAutoPlay,
     mute: !!isMuted,
   };
 
