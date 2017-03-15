@@ -1,4 +1,5 @@
-function getPlayerOpts({ aspectRatio, playlist, isAutoPlay, isMuted, generatePrerollUrl, file }) {
+function getPlayerOpts({ aspectRatio, playlist, isAutoPlay, isMuted, generatePrerollUrl, file,
+  image }) {
   const hasAdvertising = !!generatePrerollUrl;
 
   const playerOpts = {
@@ -25,6 +26,10 @@ function getPlayerOpts({ aspectRatio, playlist, isAutoPlay, isMuted, generatePre
 
   if (typeof isAutoPlay !== 'undefined') {
     playerOpts.autostart = !!isAutoPlay;
+  }
+
+  if (image) {
+    playerOpts.image = image;
   }
 
   return playerOpts;

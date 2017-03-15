@@ -117,3 +117,15 @@ test('getPlayerOpts() with both only a file', (t) => {
 
   t.end();
 });
+
+test('getPlayerOpts() with image', (t) => {
+  const mockImage = 'mock image';
+
+  const actual = getPlayerOpts({
+    image: mockImage,
+  });
+
+  t.equal(actual.image, mockImage, 'it sets the image property');
+
+  t.end();
+});
