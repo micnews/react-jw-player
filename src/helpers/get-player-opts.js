@@ -1,5 +1,14 @@
-function getPlayerOpts({ aspectRatio, playlist, isAutoPlay, isMuted, generatePrerollUrl, file,
-  image }) {
+function getPlayerOpts(opts) {
+  const {
+    aspectRatio,
+    file,
+    generatePrerollUrl,
+    image,
+    isAutoPlay,
+    isMuted,
+    playlist,
+  } = opts;
+
   const hasAdvertising = !!generatePrerollUrl;
 
   const playerOpts = {
