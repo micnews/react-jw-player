@@ -2,6 +2,13 @@ import { PropTypes } from 'react';
 
 const propTypes = {
   aspectRatio: PropTypes.oneOf(['inherit', '1:1', '16:9']),
+  skin: PropTypes.shape({
+    name: PropTypes.string,
+    active: PropTypes.string,
+    inactive: PropTypes.string,
+    background: PropTypes.string,
+    url: PropTypes.string,
+  }),
   className: PropTypes.string,
   file: PropTypes.string,
   image: PropTypes.string,

@@ -7,6 +7,7 @@ function getPlayerOpts(opts) {
     isAutoPlay,
     isMuted,
     playlist,
+    skin,
   } = opts;
 
   const hasAdvertising = !!generatePrerollUrl;
@@ -19,6 +20,10 @@ function getPlayerOpts(opts) {
     playerOpts.playlist = playlist;
   } else if (file) {
     playerOpts.file = file;
+  }
+
+  if (skin) {
+    playerOpts.skin = skin;
   }
 
   if (aspectRatio && aspectRatio !== 'inherit') {
