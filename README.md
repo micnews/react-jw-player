@@ -97,6 +97,9 @@ These are props that modify the basic behavior of the component.
   * Arguments:
     * `video`
       * This is a video object for the current item loaded in the player. You can use it to help generate your preroll tags.
+* `image`
+  * URL to a poster image to display before playback starts
+  * Type: `string`
 
 ## Optional Advertising Event Hook Props
 * `onAdPause(event)`
