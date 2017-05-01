@@ -129,3 +129,18 @@ test('getPlayerOpts() with image', (t) => {
 
   t.end();
 });
+
+test('getPlayerOpts() with skin', (t) => {
+  const mockSkin = {
+    name: 'mock skin',
+  };
+
+  const actual = getPlayerOpts({
+    skin: mockSkin,
+  });
+
+  t.equal(actual.skin, mockSkin, 'it sets the skin property');
+
+  t.end();
+});
+

@@ -86,6 +86,20 @@ These are props that modify the basic behavior of the component.
 * `className`
   * An optional class name to give the container div.
   * Type: `string`
+* `skin`
+  * An optional object that contains skin options
+  * Type: `object`
+  * Properties
+    * `name`
+      * The skin name to use for styling the player.
+    * `active`
+      * The color of "active" skin elements as hex value or color name.
+    * `inactive`
+      * The color of "inactive" skin elements as hex value or color name.
+    * `background`
+      * The color of a skin's background portion as hex value or color name.
+    * `url`
+      * Specify path if using an external CSS file to style the player. Don't forget to also specify the skin name.
 * `isAutoPlay`
   * Determines whether the player starts automatically or not.
   * Type: `boolean`
