@@ -1,6 +1,7 @@
 function getPlayerOpts(opts) {
   const {
     aspectRatio,
+    customProps = {},
     file,
     generatePrerollUrl,
     image,
@@ -41,7 +42,7 @@ function getPlayerOpts(opts) {
     playerOpts.image = image;
   }
 
-  return playerOpts;
+  return Object.assign(playerOpts, customProps);
 }
 
 export default getPlayerOpts;
