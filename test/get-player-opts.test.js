@@ -129,3 +129,17 @@ test('getPlayerOpts() with image', (t) => {
 
   t.end();
 });
+
+test('getPlayerOpts() with customProps', (t) => {
+  const customProps = {
+    skin: {
+      name: 'five',
+    },
+  };
+
+  const actual = getPlayerOpts({ customProps });
+
+  t.deepEqual(actual.skin, customProps.skin, 'it sets customProps properly');
+
+  t.end();
+});
