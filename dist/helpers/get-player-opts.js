@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 function getPlayerOpts(opts) {
   var aspectRatio = opts.aspectRatio,
+      _opts$customProps = opts.customProps,
+      customProps = _opts$customProps === undefined ? {} : _opts$customProps,
       file = opts.file,
       generatePrerollUrl = opts.generatePrerollUrl,
       image = opts.image,
@@ -45,7 +47,7 @@ function getPlayerOpts(opts) {
     playerOpts.image = image;
   }
 
-  return playerOpts;
+  return Object.assign(playerOpts, customProps);
 }
 
 exports.default = getPlayerOpts;

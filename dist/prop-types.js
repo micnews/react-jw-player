@@ -9,6 +9,7 @@ var _react = require('react');
 var propTypes = {
   aspectRatio: _react.PropTypes.oneOf(['inherit', '1:1', '16:9']),
   className: _react.PropTypes.string,
+  customProps: _react.PropTypes.object,
   file: _react.PropTypes.string,
   image: _react.PropTypes.string,
   onAdPlay: _react.PropTypes.func,
