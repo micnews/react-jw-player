@@ -3,6 +3,7 @@ import { PropTypes } from 'react';
 const propTypes = {
   aspectRatio: PropTypes.oneOf(['inherit', '1:1', '16:9']),
   className: PropTypes.string,
+  customProps: PropTypes.object,
   file: PropTypes.string,
   image: PropTypes.string,
   onAdPlay: PropTypes.func,

@@ -1,6 +1,6 @@
 {
   "name": "react-jw-player",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A React component for launching JW Player instances on the client.",
   "main": "dist/react-jw-player.js",
   "scripts": {
@@ -40,14 +40,13 @@
     "faucet": "0.0.1",
     "jsdom": "^9.9.1",
     "jsdom-global": "^2.1.1",
-    "miclint": "^3.0.0",
+    "miclint": "^4.1.0",
     "react-addons-test-utils": "^15.4.1",
     "react-dom": "^15.4.2",
     "snazzy": "^5.0.0",
     "tape": "^4.6.3"
   },
   "dependencies": {
-    "miclint": "^4.1.0",
     "react": "^15.4.1"
   }
 }

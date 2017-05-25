@@ -86,6 +86,9 @@ These are props that modify the basic behavior of the component.
 * `className`
   * An optional class name to give the container div.
   * Type: `string`
+* `customProps`
+  * An optional object containing properties to be applied directly to the JW Player instance. Add anything in the API, like skins, into this object. `customProps={{ skin: { name: 'six' } }}`.
+  * Type: `object`
 * `isAutoPlay`
   * Determines whether the player starts automatically or not.
   * Type: `boolean`
