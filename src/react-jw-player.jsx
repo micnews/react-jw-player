@@ -43,6 +43,11 @@ class ReactJWPlayer extends Component {
       existingScript.onload = getCurriedOnLoad(existingScript, this._initialize);
     }
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.playlist !== this.props.playlist || prevProps.file !== this.props.file) {
+      this._initialize();
+    }
+  }
   _initialize() {
     const component = this;
     const player = window.jwplayer(this.props.playerId);
@@ -52,7 +57,12 @@ class ReactJWPlayer extends Component {
   }
   render() {
     return (
-      <div className={this.props.className} id={this.props.playerId} />
+      <div
+        className={this.props.className}
+        dangerouslySetInnerHTML={{
+          __html: `<div id="${this.props.playerId}"></div>`,
+        }}
+      />
     );
   }
 }
