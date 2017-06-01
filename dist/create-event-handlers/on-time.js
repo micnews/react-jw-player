@@ -10,6 +10,10 @@ function onTime(event) {
 
   var hasChanged = false;
 
+  if (this.props.onTime) {
+    this.props.onTime(event);
+  }
+
   if (!hasFired.threeSeconds && position > 3) {
     this.props.onThreeSeconds();
     hasFired.threeSeconds = true;
