@@ -27,6 +27,7 @@ function initialize(_ref) {
   player.on('playlistItem', component.eventHandlers.onVideoLoad);
   player.on('time', component.eventHandlers.onTime);
   player.on('beforeComplete', component.props.onOneHundredPercent);
+  player.on('seek', component.eventHandlers.onSeek);
 }
 
 exports.default = initialize;

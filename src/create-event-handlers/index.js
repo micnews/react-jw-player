@@ -3,6 +3,7 @@ import onBeforePlay from './on-before-play';
 import onFullScreen from './on-full-screen';
 import onMute from './on-mute';
 import onPlay from './on-play';
+import onSeek from './on-seek';
 import onTime from './on-time';
 import onVideoLoad from './on-video-load';
 
@@ -13,6 +14,7 @@ function createEventHandlers(component) {
     onFullScreen: onFullScreen.bind(component),
     onMute: onMute.bind(component),
     onPlay: onPlay.bind(component),
+    onSeek: onSeek.bind(component),
     onTime: onTime.bind(component),
     onVideoLoad: onVideoLoad.bind(component),
   };

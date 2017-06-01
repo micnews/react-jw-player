@@ -24,6 +24,10 @@ var _onPlay = require('./on-play');
 
 var _onPlay2 = _interopRequireDefault(_onPlay);
 
+var _onSeek = require('./on-seek');
+
+var _onSeek2 = _interopRequireDefault(_onSeek);
+
 var _onTime = require('./on-time');
 
 var _onTime2 = _interopRequireDefault(_onTime);
@@ -41,6 +45,7 @@ function createEventHandlers(component) {
     onFullScreen: _onFullScreen2.default.bind(component),
     onMute: _onMute2.default.bind(component),
     onPlay: _onPlay2.default.bind(component),
+    onSeek: _onSeek2.default.bind(component),
     onTime: _onTime2.default.bind(component),
     onVideoLoad: _onVideoLoad2.default.bind(component)
   };
