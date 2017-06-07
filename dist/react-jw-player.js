@@ -92,7 +92,7 @@ var ReactJWPlayer = function (_Component) {
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps) {
-      if (prevProps.playlist !== this.props.playlist || prevProps.file !== this.props.file) {
+      if (prevProps.playlist !== this.props.playlist || prevProps.file !== this.props.file || prevProps.isAutoPlay !== this.props.isAutoPlay) {
         this._initialize();
       }
     }
