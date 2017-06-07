@@ -44,7 +44,11 @@ class ReactJWPlayer extends Component {
     }
   }
   componentDidUpdate(prevProps) {
-    if (prevProps.playlist !== this.props.playlist || prevProps.file !== this.props.file) {
+    if (
+      prevProps.playlist !== this.props.playlist ||
+      prevProps.file !== this.props.file ||
+      prevProps.isAutoPlay !== this.props.isAutoPlay
+    ) {
       this._initialize();
     }
   }

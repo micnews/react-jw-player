@@ -12,6 +12,10 @@ var _onBeforePlay = require('./on-before-play');
 
 var _onBeforePlay2 = _interopRequireDefault(_onBeforePlay);
 
+var _onDisplayClick = require('./on-display-click');
+
+var _onDisplayClick2 = _interopRequireDefault(_onDisplayClick);
+
 var _onFullScreen = require('./on-full-screen');
 
 var _onFullScreen2 = _interopRequireDefault(_onFullScreen);
@@ -42,6 +46,7 @@ function createEventHandlers(component) {
   return {
     onAdPlay: _onAdPlay2.default.bind(component),
     onBeforePlay: _onBeforePlay2.default.bind(component),
+    onDisplayClick: _onDisplayClick2.default.bind(component),
     onFullScreen: _onFullScreen2.default.bind(component),
     onMute: _onMute2.default.bind(component),
     onPlay: _onPlay2.default.bind(component),
