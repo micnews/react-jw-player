@@ -130,6 +130,18 @@ test('getPlayerOpts() with image', (t) => {
   t.end();
 });
 
+test('getPlayerOpts() with license key', (t) => {
+  const mockKey = 'mock key';
+
+  const actual = getPlayerOpts({
+    licenseKey: mockKey,
+  });
+
+  t.equal(actual.key, mockKey, 'it sets the key property');
+
+  t.end();
+});
+
 test('getPlayerOpts() with customProps', (t) => {
   const customProps = {
     skin: {

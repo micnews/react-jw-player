@@ -7,6 +7,7 @@ function getPlayerOpts(opts) {
     image,
     isAutoPlay,
     isMuted,
+    licenseKey,
     playlist,
   } = opts;
 
@@ -15,6 +16,10 @@ function getPlayerOpts(opts) {
   const playerOpts = {
     mute: !!isMuted,
   };
+
+  if (licenseKey) {
+    playerOpts.key = licenseKey;
+  }
 
   if (playlist) {
     playerOpts.playlist = playlist;

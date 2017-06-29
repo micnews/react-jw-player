@@ -103,6 +103,9 @@ These are props that modify the basic behavior of the component.
 * `image`
   * URL to a poster image to display before playback starts
   * Type: `string`
+* `licenseKey`
+  * License Key as supplied in the jwplayer dashboard, under: Players > Tools > Downloads > JW Player X (Self-Hosted)
+  * Type: `string`
 
 ## Optional Advertising Event Hook Props
 * `onAdPause(event)`
@@ -270,6 +273,7 @@ class ReactJWPlayerContainer extends React.Component {
         <h1>{ this.state.videoTitle }</h1>
         <JWPlayer
           playlist={this.props.playlist}
+          licenseKey='your-license-key'
           onAdPlay={this.onAdPlay}
           onVideoLoad={this.onVideoLoad}
           playerId={this.playerId} // bring in the randomly generated playerId
