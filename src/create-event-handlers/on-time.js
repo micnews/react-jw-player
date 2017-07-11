@@ -1,45 +1,54 @@
 function onTime(event) {
-  const { hasFired } = this.state;
-  const { position, duration } = event;
+  const { hasFired, previousPos } = this.state;
+  const { duration } = event;
+  const position = Math.floor(event.position);
   let hasChanged = false;
 
-  if (!hasFired.threeSeconds && position > 3) {
+  if (this.props.onEverySecond) {
+    if (position > previousPos) {
+      this.props.onEverySecond(position);
+    }
+
+    this.setState({ previousPos: position });
+  }
+
+  if (!hasFired.threeSeconds && position >= 3) {
     this.props.onThreeSeconds();
     hasFired.threeSeconds = true;
     hasChanged = true;
   }
 
-  if (!hasFired.tenSeconds && position > 10) {
+  if (!hasFired.tenSeconds && position >= 10) {
     this.props.onTenSeconds();
     hasFired.tenSeconds = true;
     hasChanged = true;
   }
 
-  if (!hasFired.thirtySeconds && position > 30) {
+  if (!hasFired.thirtySeconds && position >= 30) {
     this.props.onThirtySeconds();
     hasFired.thirtySeconds = true;
     hasChanged = true;
   }
 
-  if (!hasFired.twentyFivePercent && ((position / duration) * 100) > 25) {
+  if (!hasFired.twentyFivePercent && ((position / duration) * 100) >= 25) {
     this.props.onTwentyFivePercent();
     hasFired.twentyFivePercent = true;
     hasChanged = true;
   }
 
-  if (!hasFired.fiftyPercent && ((position / duration) * 100) > 50) {
+  if (!hasFired.fiftyPercent && ((position / duration) * 100) >= 50) {
     this.props.onFiftyPercent();
     hasFired.fiftyPercent = true;
     hasChanged = true;
   }
 
-  if (!hasFired.seventyFivePercent && ((position / duration) * 100) > 75) {
+  if (!hasFired.seventyFivePercent && ((position / duration) * 100) >= 75) {
     this.props.onSeventyFivePercent();
     hasFired.seventyFivePercent = true;
     hasChanged = true;
   }
 
-  if (!hasFired.ninetyFivePercent && ((position / duration) * 100) > 95) {
+  if (!hasFired.ninetyFivePercent && ((position / duration) * 100) >= 95) {
     this.props.onNinetyFivePercent();
     hasFired.ninetyFivePercent = true;
     hasChanged = true;
