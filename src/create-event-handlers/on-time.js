@@ -10,24 +10,24 @@ function onTime(event) {
     }
 
     this.setState({ previousPos: position });
-  }
+  } else {
+    if (!hasFired.threeSeconds && position >= 3) {
+      this.props.onThreeSeconds();
+      hasFired.threeSeconds = true;
+      hasChanged = true;
+    }
 
-  if (!hasFired.threeSeconds && position >= 3) {
-    this.props.onThreeSeconds();
-    hasFired.threeSeconds = true;
-    hasChanged = true;
-  }
+    if (!hasFired.tenSeconds && position >= 10) {
+      this.props.onTenSeconds();
+      hasFired.tenSeconds = true;
+      hasChanged = true;
+    }
 
-  if (!hasFired.tenSeconds && position >= 10) {
-    this.props.onTenSeconds();
-    hasFired.tenSeconds = true;
-    hasChanged = true;
-  }
-
-  if (!hasFired.thirtySeconds && position >= 30) {
-    this.props.onThirtySeconds();
-    hasFired.thirtySeconds = true;
-    hasChanged = true;
+    if (!hasFired.thirtySeconds && position >= 30) {
+      this.props.onThirtySeconds();
+      hasFired.thirtySeconds = true;
+      hasChanged = true;
+    }
   }
 
   if (!hasFired.twentyFivePercent && ((position / duration) * 100) >= 25) {
