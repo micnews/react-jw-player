@@ -126,6 +126,12 @@ These are props that modify the basic behavior of the component.
   * Arguments:
     * `event`
       * This is the event object passed back from JW Player itself.
+* `onAdComplete(event)`
+  * A function that is run when the user completes the preroll advertisement.
+  * Type: `function`
+  * Arguments:
+    * `event`
+      * This is the event object passed back from JW Player itself.
 
 ## Optional Player Event Hook Props
 * `onAutoStart(event)`
@@ -196,6 +202,14 @@ These are props that modify the basic behavior of the component.
       * This is the event object passed back from JW Player itself.
 
 ## Optional Time Event Hook Props
+* `onEverySecond(event)`
+  * A function that is run when one second elapses in playhead, including ads.
+  * Type: `function`
+  * Arguments:
+    * `event`
+      * This is the event object passed back from JW Player itself.
+  * Return Value:
+    * `position`: integer
 * `onThreeSeconds(event)`
   * A function that is run when the playhead reaches passed the 3 second mark.
   * Type: `function`
