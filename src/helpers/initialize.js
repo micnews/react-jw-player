@@ -19,7 +19,6 @@ function initialize({ component, player, playerOpts }) {
   player.on('mute', component.eventHandlers.onMute);
   player.on('playlistItem', component.eventHandlers.onVideoLoad);
   player.on('time', component.eventHandlers.onTime);
-  player.on('beforeComplete', component.props.onOneHundredPercent);
 }
 
 export default initialize;
