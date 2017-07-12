@@ -21,10 +21,13 @@ const defaultProps = {
   onPause: noOp,
   onVideoLoad: noOp,
   onOneHundredPercent: noOp,
+  onStart: noOp,
   onThreeSeconds: noOp,
   onTenSeconds: noOp,
   onThirtySeconds: noOp,
+  onTwentyFivePercent: noOp,
   onFiftyPercent: noOp,
+  onSeventyFivePercent: noOp,
   onNinetyFivePercent: noOp,
   playlist: '',
 };
