@@ -73,18 +73,8 @@ test('initialize()', (t) => {
   );
 
   t.equal(
-    playerFunctions.adPause, mockComponent.props.onAdPause,
-    'it sets the adPause event with the onAdPause() prop',
-  );
-
-  t.equal(
     playerFunctions.pause, mockComponent.props.onPause,
     'it sets the pause event with the onPause() prop',
-  );
-
-  t.equal(
-    playerFunctions.beforeComplete, mockComponent.props.onOneHundredPercent,
-    'it sets the beforeComplete event with the onOneHundredPercent() prop',
   );
 
   t.equal(
@@ -100,6 +90,21 @@ test('initialize()', (t) => {
   t.equal(
     playerFunctions.adPlay, mockComponent.eventHandlers.onAdPlay,
     'it sets the adPlay event with the onAdPlay() eventHandler',
+  );
+
+  t.equal(
+    playerFunctions.adPause, mockComponent.props.onAdPause,
+    'it sets the adPause event with the onAdPause() prop',
+  );
+
+  t.equal(
+    playerFunctions.adComplete, mockComponent.props.onAdComplete,
+    'it sets the adComplete event with the onAdComplete() prop',
+  );
+
+  t.equal(
+    playerFunctions.adTime, mockComponent.eventHandlers.onTime,
+    'it sets the adTime event with the onTime() eventHandler',
   );
 
   t.equal(
