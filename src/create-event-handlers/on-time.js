@@ -1,62 +1,68 @@
 function onTime(event) {
-  const { hasFired, previousPos } = this.state;
+  const { hasFired, previousPosition } = this.state;
   const { duration } = event;
-  const position = Math.floor(event.position);
-  let hasChanged = false;
 
-  if (this.props.onEverySecond) {
-    if (position > previousPos) {
-      this.props.onEverySecond(position);
-    }
+  const durationInteger = Math.floor(duration);
+  const currentPositionInteger = Math.floor(event.position);
+  const previousPositionInteger = previousPosition || 0;
 
-    this.setState({ previousPos: position });
-  } else {
-    if (!hasFired.threeSeconds && position >= 3) {
-      this.props.onThreeSeconds();
-      hasFired.threeSeconds = true;
-      hasChanged = true;
-    }
+  let shouldUpdateState = false;
 
-    if (!hasFired.tenSeconds && position >= 10) {
-      this.props.onTenSeconds();
-      hasFired.tenSeconds = true;
-      hasChanged = true;
-    }
-
-    if (!hasFired.thirtySeconds && position >= 30) {
-      this.props.onThirtySeconds();
-      hasFired.thirtySeconds = true;
-      hasChanged = true;
-    }
+  if (currentPositionInteger === 0) {
+    shouldUpdateState = true;
   }
 
-  if (!hasFired.twentyFivePercent && ((position / duration) * 100) >= 25) {
-    this.props.onTwentyFivePercent();
-    hasFired.twentyFivePercent = true;
-    hasChanged = true;
+  if (currentPositionInteger > previousPositionInteger) {
+    this.props.onEverySecond(currentPositionInteger);
+    shouldUpdateState = true;
   }
 
-  if (!hasFired.fiftyPercent && ((position / duration) * 100) >= 50) {
+  if (!hasFired.threeSeconds && currentPositionInteger >= 3) {
+    this.props.onThreeSeconds();
+    hasFired.threeSeconds = true;
+    shouldUpdateState = true;
+  }
+
+  if (!hasFired.tenSeconds && currentPositionInteger >= 10) {
+    this.props.onTenSeconds();
+    hasFired.tenSeconds = true;
+    shouldUpdateState = true;
+  }
+
+  if (!hasFired.thirtySeconds && currentPositionInteger >= 30) {
+    this.props.onThirtySeconds();
+    hasFired.thirtySeconds = true;
+    shouldUpdateState = true;
+  }
+
+  if (!hasFired.fiftyPercent && ((currentPositionInteger / durationInteger) * 100) >= 50) {
     this.props.onFiftyPercent();
     hasFired.fiftyPercent = true;
-    hasChanged = true;
+    shouldUpdateState = true;
   }
 
-  if (!hasFired.seventyFivePercent && ((position / duration) * 100) >= 75) {
+  if (!hasFired.seventyFivePercent && (currentPositionInteger / durationInteger) * 100) >= 75) {
     this.props.onSeventyFivePercent();
     hasFired.seventyFivePercent = true;
     hasChanged = true;
   }
 
-  if (!hasFired.ninetyFivePercent && ((position / duration) * 100) >= 95) {
+  if (!hasFired.ninetyFivePercent && ((currentPositionInteger / durationInteger) * 100) >= 95) {
     this.props.onNinetyFivePercent();
     hasFired.ninetyFivePercent = true;
-    hasChanged = true;
+    shouldUpdateState = true;
   }
 
-  if (hasChanged) {
+  if (!hasFired.OneHundredPercent && currentPositionInteger === durationInteger) {
+    this.props.onOneHundredPercent();
+    hasFired.OneHundredPercent = true;
+    shouldUpdateState = true;
+  }
+
+  if (shouldUpdateState) {
     this.setState({
       hasFired,
+      previousPosition: currentPositionInteger,
     });
   }
 }
