@@ -43,13 +43,20 @@ class ReactJWPlayer extends Component {
       existingScript.onload = getCurriedOnLoad(existingScript, this._initialize);
     }
   }
+
+  componentWillUnmount() {
+    if (this.player && this.player.remove) { this.player.remove(); }
+  }
+
   _initialize() {
     const component = this;
     const player = window.jwplayer(this.props.playerId);
+    this.player = player;
     const playerOpts = getPlayerOpts(this.props);
 
     initialize({ component, player, playerOpts });
   }
+
   render() {
     return (
       <div className={this.props.className} id={this.props.playerId} />
