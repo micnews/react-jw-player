@@ -103,8 +103,8 @@ test('initialize()', (t) => {
   );
 
   t.equal(
-    playerFunctions.adTime, mockComponent.eventHandlers.onTime,
-    'it sets the adTime event with the onTime() eventHandler',
+    playerFunctions.adTime, mockComponent.eventHandlers.onAdTime,
+    'it sets the adTime event with the onAdTime() eventHandler',
   );
 
   t.equal(
