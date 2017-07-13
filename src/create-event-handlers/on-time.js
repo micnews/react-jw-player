@@ -3,6 +3,10 @@ function onTime(event) {
   const { duration, position } = event;
   const currentPositionInteger = Math.floor(position);
 
+  if (previousPositionInteger === currentPositionInteger) {
+    return;
+  }
+
   let shouldUpdateState = false;
 
   if (currentPositionInteger === 0) {
