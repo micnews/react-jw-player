@@ -132,5 +132,10 @@ test('initialize()', (t) => {
     'it sets the time event with the onTime() eventHandler',
   );
 
+  t.equal(
+    playerFunctions.beforeComplete, mockComponent.props.onOneHundredPercent,
+    'it sets the beforeComplete event with the onOneHundredPercent() prop',
+  );
+
   t.end();
 });

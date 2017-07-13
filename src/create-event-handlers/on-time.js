@@ -1,10 +1,7 @@
 function onTime(event) {
-  const { hasFired, previousPosition } = this.state;
+  const { hasFired, previousPositionInteger = 0 } = this.state;
   const { duration, position } = event;
-
-  const durationInteger = Math.floor(duration);
   const currentPositionInteger = Math.floor(position);
-  const previousPositionInteger = previousPosition || 0;
 
   let shouldUpdateState = false;
 
@@ -53,16 +50,10 @@ function onTime(event) {
     shouldUpdateState = true;
   }
 
-  if (!hasFired.OneHundredPercent && currentPositionInteger === durationInteger) {
-    this.props.onOneHundredPercent();
-    hasFired.OneHundredPercent = true;
-    shouldUpdateState = true;
-  }
-
   if (shouldUpdateState) {
     this.setState({
       hasFired,
-      previousPosition: currentPositionInteger,
+      previousPositionInteger: currentPositionInteger,
     });
   }
 }

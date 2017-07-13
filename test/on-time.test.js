@@ -38,10 +38,6 @@ function createMockComponent() {
         results.onNinetyFivePercentCalled = true;
         results.onNinetyFivePercentArgs = event;
       },
-      onOneHundredPercent(event) {
-        results.onOneHundredPercentCalled = true;
-        results.onOneHundredPercentArgs = event;
-      },
       onEverySecond(event) {
         results.onEverySecondCallCount += 1;
         results.onEverySecondArgs = event;
@@ -506,19 +502,18 @@ test('eventHandlers.onEverySecond() when video position is from 0 to 2', (t) => 
 
   t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error');
   t.deepEqual(results.onEverySecondCallCount, 0, 'it does not invoke onEverySecond() prop on initial call');
-  t.deepEqual(mockComponent.state.previousPosition, 0, 'stores 0 as previous position');
 
   mockEvent.position = 1;
 
   t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error one second later');
   t.deepEqual(results.onEverySecondCallCount, 1, 'it invoke onEverySecond() prop at one second');
-  t.deepEqual(mockComponent.state.previousPosition, 1, 'stores 1 as previous position');
+  t.deepEqual(mockComponent.state.previousPositionInteger, 1, 'stores 1 as previous position');
 
   mockEvent.position = 2;
 
   t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error one second later');
   t.deepEqual(results.onEverySecondCallCount, 2, 'it invoke onEverySecond() prop at two seconds');
-  t.deepEqual(mockComponent.state.previousPosition, 2, 'stores 2 as previous position');
+  t.deepEqual(mockComponent.state.previousPositionInteger, 2, 'stores 2 as previous position');
 
   t.end();
 });
