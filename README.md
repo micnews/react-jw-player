@@ -196,12 +196,6 @@ These are props that modify the basic behavior of the component.
       * This is the event object passed back from JW Player itself.
 
 ## Optional Time Event Hook Props
-* `onStart(event)`
-  * A function that is run when the playhead reaches the 1 second mark.
-  * Type: `function`
-  * Arguments:
-    * `event`
-      * This is the event object passed back from JW Player itself.
 * `onThreeSeconds(event)`
   * A function that is run when the playhead reaches passed the 3 second mark.
   * Type: `function`

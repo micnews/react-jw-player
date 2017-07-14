@@ -26,7 +26,6 @@ const propTypes = {
   onReady: PropTypes.func,
   onResume: PropTypes.func,
   onSeventyFivePercent: PropTypes.func,
-  onStart: PropTypes.func,
   onTenSeconds: PropTypes.func,
   onThirtySeconds: PropTypes.func,
   onThreeSeconds: PropTypes.func,
