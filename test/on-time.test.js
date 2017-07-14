@@ -41,7 +41,7 @@ function createMockComponent() {
   };
 }
 
-test('eventHandlers.onTime() when video position is between 0 and 3', (t) => {
+test('eventHandlers.onTime() when video position is less than 3', (t) => {
   const { mockComponent, results } = createMockComponent();
 
   const mockEvent = {
