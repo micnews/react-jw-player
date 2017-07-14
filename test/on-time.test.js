@@ -46,7 +46,7 @@ test('eventHandlers.onTime() when video position is less than 3', (t) => {
 
   const mockEvent = {
     duration: 100,
-    position: 1,
+    position: 3,
   };
   const onTime = createEventHandlers(mockComponent).onTime;
 
