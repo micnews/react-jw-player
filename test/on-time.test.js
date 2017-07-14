@@ -8,10 +8,6 @@ function createMockComponent() {
   return {
     mockComponent: new MockComponent({
       initialState: { hasFired: {} },
-      onStart(event) {
-        results.onStartCalled = true;
-        results.onStartArgs = event;
-      },
       onThreeSeconds(event) {
         results.onThreeSecondsCalled = true;
         results.onThreeSecondsArgs = event;
@@ -45,33 +41,6 @@ function createMockComponent() {
   };
 }
 
-test('eventHandlers.onTime() when video position is 0', (t) => {
-  const { mockComponent, results } = createMockComponent();
-
-  const mockEvent = {
-    duration: 100,
-    position: 0,
-  };
-  const onTime = createEventHandlers(mockComponent).onTime;
-
-  t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error');
-  t.deepEqual(
-    mockComponent.state.hasFired,
-    {},
-    'it does not add any events into component state hasFired object',
-  );
-  t.notOk(results.onStartCalled, 'it does not call the onStart() prop');
-  t.notOk(results.onThreeSecondsCalled, 'it does not call the onThreeSeconds() prop');
-  t.notOk(results.onTenSecondsCalled, 'it does not call the onTenSeconds() prop');
-  t.notOk(results.onThirtySecondsCalled, 'it does not call the onThirtySeconds() prop');
-  t.notOk(results.onTwentyFivePercentCalled, 'it does not call the onTwentyFivePercent() prop');
-  t.notOk(results.onFiftyPercentCalled, 'it does not call the onFiftyPercent() prop');
-  t.notOk(results.onSeventyFivePercentCalled, 'it does not call the onSeventyFivePercent() prop');
-  t.notOk(results.onNinetyFivePercentCalled, 'it does not call the onNinetyFivePercent() prop');
-
-  t.end();
-});
-
 test('eventHandlers.onTime() when video position is between 0 and 3', (t) => {
   const { mockComponent, results } = createMockComponent();
 
@@ -84,12 +53,9 @@ test('eventHandlers.onTime() when video position is between 0 and 3', (t) => {
   t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error');
   t.deepEqual(
     mockComponent.state.hasFired,
-    {
-      started: true,
-    },
-    'it adds the proper events into component state hasFired object',
+    {},
+    'it does not add any events into component state hasFired object',
   );
-  t.ok(results.onStartCalled, 'it calls the onStart() prop');
   t.notOk(results.onThreeSecondsCalled, 'it does not call the onThreeSeconds() prop');
   t.notOk(results.onTenSecondsCalled, 'it does not call the onTenSeconds() prop');
   t.notOk(results.onThirtySecondsCalled, 'it does not call the onThirtySeconds() prop');
@@ -97,45 +63,6 @@ test('eventHandlers.onTime() when video position is between 0 and 3', (t) => {
   t.notOk(results.onFiftyPercentCalled, 'it does not call the onFiftyPercent() prop');
   t.notOk(results.onSeventyFivePercentCalled, 'it does not call the onSeventyFivePercent() prop');
   t.notOk(results.onNinetyFivePercentCalled, 'it does not call the onNinetyFivePercent() prop');
-
-  results.onStartCalled = false;
-  const currentState = mockComponent.state;
-  mockEvent.position = 2;
-
-  t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error one second later');
-  t.equal(mockComponent.state, currentState, 'it does not change component state a second time');
-  t.notOk(
-    results.onStartCalled,
-    'it does not call the onStart() prop a second time',
-  );
-  t.notOk(
-    results.onThreeSecondsCalled,
-    'it does not call the onThreeSeconds() prop a second time',
-  );
-  t.notOk(
-    results.onTenSecondsCalled,
-    'it does not call the onTenSeconds() prop',
-  );
-  t.notOk(
-    results.onThirtySecondsCalled,
-    'it does not call the onThirtySeconds() prop',
-  );
-  t.notOk(
-    results.onTwentyFivePercentCalled,
-    'it does not call the onTwentyFivePercent() prop',
-  );
-  t.notOk(
-    results.onFiftyPercentCalled,
-    'it does not call the onFiftyPercent() prop',
-  );
-  t.notOk(
-    results.onSeventyFivePercentCalled,
-    'it does not call the onSeventyFivePercent() prop',
-  );
-  t.notOk(
-    results.onNinetyFivePercentCalled,
-    'it does not call the onNinetyFivePercent() prop',
-  );
 
   t.end();
 });
@@ -153,12 +80,10 @@ test('eventHandlers.onTime() when video position is between 3 and 10', (t) => {
   t.deepEqual(
     mockComponent.state.hasFired,
     {
-      started: true,
       threeSeconds: true,
     },
     'it adds the proper events into component state hasFired object',
   );
-  t.ok(results.onStartCalled, 'it calls the onStart() prop');
   t.ok(results.onThreeSecondsCalled, 'it calls the onThreeSeconds() prop');
   t.notOk(results.onTenSecondsCalled, 'it does not call the onTenSeconds() prop');
   t.notOk(results.onThirtySecondsCalled, 'it does not call the onThirtySeconds() prop');
@@ -167,17 +92,12 @@ test('eventHandlers.onTime() when video position is between 3 and 10', (t) => {
   t.notOk(results.onSeventyFivePercentCalled, 'it does not call the onSeventyFivePercent() prop');
   t.notOk(results.onNinetyFivePercentCalled, 'it does not call the onNinetyFivePercent() prop');
 
-  results.onStartCalled = false;
   results.onThreeSecondsCalled = false;
   const currentState = mockComponent.state;
   mockEvent.position = 8;
 
   t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error one second later');
   t.equal(mockComponent.state, currentState, 'it does not change component state a second time');
-  t.notOk(
-    results.onStartCalled,
-    'it does not call the onStart() prop a second time',
-  );
   t.notOk(
     results.onThreeSecondsCalled,
     'it does not call the onThreeSeconds() prop a second time',
@@ -223,13 +143,11 @@ test('eventHandlers.onTime() when video position is between 10 and 30', (t) => {
   t.deepEqual(
     mockComponent.state.hasFired,
     {
-      started: true,
       threeSeconds: true,
       tenSeconds: true,
     },
     'it adds the proper events into component state hasFired object',
   );
-  t.ok(results.onStartCalled, 'it calls the onStart() prop');
   t.ok(results.onThreeSecondsCalled, 'it calls the onThreeSeconds() prop');
   t.ok(results.onTenSecondsCalled, 'it calls the onTenSeconds() prop');
   t.notOk(results.onThirtySecondsCalled, 'it does not call the onThirtySeconds() prop');
@@ -238,7 +156,6 @@ test('eventHandlers.onTime() when video position is between 10 and 30', (t) => {
   t.notOk(results.onSeventyFivePercentCalled, 'it does not call the onSeventyFivePercent() prop');
   t.notOk(results.onNinetyFivePercentCalled, 'it does not call the onNinetyFivePercent() prop');
 
-  results.onStartCalled = false;
   results.onThreeSecondsCalled = false;
   results.onTenSecondsCalled = false;
   const currentState = mockComponent.state;
@@ -246,10 +163,6 @@ test('eventHandlers.onTime() when video position is between 10 and 30', (t) => {
 
   t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error one second later');
   t.equal(mockComponent.state, currentState, 'it does not change component state a second time');
-  t.notOk(
-    results.onStartCalled,
-    'it does not call the onStart() prop a second time',
-  );
   t.notOk(
     results.onThreeSecondsCalled,
     'it does not call the onThreeSeconds() prop a second time',
@@ -295,7 +208,6 @@ test('eventHandlers.onTime() when video position is above 30 seconds', (t) => {
   t.deepEqual(
     mockComponent.state.hasFired,
     {
-      started: true,
       threeSeconds: true,
       tenSeconds: true,
       thirtySeconds: true,
@@ -303,7 +215,6 @@ test('eventHandlers.onTime() when video position is above 30 seconds', (t) => {
     },
     'it adds the proper events into component state hasFired object',
   );
-  t.ok(results.onStartCalled, 'it calls the onStart() prop');
   t.ok(results.onThreeSecondsCalled, 'it calls the onThreeSeconds() prop');
   t.ok(results.onTenSecondsCalled, 'it calls the onTenSeconds() prop');
   t.ok(results.onThirtySecondsCalled, 'it calls the onThirtySeconds() prop');
@@ -312,7 +223,6 @@ test('eventHandlers.onTime() when video position is above 30 seconds', (t) => {
   t.notOk(results.onSeventyFivePercentCalled, 'it does not call the onSeventyFivePercent() prop');
   t.notOk(results.onNinetyFivePercentCalled, 'it does not call the onNinetyFivePercent() prop');
 
-  results.onStartCalled = false;
   results.onThreeSecondsCalled = false;
   results.onTenSecondsCalled = false;
   results.onThirtySecondsCalled = false;
@@ -322,10 +232,6 @@ test('eventHandlers.onTime() when video position is above 30 seconds', (t) => {
 
   t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error one second later');
   t.equal(mockComponent.state, currentState, 'it does not change component state a second time');
-  t.notOk(
-    results.onStartCalled,
-    'it does not call the onStart() prop a second time',
-  );
   t.notOk(
     results.onThreeSecondsCalled,
     'it does not call the onThreeSeconds() prop a second time',
@@ -371,7 +277,6 @@ test('eventHandlers.onTime() when video position is above 50 and below 75', (t) 
   t.deepEqual(
     mockComponent.state.hasFired,
     {
-      started: true,
       threeSeconds: true,
       tenSeconds: true,
       thirtySeconds: true,
@@ -380,7 +285,6 @@ test('eventHandlers.onTime() when video position is above 50 and below 75', (t) 
     },
     'it adds the proper events into component state hasFired object',
   );
-  t.ok(results.onStartCalled, 'it calls the onStart() prop');
   t.ok(results.onThreeSecondsCalled, 'it calls the onThreeSeconds() prop');
   t.ok(results.onTenSecondsCalled, 'it calls the onTenSeconds() prop');
   t.ok(results.onThirtySecondsCalled, 'it calls the onThirtySeconds() prop');
@@ -389,7 +293,6 @@ test('eventHandlers.onTime() when video position is above 50 and below 75', (t) 
   t.notOk(results.onSeventyFivePercentCalled, 'it does not call the onSeventyFivePercent() prop');
   t.notOk(results.onNinetyFivePercentCalled, 'it does not call the onNinetyFivePercent() prop');
 
-  results.onStartCalled = false;
   results.onThreeSecondsCalled = false;
   results.onTenSecondsCalled = false;
   results.onThirtySecondsCalled = false;
@@ -402,10 +305,6 @@ test('eventHandlers.onTime() when video position is above 50 and below 75', (t) 
 
   t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error one second later');
   t.equal(mockComponent.state, currentState, 'it does not change component state a second time');
-  t.notOk(
-    results.onStartCalled,
-    'it does not call the onStart() prop a second time',
-  );
   t.notOk(
     results.onThreeSecondsCalled,
     'it does not call the onThreeSeconds() prop a second time',
@@ -451,7 +350,6 @@ test('eventHandlers.onTime() when video position is above 75', (t) => {
   t.deepEqual(
     mockComponent.state.hasFired,
     {
-      started: true,
       threeSeconds: true,
       tenSeconds: true,
       thirtySeconds: true,
@@ -461,7 +359,6 @@ test('eventHandlers.onTime() when video position is above 75', (t) => {
     },
     'it adds the proper events into component state hasFired object',
   );
-  t.ok(results.onStartCalled, 'it calls the onStart() prop');
   t.ok(results.onThreeSecondsCalled, 'it calls the onThreeSeconds() prop');
   t.ok(results.onTenSecondsCalled, 'it calls the onTenSeconds() prop');
   t.ok(results.onThirtySecondsCalled, 'it calls the onThirtySeconds() prop');
@@ -470,7 +367,6 @@ test('eventHandlers.onTime() when video position is above 75', (t) => {
   t.ok(results.onSeventyFivePercentCalled, 'it does not call the onSeventyFivePercent() prop');
   t.notOk(results.onNinetyFivePercentCalled, 'it does not call the onNinetyFivePercent() prop');
 
-  results.onStartCalled = false;
   results.onThreeSecondsCalled = false;
   results.onTenSecondsCalled = false;
   results.onThirtySecondsCalled = false;
@@ -482,10 +378,6 @@ test('eventHandlers.onTime() when video position is above 75', (t) => {
 
   t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error one second later');
   t.equal(mockComponent.state, currentState, 'it does not change component state a second time');
-  t.notOk(
-    results.onStartCalled,
-    'it does not call the onStart() prop a second time',
-  );
   t.notOk(
     results.onThreeSecondsCalled,
     'it does not call the onThreeSeconds() prop a second time',
@@ -531,7 +423,6 @@ test('eventHandlers.onTime() when video position is beyond ninety five percent',
   t.deepEqual(
     mockComponent.state.hasFired,
     {
-      started: true,
       threeSeconds: true,
       tenSeconds: true,
       thirtySeconds: true,
@@ -542,7 +433,6 @@ test('eventHandlers.onTime() when video position is beyond ninety five percent',
     },
     'it adds the proper events into component state hasFired object',
   );
-  t.ok(results.onStartCalled, 'it calls the onStart() prop');
   t.ok(results.onThreeSecondsCalled, 'it calls the onThreeSeconds() prop');
   t.ok(results.onTenSecondsCalled, 'it calls the onTenSeconds() prop');
   t.ok(results.onThirtySecondsCalled, 'it calls the onThirtySeconds() prop');
@@ -551,7 +441,6 @@ test('eventHandlers.onTime() when video position is beyond ninety five percent',
   t.ok(results.onSeventyFivePercentCalled, 'it does not call the onSeventyFivePercent() prop');
   t.ok(results.onNinetyFivePercentCalled, 'it calls the onNinetyFivePercent() prop');
 
-  results.onStartCalled = false;
   results.onThreeSecondsCalled = false;
   results.onTenSecondsCalled = false;
   results.onThirtySecondsCalled = false;
@@ -564,10 +453,6 @@ test('eventHandlers.onTime() when video position is beyond ninety five percent',
 
   t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error one second later');
   t.equal(mockComponent.state, currentState, 'it does not change component state a second time');
-  t.notOk(
-    results.onStartCalled,
-    'it does not call the onStart() prop a second time',
-  );
   t.notOk(
     results.onThreeSecondsCalled,
     'it does not call the onThreeSeconds() prop a second time',

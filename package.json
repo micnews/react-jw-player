@@ -1,5 +1,5 @@
 {
-  "name": "@rhm/react-jw-player",
+  "name": "react-jw-player",
   "version": "1.7.0",
   "description": "A React component for launching JW Player instances on the client.",
   "main": "dist/react-jw-player.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/remedyhealth/react-jw-player.git"
+    "url": "git+https://github.com/micnews/react-jw-player.git"
   },
   "keywords": [
     "react",
@@ -28,9 +28,9 @@
   "author": "Mic Network, Inc.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/remedyhealth/react-jw-player/issues"
+    "url": "https://github.com/micnews/react-jw-player/issues"
   },
-  "homepage": "https://github.com/remedyhealth/react-jw-player#readme",
+  "homepage": "https://github.com/micnews/react-jw-player#readme",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-plugin-transform-object-assign": "^6.22.0",

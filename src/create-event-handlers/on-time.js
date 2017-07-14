@@ -3,12 +3,6 @@ function onTime(event) {
   const { position, duration } = event;
   let hasChanged = false;
 
-  if (!hasFired.started && position > 0) {
-    this.props.onStart();
-    hasFired.started = true;
-    hasChanged = true;
-  }
-
   if (!hasFired.threeSeconds && position > 3) {
     this.props.onThreeSeconds();
     hasFired.threeSeconds = true;
