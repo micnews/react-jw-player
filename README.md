@@ -214,8 +214,20 @@ These are props that modify the basic behavior of the component.
   * Arguments:
     * `event`
       * This is the event object passed back from JW Player itself.
+* `onTwentyFivePercent(event)`
+  * A function that is run when the playhead reaches passed the 25% mark.
+  * Type: `function`
+  * Arguments:
+    * `event`
+      * This is the event object passed back from JW Player itself.
 * `onFiftyPercent(event)`
   * A function that is run when the playhead reaches passed the 50% mark.
+  * Type: `function`
+  * Arguments:
+    * `event`
+      * This is the event object passed back from JW Player itself.
+* `onSeventyFivePercent(event)`
+  * A function that is run when the playhead reaches passed the 75% mark.
   * Type: `function`
   * Arguments:
     * `event`

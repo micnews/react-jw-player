@@ -21,9 +21,21 @@ function onTime(event) {
     hasChanged = true;
   }
 
+  if (!hasFired.twentyFivePercent && ((position / duration) * 100) > 25) {
+    this.props.onTwentyFivePercent();
+    hasFired.twentyFivePercent = true;
+    hasChanged = true;
+  }
+
   if (!hasFired.fiftyPercent && ((position / duration) * 100) > 50) {
     this.props.onFiftyPercent();
     hasFired.fiftyPercent = true;
+    hasChanged = true;
+  }
+
+  if (!hasFired.seventyFivePercent && ((position / duration) * 100) > 75) {
+    this.props.onSeventyFivePercent();
+    hasFired.seventyFivePercent = true;
     hasChanged = true;
   }
 
