@@ -236,13 +236,15 @@ These are props that modify the basic behavior of the component.
 ## Example Container Component
 ``` javascript
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import ReactJWPlayer from 'react-jw-player';
 
 const displayName = 'ReactJWPlayerContainer';
 
 const propTypes = {
-  playlist: React.PropTypes.string.isRequired,
-  playerScript: React.PropTypes.string.isRequired
+  playlist: PropTypes.string.isRequired,
+  playerScript: PropTypes.string.isRequired
 };
 
 class ReactJWPlayerContainer extends React.Component {

@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 
 const propTypes = {
   aspectRatio: PropTypes.oneOf(['inherit', '1:1', '16:9']),
