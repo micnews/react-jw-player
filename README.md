@@ -285,7 +285,7 @@ class ReactJWPlayerContainer extends React.Component {
     return (
       <div className='react-jw-player-container'>
         <h1>{ this.state.videoTitle }</h1>
-        <JWPlayer
+        <ReactJWPlayer
           playlist={this.props.playlist}
           licenseKey='your-license-key'
           onAdPlay={this.onAdPlay}
