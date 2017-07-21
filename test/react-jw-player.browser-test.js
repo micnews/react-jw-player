@@ -42,6 +42,10 @@ test('<ReactJWPlayer> when no jwplayer script is present', (t) => {
 test('<ReactJWPlayer> when jwplayer script is present', (t) => {
   const testPlayerId = 'playerOne';
   const testPlayerIdTwo = 'playerTwo';
+  const testPlayerIdThree = 'playerThree';
+  const testArrayPlaylist = [{
+    file: 'file',
+  }];
   const initializeCalls = [];
 
   function stubbedInitialize() {
@@ -66,14 +70,21 @@ test('<ReactJWPlayer> when jwplayer script is present', (t) => {
     />,
   );
 
+  mount(
+    <ReactJWPlayer
+      playerId={testPlayerIdThree}
+      playerScript='script'
+      playlist={testArrayPlaylist}
+    />,
+  );
 
   const script = document.querySelector('#jw-player-script');
   t.equal(typeof script.onload, 'function', 'it sets script.onload to a function');
 
   script.onload();
   t.deepEqual(
-    initializeCalls, [testPlayerId, testPlayerIdTwo],
-    'script onload calls initialize on both mounted component',
+    initializeCalls, [testPlayerId, testPlayerIdTwo, testPlayerIdThree],
+    'script onload calls initialize on all mounted component',
   );
 
   t.end();
