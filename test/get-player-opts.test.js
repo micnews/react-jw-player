@@ -155,3 +155,19 @@ test('getPlayerOpts() with customProps', (t) => {
 
   t.end();
 });
+
+test('getPlayerOpts() with playlist as an array', (t) => {
+  const mockFile = 'mock file';
+
+  const mockPlaylist = [{
+    file: mockFile,
+  }];
+
+  const actual = getPlayerOpts({
+    playlist: mockPlaylist,
+  });
+
+  t.deepEqual(actual.playlist, mockPlaylist, 'it sets the playlist property');
+
+  t.end();
+});
