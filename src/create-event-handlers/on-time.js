@@ -36,13 +36,13 @@ function onTime(event) {
     shouldUpdateState = true;
   }
 
-  if (!hasFired.fiftyPercent && ((position / duration) * 100) >= 50) {
+  if (!hasFired.fiftyPercent && ((currentPositionInteger / durationInteger) * 100) >= 50) {
     this.props.onFiftyPercent();
     hasFired.fiftyPercent = true;
     shouldUpdateState = true;
   }
 
-  if (!hasFired.seventyFivePercent && (currentPositionInteger / durationInteger) * 100) >= 75) {
+  if (!hasFired.seventyFivePercent && ((currentPositionInteger / durationInteger) * 100) >= 75) {
     this.props.onSeventyFivePercent();
     hasFired.seventyFivePercent = true;
     hasChanged = true;
