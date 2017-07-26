@@ -25,7 +25,7 @@ npm install react-jw-player
 
 ## Usage
 
-At the mininum, you can just use something like the two following code snippets:
+At the mininum, you can just use something like the three following code snippets:
 
 ### Playing a JW Player JSON Playlist
 ``` javascript
@@ -38,6 +38,37 @@ ReactDOM.render(
     playerId='my-unique-id'
     playerScript='https://link-to-my-jw-player/script.js'
     playlist='https://link-to-my-playlist.json'
+  />,
+  document.getElementById('my-root-div');
+);
+```
+
+### Playing a custom Playlist
+``` javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactJWPlayer from 'react-jw-player';
+
+const playlist = [{
+  file: 'https://link-to-my-video.mp4',
+  image: 'https://link-to-my-poster.jpg',
+  tracks: [{ 
+    file: 'https://link-to-subtitles.vtt', 
+    label: 'English',
+    kind: 'captions',
+    'default': true 
+  }],
+},
+{
+  file: 'https://link-to-my-other-video.mp4',
+  image: 'https://link-to-my-other-poster.jpg',
+}];
+
+ReactDOM.render(
+  <ReactJWPlayer
+    playerId='my-unique-id'
+    playerScript='https://link-to-my-jw-player/script.js'
+    playlist={playlist}
   />,
   document.getElementById('my-root-div');
 );
@@ -75,8 +106,8 @@ These are props that modify the basic behavior of the component.
   * Type: `string`
   * Example: `https://content.jwplatform.com/libraries/abCD1234.js`
 * `playlist` OR `file`
-  * Link to a valid JW Player playlist or video file. Cool tip: JW Player automatically generates JSON feeds for individual videos if you use the video id in place of `abCD1234`. You can use this to get meta data on the videos without loading an actual playlist.
-  * Type: `string`
+  * Link to a valid JW Player playlist or video file, or playlist array. Cool tip: JW Player automatically generates JSON feeds for individual videos if you use the video id in place of `abCD1234`. You can use this to get meta data on the videos without loading an actual playlist.
+  * Type: `string` (for `file` and `playlist`) or `array` (for `playlist`)
   * Example: `https//content.jwplatform.com/feeds/abCD1234.json`
 
 ## Optional Configuration Props
