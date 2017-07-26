@@ -108,7 +108,7 @@ These are props that modify the basic behavior of the component.
 * `playlist` OR `file`
   * Link to a valid JW Player playlist or video file, or playlist array. Cool tip: JW Player automatically generates JSON feeds for individual videos if you use the video id in place of `abCD1234`. You can use this to get meta data on the videos without loading an actual playlist.
   * Type: `string` (for `file` and `playlist`) or `array` (for `playlist`)
-  * Example:`https//content.jwplatform.com/feeds/abCD1234.json`
+  * Example: `https//content.jwplatform.com/feeds/abCD1234.json`
 
 ## Optional Configuration Props
 * `aspectRatio`
