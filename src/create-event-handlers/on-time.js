@@ -1,5 +1,5 @@
 function onTime(event) {
-  const { hasFired, previousPositionInteger = 0 } = this.state;
+  const { hasFired, previousPositionInteger } = this.state;
   const { duration, position } = event;
   const currentPositionInteger = Math.floor(position);
 
@@ -7,7 +7,9 @@ function onTime(event) {
 
   if (previousPositionInteger === currentPositionInteger) {
     return;
-  } else if (currentPositionInteger === 0) {
+  } else if (!hasFired.zeroSecond && currentPositionInteger === 0) {
+    this.props.onEverySecond(0);
+    hasFired.zeroSecond = true;
     shouldUpdateState = true;
   } else {
     this.props.onEverySecond(currentPositionInteger);
