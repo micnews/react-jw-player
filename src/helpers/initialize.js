@@ -11,6 +11,8 @@ function initialize({ component, player, playerOpts }) {
   player.on('error', component.eventHandlers.onError);
   player.on('adPlay', component.eventHandlers.onAdPlay);
   player.on('adPause', component.props.onAdPause);
+  player.on('adComplete', component.props.onAdComplete);
+  player.on('adTime', component.eventHandlers.onAdTime);
   player.on('fullscreen', component.eventHandlers.onFullScreen);
   player.on('pause', component.props.onPause);
   player.on('play', component.eventHandlers.onPlay);
