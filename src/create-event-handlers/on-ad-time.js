@@ -1,5 +1,5 @@
 function onAdTime(event) {
-  const { previousPositionInteger = 0 } = this.state;
+  const { previousPositionInteger } = this.state;
   const { position } = event;
   const currentPositionInteger = Math.floor(position);
 
@@ -7,22 +7,11 @@ function onAdTime(event) {
     return;
   }
 
-  let shouldUpdateState = false;
+  this.props.onEverySecond(currentPositionInteger);
 
-  if (currentPositionInteger === 0) {
-    shouldUpdateState = true;
-  }
-
-  if (currentPositionInteger > previousPositionInteger) {
-    this.props.onEverySecond(currentPositionInteger);
-    shouldUpdateState = true;
-  }
-
-  if (shouldUpdateState) {
-    this.setState({
-      previousPositionInteger: currentPositionInteger,
-    });
-  }
+  this.setState({
+    previousPositionInteger: currentPositionInteger,
+  });
 }
 
 export default onAdTime;
