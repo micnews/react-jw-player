@@ -5,6 +5,7 @@ import getCurriedOnLoad from './helpers/get-curried-on-load';
 import getPlayerOpts from './helpers/get-player-opts';
 import initialize from './helpers/initialize';
 import installPlayerScript from './helpers/install-player-script';
+import removeJWPlayerInstance from './helpers/remove-jw-player-instance';
 
 import defaultProps from './default-props';
 import propTypes from './prop-types';
@@ -51,6 +52,9 @@ class ReactJWPlayer extends Component {
   }
   componentDidUpdate() {
     this._initialize();
+  }
+  componentWillUnmount() {
+    removeJWPlayerInstance(this.props.playerId, window);
   }
   _initialize() {
     const component = this;
