@@ -52,7 +52,12 @@ class ReactJWPlayer extends Component {
   }
   render() {
     return (
-      <div className={this.props.className} id={this.props.playerId} />
+      <div
+        className={this.props.className}
+        dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+          __html: `<div id="${this.props.playerId}"></div>`,
+        }}
+      />
     );
   }
 }
