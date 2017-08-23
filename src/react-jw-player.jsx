@@ -5,6 +5,7 @@ import getCurriedOnLoad from './helpers/get-curried-on-load';
 import getPlayerOpts from './helpers/get-player-opts';
 import initialize from './helpers/initialize';
 import installPlayerScript from './helpers/install-player-script';
+import shouldComponentUpdate from './helpers/should-component-update';
 
 import defaultProps from './default-props';
 import propTypes from './prop-types';
@@ -42,6 +43,12 @@ class ReactJWPlayer extends Component {
     } else {
       existingScript.onload = getCurriedOnLoad(existingScript, this._initialize);
     }
+  }
+  shouldComponentUpdate(nextProps) {
+    return shouldComponentUpdate(this.props, nextProps);
+  }
+  componentDidUpdate() {
+    this._initialize();
   }
   _initialize() {
     const component = this;
