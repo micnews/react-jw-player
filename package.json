@@ -4,7 +4,7 @@
   "description": "A React component for launching JW Player instances on the client.",
   "main": "dist/react-jw-player.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build": "rollup -c",
     "clean": "rm -rf dist",
     "lint": "miclint | snazzy",
     "prepublish": "npm run lint && npm run test && npm run clean && npm run build",
