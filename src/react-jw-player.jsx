@@ -43,6 +43,15 @@ class ReactJWPlayer extends Component {
       existingScript.onload = getCurriedOnLoad(existingScript, this._initialize);
     }
   }
+  shouldComponentUpdate(nextProps) {
+    const hasFileChanged = this.props.file !== nextProps.file;
+    const hasPlaylistChanged = this.props.playlist !== nextProps.playlist;
+
+    return hasFileChanged || hasPlaylistChanged;
+  }
+  componentDidUpdate() {
+    this._initialize();
+  }
   _initialize() {
     const component = this;
     const player = window.jwplayer(this.props.playerId);

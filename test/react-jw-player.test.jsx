@@ -54,3 +54,72 @@ test('<ReactJWPlayer> with a supplied class', (t) => {
 
   t.end();
 });
+
+test('ReactJWPlayer().shouldComponentUpdate() with no change', (t) => {
+  const propsOne = {
+    file: null,
+    playlist: 'playlist',
+  };
+
+  const propsTwo = {
+    file: null,
+    playlist: 'playlist',
+  };
+
+  const shouldComponentUpdate = new ReactJWPlayer().shouldComponentUpdate.bind({
+    props: propsOne,
+  });
+
+  t.notOk(
+    shouldComponentUpdate(propsTwo),
+    'it returns false when the props are the same',
+  );
+
+  t.end();
+});
+
+test('ReactJWPlayer().shouldComponentUpdate() with playlist change', (t) => {
+  const propsOne = {
+    file: null,
+    playlist: 'playlist',
+  };
+
+  const propsTwo = {
+    file: null,
+    playlist: 'playlistTwo',
+  };
+
+  const shouldComponentUpdate = new ReactJWPlayer().shouldComponentUpdate.bind({
+    props: propsOne,
+  });
+
+  t.ok(
+    shouldComponentUpdate(propsTwo),
+    'it returns true when the playlist prop changes',
+  );
+
+  t.end();
+});
+
+test('ReactJWPlayer().shouldComponentUpdate() with file change', (t) => {
+  const propsOne = {
+    file: 'file',
+    playlist: null,
+  };
+
+  const propsTwo = {
+    file: 'fileTwo',
+    playlist: null,
+  };
+
+  const shouldComponentUpdate = new ReactJWPlayer().shouldComponentUpdate.bind({
+    props: propsOne,
+  });
+
+  t.ok(
+    shouldComponentUpdate(propsTwo),
+    'it returns true when the file prop changes',
+  );
+
+  t.end();
+});
