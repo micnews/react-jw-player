@@ -27,9 +27,10 @@ test('<ReactJWPlayer>', (t) => {
     'it renders a div as the root node',
   );
 
-  t.ok(
-    root.is(`#${testPlayerId}`),
-    'it gives the root div an id equal to the supplied playerId',
+  t.deepEqual(
+    root.props().dangerouslySetInnerHTML,
+    { __html: `<div id="${testPlayerId}"></div>` },
+    'it dangerously sets inner html to a div with the supplied id',
   );
 
   t.end();
