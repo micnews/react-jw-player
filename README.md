@@ -52,11 +52,11 @@ import ReactJWPlayer from 'react-jw-player';
 const playlist = [{
   file: 'https://link-to-my-video.mp4',
   image: 'https://link-to-my-poster.jpg',
-  tracks: [{ 
-    file: 'https://link-to-subtitles.vtt', 
+  tracks: [{
+    file: 'https://link-to-subtitles.vtt',
     label: 'English',
     kind: 'captions',
-    'default': true 
+    'default': true
   }],
 },
 {
@@ -153,6 +153,12 @@ These are props that modify the basic behavior of the component.
       * This is the event object passed back from JW Player itself.
 * `onAdResume(event)`
   * A function that is run when the user resumes playing the preroll advertisement.
+  * Type: `function`
+  * Arguments:
+    * `event`
+      * This is the event object passed back from JW Player itself.
+* `onAdSkipped(event)`
+  * A function that is run when the user skips an advertisement.
   * Type: `function`
   * Arguments:
     * `event`
