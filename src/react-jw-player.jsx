@@ -5,7 +5,6 @@ import getCurriedOnLoad from './helpers/get-curried-on-load';
 import getPlayerOpts from './helpers/get-player-opts';
 import initialize from './helpers/initialize';
 import installPlayerScript from './helpers/install-player-script';
-import shouldComponentUpdate from './helpers/should-component-update';
 
 import defaultProps from './default-props';
 import propTypes from './prop-types';
@@ -45,7 +44,10 @@ class ReactJWPlayer extends Component {
     }
   }
   shouldComponentUpdate(nextProps) {
-    return shouldComponentUpdate(this.props, nextProps);
+    const hasFileChanged = this.props.file !== nextProps.file;
+    const hasPlaylistChanged = this.props.playlist !== nextProps.playlist;
+
+    return hasFileChanged || hasPlaylistChanged;
   }
   componentDidUpdate() {
     this._initialize();
