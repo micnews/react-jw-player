@@ -7,6 +7,7 @@ const defaultProps = {
   isMuted: false,
   onAdPlay: noOp,
   onAdResume: noOp,
+  onAdSkipped: noOp,
   onEnterFullScreen: noOp,
   onExitFullScreen: noOp,
   onMute: noOp,
