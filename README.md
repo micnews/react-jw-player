@@ -52,11 +52,11 @@ import ReactJWPlayer from 'react-jw-player';
 const playlist = [{
   file: 'https://link-to-my-video.mp4',
   image: 'https://link-to-my-poster.jpg',
-  tracks: [{ 
-    file: 'https://link-to-subtitles.vtt', 
+  tracks: [{
+    file: 'https://link-to-subtitles.vtt',
     label: 'English',
     kind: 'captions',
-    'default': true 
+    'default': true
   }],
 },
 {
@@ -337,6 +337,4 @@ export default ReactJWPlayerContainer;
 
 ## Contributing
 
-**Just do it!**
-
-![shia](https://media.giphy.com/media/87xihBthJ1DkA/giphy.gif)
+Contributions are always welcome! Once you have the repo cloned, you can use `npm run watch` to build the code for development. Please make sure to add test coverage for any new or changed functionality. We will not merge untested code.

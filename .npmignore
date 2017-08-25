@@ -1,5 +1,7 @@
 node_modules
-.babelrc
-.travis.yml
 src
 test
+.babelrc
+.gitignore
+.travis.yml
+rollup.config.js

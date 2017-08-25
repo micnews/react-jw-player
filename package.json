@@ -4,7 +4,7 @@
   "description": "A React component for launching JW Player instances on the client.",
   "main": "dist/react-jw-player.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build": "rollup -c",
     "clean": "rm -rf dist",
     "lint": "miclint | snazzy",
     "prepublish": "npm run lint && npm run test && npm run clean && npm run build",
@@ -43,8 +43,13 @@
     "jsdom-global": "^2.1.1",
     "miclint": "^4.1.0",
     "react-addons-test-utils": "^15.4.1",
-    "react-test-renderer": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-test-renderer": "^15.4.2",
+    "rollup": "^0.48.2",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-commonjs": "^8.2.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
     "snazzy": "^5.0.0",
     "tape": "^4.6.3"
   },
