@@ -111,6 +111,9 @@ These are props that modify the basic behavior of the component.
   * Example: `https//content.jwplatform.com/feeds/abCD1234.json`
 
 ## Optional Configuration Props
+* `advertisingOptions`
+  * An optional object containing properties that will be added to JWplayer's advertising configuration. See the [JWPlayer Advertising Docs](https://developer.jwplayer.com/jw-player/docs/developer-guide/customization/configuration-reference/#advertising) for more info
+  * Type: `object`
 * `aspectRatio`
   * An optional aspect ratio to give the video player. Can be 'inherit', `1:1` or `16:9` currently.
   * Defaults to 'inherit'.

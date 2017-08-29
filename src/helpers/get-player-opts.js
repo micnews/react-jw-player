@@ -1,5 +1,6 @@
 function getPlayerOpts(opts) {
   const {
+    advertisingOptions = {},
     aspectRatio,
     customProps = {},
     file,
@@ -32,11 +33,11 @@ function getPlayerOpts(opts) {
   }
 
   if (hasAdvertising) {
-    playerOpts.advertising = {
+    playerOpts.advertising = Object.assign({
       client: 'googima',
       admessage: 'Ad — xxs left',
       autoplayadsmuted: true,
-    };
+    }, advertisingOptions);
   }
 
   if (typeof isAutoPlay !== 'undefined') {
