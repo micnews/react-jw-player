@@ -91,6 +91,31 @@ test('getPlayerOpts() with advertising', (t) => {
   t.end();
 });
 
+test('getPlayerOpts() with custom advertising props', (t) => {
+  const mockPlaylist = 'mock playlist';
+
+  const actual = getPlayerOpts({
+    aspectRatio: '1:1',
+    generatePrerollUrl() {},
+    playlist: mockPlaylist,
+    advertisingOptions: {
+      client: 'vast',
+      vpaidcontrols: true,
+    },
+  });
+
+  t.equal(actual.aspectratio, '1:1', 'it sets the aspect ratio properly');
+  t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
+  t.equal(actual.mute, false, 'it sets the mute property to false');
+  t.ok(actual.advertising, 'it sets advertising properties');
+  t.equal(actual.advertising.client, 'vast', 'it sets the advertising client');
+  t.equal(actual.advertising.admessage, 'Ad — xxs left', 'it sets the admessage');
+  t.ok(actual.advertising.autoplayadsmuted, 'it sets autoplayadsmuted to true');
+  t.ok(actual.advertising.vpaidcontrols, 'it sets vpaidcontrols to true');
+
+  t.end();
+});
+
 test('getPlayerOpts() with both a file and a playlist', (t) => {
   const mockFile = 'mock file';
   const mockPlaylist = 'mock playlist';
