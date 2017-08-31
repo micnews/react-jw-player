@@ -304,11 +304,17 @@ class ReactJWPlayerContainer extends React.Component {
     };
 
     this.onAdPlay = this.onAdPlay.bind(this);
+    this.onReady = this.onReady.bind(this);
     this.onVideoLoad = this.onVideoLoad.bind(this);
 
     // each instance of <ReactJWPlayer> needs a unique id.
     // we randomly generate it here and assign to the container instance.
     this.playerId = someFunctionToRandomlyGenerateId();
+  }
+  onReady(event) {
+    // you can interact with JW Player API here
+    const player = window.jwplayer(this.playerId);
+
   }
   onAdPlay(event) {
     // track the ad play here
@@ -326,6 +332,7 @@ class ReactJWPlayerContainer extends React.Component {
           playlist={this.props.playlist}
           licenseKey='your-license-key'
           onAdPlay={this.onAdPlay}
+          onReady={this.onReady}
           onVideoLoad={this.onVideoLoad}
           playerId={this.playerId} // bring in the randomly generated playerId
           playerScript='https://link-to-your-jw-player-script.js'
