@@ -312,9 +312,8 @@ class ReactJWPlayerContainer extends React.Component {
     this.playerId = someFunctionToRandomlyGenerateId();
   }
   onReady(event) {
-    // you can interact with JW Player API here
+    // interact with JW Player API here
     const player = window.jwplayer(this.playerId);
-
   }
   onAdPlay(event) {
     // track the ad play here
