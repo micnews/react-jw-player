@@ -5,6 +5,7 @@ const propTypes = {
   className: PropTypes.string,
   customProps: PropTypes.object,
   file: PropTypes.string,
+  ga: PropTypes.object,
   generatePrerollUrl: PropTypes.func,
   image: PropTypes.string,
   isAutoPlay: PropTypes.bool,
