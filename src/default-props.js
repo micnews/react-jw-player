@@ -5,6 +5,7 @@ const defaultProps = {
   file: '',
   isAutoPlay: false,
   isMuted: false,
+  ga : {},
   onAdPlay: noOp,
   onAdResume: noOp,
   onAdSkipped: noOp,
