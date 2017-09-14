@@ -13,9 +13,7 @@ function getPlayerOpts(opts) {
 
   const hasAdvertising = !!generatePrerollUrl;
 
-  const playerOpts = {
-    mute: !!isMuted,
-  };
+  const playerOpts = {};
 
   if (licenseKey) {
     playerOpts.key = licenseKey;
@@ -39,8 +37,12 @@ function getPlayerOpts(opts) {
     };
   }
 
-  if (typeof isAutoPlay !== 'undefined') {
+  if (typeof isAutoPlay !== 'undefined' && isAutoPlay !== 'inherit') {
     playerOpts.autostart = !!isAutoPlay;
+  }
+
+  if (typeof isMuted !== 'undefined' && isMuted !== 'inherit') {
+    playerOpts.mute = !!isMuted;
   }
 
   if (image) {
