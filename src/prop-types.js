@@ -7,12 +7,8 @@ const propTypes = {
   file: PropTypes.string,
   generatePrerollUrl: PropTypes.func,
   image: PropTypes.string,
-  isAutoPlay: PropTypes.oneOfType([
-    PropTypes.bool,
-  ]),
-  isMuted: PropTypes.oneOfType([
-    PropTypes.bool,
-  ]),
+  isAutoPlay: PropTypes.bool,
+  isMuted: PropTypes.bool,
   licenseKey: PropTypes.string,
   onAdPause: PropTypes.func,
   onAdPlay: PropTypes.func,
