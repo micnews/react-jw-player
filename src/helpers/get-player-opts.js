@@ -37,11 +37,11 @@ function getPlayerOpts(opts) {
     };
   }
 
-  if (typeof isAutoPlay !== 'undefined' && isAutoPlay !== 'inherit') {
+  if (typeof isAutoPlay !== 'undefined') {
     playerOpts.autostart = !!isAutoPlay;
   }
 
-  if (typeof isMuted !== 'undefined' && isMuted !== 'inherit') {
+  if (typeof isMuted !== 'undefined') {
     playerOpts.mute = !!isMuted;
   }
 

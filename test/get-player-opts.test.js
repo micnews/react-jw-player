@@ -9,7 +9,7 @@ test('getPlayerOpts() with defaults', (t) => {
   });
 
   t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
-  t.equal(actual.mute, false, 'it sets the mute property to false');
+  t.equal(actual.mute, undefined, 'it sets the mute property to undefined');
   t.notOk(
     Object.prototype.hasOwnProperty.call(actual, 'aspectratio'),
     'it does not set aspectratio properties',
@@ -82,7 +82,7 @@ test('getPlayerOpts() with advertising', (t) => {
 
   t.equal(actual.aspectratio, '1:1', 'it sets the aspect ratio properly');
   t.equal(actual.playlist, mockPlaylist, 'it sets the playlist property to the supplied playlist');
-  t.equal(actual.mute, false, 'it sets the mute property to false');
+  t.equal(actual.mute, undefined, 'it sets the mute property to undefined');
   t.ok(actual.advertising, 'it sets advertising properties');
   t.equal(actual.advertising.client, 'googima', 'it sets the advertising client');
   t.equal(actual.advertising.admessage, 'Ad — xxs left', 'it sets the admessage');

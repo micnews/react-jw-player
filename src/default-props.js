@@ -3,8 +3,8 @@ const noOp = () => {};
 const defaultProps = {
   aspectRatio: 'inherit',
   file: '',
-  isAutoPlay: 'inherit',
-  isMuted: 'inherit',
+  isAutoPlay: undefined,
+  isMuted: undefined,
   onAdPlay: noOp,
   onAdResume: noOp,
   onAdSkipped: noOp,
