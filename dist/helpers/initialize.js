@@ -16,8 +16,9 @@ function initialize(_ref) {
 
   player.on('beforePlay', _onBeforePlay);
   player.on('ready', component.props.onReady);
-  player.on('setupError', component.eventHandlers.onError);
-  player.on('error', component.eventHandlers.onError);
+  player.on('setupError', component.props.onError);
+  player.on('error', component.props.onError);
+  player.on('mediaError', component.props.onError);
   player.on('adPlay', component.eventHandlers.onAdPlay);
   player.on('adPause', component.props.onAdPause);
   player.on('fullscreen', component.eventHandlers.onFullScreen);
