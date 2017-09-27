@@ -89,3 +89,42 @@ test('<ReactJWPlayer> when jwplayer script is present', (t) => {
 
   t.end();
 });
+
+test('<ReactJWPlayer> componentDidUpdate()', (t) => {
+  let initializeDidRun;
+
+  const componentDidUpdate = new ReactJWPlayer().componentDidUpdate.bind({
+    props: {
+      playerId: 'foobar',
+    },
+    _initialize: () => { initializeDidRun = true; },
+  });
+
+  if (window.jwplayer) {
+    delete window.jwplayer;
+  }
+
+  t.doesNotThrow(
+    () => componentDidUpdate(),
+    'it runs without error when jwplayer has not initialized',
+  );
+
+  t.notOk(
+    initializeDidRun,
+    'it does not call this._initialize() when jwplayer has not initialized yet',
+  );
+
+  global.window.jwplayer = () => 'jwplayer';
+
+  t.doesNotThrow(
+    () => componentDidUpdate(),
+    'it runs without error when jwplayer has initialized',
+  );
+
+  t.ok(
+    initializeDidRun,
+    'it does call this._initialize() when jwplayer has not initialized yet',
+  );
+
+  t.end();
+});
