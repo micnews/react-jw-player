@@ -51,7 +51,9 @@ class ReactJWPlayer extends Component {
     return hasFileChanged || hasPlaylistChanged;
   }
   componentDidUpdate() {
-    this._initialize();
+    if (window.jwplayer && window.jwplayer(this.props.playerId)) {
+      this._initialize();
+    }
   }
   componentWillUnmount() {
     removeJWPlayerInstance(this.props.playerId, window);
