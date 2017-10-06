@@ -3,11 +3,15 @@ import createEventHandlers from '../src/create-event-handlers';
 import MockComponent from './helpers/mock-component';
 
 function createMockComponent() {
-  const results = {};
+  const results = { };
 
   return {
     mockComponent: new MockComponent({
       initialState: { hasFired: {} },
+      onTime(event) {
+        results.onTimeCalled = true;
+        results.onTimeArgs = event;
+      },
       onThreeSeconds(event) {
         results.onThreeSecondsCalled = true;
         results.onThreeSecondsArgs = event;
@@ -56,6 +60,8 @@ test('eventHandlers.onTime() when video position is less than 3', (t) => {
     {},
     'it does not add any events into component state hasFired object',
   );
+  t.ok(results.onTimeCalled, 'it calls the onTime() prop');
+  t.deepEqual(results.onTimeArgs, mockEvent, 'it calls the onTime() prop with correct arguments');
   t.notOk(results.onThreeSecondsCalled, 'it does not call the onThreeSeconds() prop');
   t.notOk(results.onTenSecondsCalled, 'it does not call the onTenSeconds() prop');
   t.notOk(results.onThirtySecondsCalled, 'it does not call the onThirtySeconds() prop');
@@ -84,6 +90,8 @@ test('eventHandlers.onTime() when video position is between 3 and 10', (t) => {
     },
     'it adds the proper events into component state hasFired object',
   );
+  t.ok(results.onTimeCalled, 'it calls the onTime() prop');
+  t.deepEqual(results.onTimeArgs, mockEvent, 'it calls the onTime() prop with correct arguments');
   t.ok(results.onThreeSecondsCalled, 'it calls the onThreeSeconds() prop');
   t.notOk(results.onTenSecondsCalled, 'it does not call the onTenSeconds() prop');
   t.notOk(results.onThirtySecondsCalled, 'it does not call the onThirtySeconds() prop');
@@ -93,11 +101,14 @@ test('eventHandlers.onTime() when video position is between 3 and 10', (t) => {
   t.notOk(results.onNinetyFivePercentCalled, 'it does not call the onNinetyFivePercent() prop');
 
   results.onThreeSecondsCalled = false;
+  results.onTimeCalled = false;
   const currentState = mockComponent.state;
   mockEvent.position = 8;
 
   t.doesNotThrow(onTime.bind(null, mockEvent), 'it runs without error one second later');
   t.equal(mockComponent.state, currentState, 'it does not change component state a second time');
+  t.ok(results.onTimeCalled, 'it calls the onTime() prop a second time');
+  t.deepEqual(results.onTimeArgs, mockEvent, 'it calls the onTime() prop with correct arguments');
   t.notOk(
     results.onThreeSecondsCalled,
     'it does not call the onThreeSeconds() prop a second time',

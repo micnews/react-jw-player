@@ -29,6 +29,7 @@ const defaultProps = {
   onFiftyPercent: noOp,
   onSeventyFivePercent: noOp,
   onNinetyFivePercent: noOp,
+  onTime: noOp,
   playlist: '',
 };
 
