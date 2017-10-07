@@ -219,6 +219,12 @@ These are props that modify the basic behavior of the component.
   * Arguments:
     * `event`
       * This is the event object passed back from JW Player itself.
+* `onTime(event)`
+  * A function that is run whenever the playback position gets updated.
+  * Type: `function`
+  * Arguments:
+    * `event`
+      * This is the event object passed back from JW Player itself.
 * `onUnmute(event)`
   * A function that is run when the user unmutes the player.
   * Type: `function`
