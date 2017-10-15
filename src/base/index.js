@@ -3,15 +3,21 @@
 import React from 'react';
 
 type PropsType = {
+  className?: string,
   playerId: string,
 };
 
-const ReactJWPlayerBase = ({ playerId }: PropsType) => (
+const ReactJWPlayerBase = ({ className, playerId }: PropsType) => (
   <div
+    className={className}
     dangerouslySetInnerHTML={{
-      __html: `<div id={${playerId}}></div>`,
+      __html: `<div id="${playerId}"></div>`,
     }}
   />
 );
+
+ReactJWPlayerBase.defaultProps = {
+  className: null,
+};
 
 export default ReactJWPlayerBase;
