@@ -4,9 +4,15 @@
   "description": "A React component for launching JW Player instances on the client.",
   "main": "dist/react-jw-player.js",
   "scripts": {
-    "precommit": "npm run lint -- --fix",
-    "lint": "eslint 'src/**/*.js'",
-    "test": "flow && babel-tape-runner 'src/**/*.js' | tap-spec"
+    "precommit": "lint-staged",
+    "test": "eslint 'src/**/*.js' && flow && npm run test:unit",
+    "test:unit": "babel-tape-runner 'src/**/*.js' | tap-spec"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
