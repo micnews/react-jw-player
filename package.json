@@ -30,6 +30,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-tape-runner": "^2.0.1",
     "enzyme": "^2.9.1",
+    "flow": "^0.2.3",
+    "flow-bin": "^0.57.2",
     "react-dom": "^15.6.2",
     "react-test-renderer": "^15.6.2",
     "tap-spec": "^4.1.1",
