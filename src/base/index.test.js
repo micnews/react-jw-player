@@ -6,10 +6,9 @@ import test from 'tape';
 import ReactJWPlayerBase from './';
 
 test('<ReactJWPlayerBase />', t => {
-  t.doesNotThrow(
-    () => shallow(<ReactJWPlayerBase />),
-    'it renders without error',
-  );
+  const wrapper = shallow(<ReactJWPlayerBase />);
+
+  t.is(wrapper.first().node.type, 'div', 'the root node is a div');
 
   t.end();
 });
