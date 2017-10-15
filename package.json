@@ -9,7 +9,7 @@
     "test:unit": "babel-tape-runner 'src/**/*.js' | tap-spec"
   },
   "lint-staged": {
-    "src/*.js": [
+    "src/**/*.js": [
       "eslint --fix",
       "git add"
     ]
