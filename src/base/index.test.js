@@ -1,6 +1,7 @@
 /* flow */
+import initializeGlobals from 'jsdom-global';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import test from 'tape';
 
 import ReactJWPlayerBase from './';
@@ -120,4 +121,151 @@ test('ReactJWPlayer().shouldComponentUpdate() with file change', t => {
   );
 
   t.end();
+});
+
+test('<ReactJWPlayer> when no jwplayer script is present', t => {
+  const cleanup = initializeGlobals();
+  const testPlayerId = 'playerOne';
+  const initializeCalls = [];
+
+  function initializeJWPLayer() {
+    initializeCalls.push(this.props.playerId);
+  }
+
+  ReactJWPlayerBase.prototype.initializeJWPlayer = initializeJWPLayer;
+
+  mount(
+    <ReactJWPlayerBase
+      playerId={testPlayerId}
+      playerScript="script"
+      config={{
+        playlist: 'playlist',
+      }}
+    />,
+  );
+
+  const script = global.document.querySelector('#jw-player-script');
+  t.ok(script, 'it installs the jw player script');
+
+  t.equal(
+    typeof script.onload,
+    'function',
+    'it sets script.onload to a function',
+  );
+
+  script.onload();
+  t.deepEqual(
+    initializeCalls,
+    [testPlayerId],
+    'script onload calls initialize on the mounted component',
+  );
+
+  t.end();
+  cleanup();
+});
+
+test('<ReactJWPlayer> when jwplayer script is present', t => {
+  const cleanup = initializeGlobals();
+
+  const testPlayerId = 'playerOne';
+  const testPlayerIdTwo = 'playerTwo';
+  const testPlayerIdThree = 'playerThree';
+  const testArrayPlaylist = [
+    {
+      file: 'file',
+    },
+  ];
+  const initializeCalls = [];
+
+  function initializeJWPlayer() {
+    initializeCalls.push(this.props.playerId);
+  }
+
+  ReactJWPlayerBase.prototype.initializeJWPlayer = initializeJWPlayer;
+
+  mount(
+    <ReactJWPlayerBase
+      playerId={testPlayerId}
+      playerScript="script"
+      config={{
+        playlist: 'playlist',
+      }}
+    />,
+  );
+
+  mount(
+    <ReactJWPlayerBase
+      playerId={testPlayerIdTwo}
+      playerScript="script"
+      playlist="playlist"
+    />,
+  );
+
+  mount(
+    <ReactJWPlayerBase
+      playerId={testPlayerIdThree}
+      playerScript="script"
+      playlist={testArrayPlaylist}
+    />,
+  );
+
+  const script = global.document.querySelector('#jw-player-script');
+  t.equal(
+    typeof script.onload,
+    'function',
+    'it sets script.onload to a function',
+  );
+
+  script.onload();
+  t.deepEqual(
+    initializeCalls,
+    [testPlayerId, testPlayerIdTwo, testPlayerIdThree],
+    'script onload calls initialize on all mounted component',
+  );
+
+  t.end();
+  cleanup();
+});
+
+test('<ReactJWPlayer> componentDidUpdate()', t => {
+  const cleanup = initializeGlobals();
+  let initializeDidRun;
+
+  const componentDidUpdate = new ReactJWPlayerBase().componentDidUpdate.bind({
+    props: {
+      playerId: 'foobar',
+    },
+    _initialize: () => {
+      initializeDidRun = true;
+    },
+  });
+
+  if (global.window.jwplayer) {
+    delete global.window.jwplayer;
+  }
+
+  t.doesNotThrow(
+    () => componentDidUpdate(),
+    'it runs without error when jwplayer has not initialized',
+  );
+
+  t.notOk(
+    initializeDidRun,
+    'it does not call this._initialize() when jwplayer has not initialized yet',
+  );
+
+  global.window.jwplayer = () => 'jwplayer';
+
+  t.doesNotThrow(
+    () => componentDidUpdate(),
+    'it runs without error when jwplayer has initialized',
+  );
+
+  t.ok(
+    initializeDidRun,
+    'it does call this._initialize() when jwplayer has not initialized yet',
+  );
+
+  t.end();
+  cleanup();
 });
