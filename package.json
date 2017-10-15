@@ -4,7 +4,7 @@
   "description": "A React component for launching JW Player instances on the client.",
   "main": "dist/react-jw-player.js",
   "scripts": {
-    "test": "babel-tape-runner 'src/**/*.js' | tap-spec"
+    "test": "flow && babel-tape-runner 'src/**/*.js' | tap-spec"
   },
   "repository": {
     "type": "git",
