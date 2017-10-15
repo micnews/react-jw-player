@@ -1,8 +1,6 @@
 /* flow */
 import React from 'react';
 
-const ReactJWPlayerBase = () => (
-  <div />
-);
+const ReactJWPlayerBase = () => <div />;
 
 export default ReactJWPlayerBase;

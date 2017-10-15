@@ -4,6 +4,8 @@
   "description": "A React component for launching JW Player instances on the client.",
   "main": "dist/react-jw-player.js",
   "scripts": {
+    "precommit": "npm run lint -- --fix",
+    "lint": "eslint 'src/**/*.js'",
     "test": "flow && babel-tape-runner 'src/**/*.js' | tap-spec"
   },
   "repository": {
@@ -30,8 +32,17 @@
     "babel-preset-react": "^6.24.1",
     "babel-tape-runner": "^2.0.1",
     "enzyme": "^2.9.1",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.4.0",
     "flow": "^0.2.3",
     "flow-bin": "^0.57.2",
+    "husky": "^0.14.3",
+    "prettier": "^1.7.4",
     "react-dom": "^15.6.2",
     "react-test-renderer": "^15.6.2",
     "tap-spec": "^4.1.1",

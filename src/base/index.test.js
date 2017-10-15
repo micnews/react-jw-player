@@ -5,7 +5,7 @@ import test from 'tape';
 
 import ReactJWPlayerBase from './';
 
-test('<ReactJWPlayerBase />', (t) => {
+test('<ReactJWPlayerBase />', t => {
   t.doesNotThrow(
     () => shallow(<ReactJWPlayerBase />),
     'it renders without error',
