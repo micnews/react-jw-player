@@ -9,7 +9,7 @@
     "test:unit": "babel-tape-runner 'src/**/*.js' | tap-spec"
   },
   "lint-staged": {
-    "*.js": [
+    "src/*.js": [
       "eslint --fix",
       "git add"
     ]
@@ -34,6 +34,7 @@
   "homepage": "https://github.com/micnews/react-jw-player#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-tape-runner": "^2.0.1",
@@ -41,6 +42,7 @@
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.0.0",
     "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-flowtype": "^2.39.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.3.1",
