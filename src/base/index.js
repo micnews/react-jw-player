@@ -5,25 +5,27 @@ import getCurriedOnLoad from './helpers/get-curried-on-load';
 import initializeJWPlayer from './helpers/initialize-jw-player';
 import installJWPlayerScript from './helpers/install-jw-player-script';
 
-type PropsType = {
+const UNIQUE_SCRIPT_ID = 'jw-player-script';
+
+type Props = {
   config: {
     file?: string,
     playlist?: string | Array<any>,
   },
   className?: string,
+  events?: any,
   playerId: string,
   playerScript: string,
 };
 
-class ReactJWPlayerBase extends Component<*, *> {
+class ReactJWPlayerBase extends Component<Props, *> {
   static defaultProps: any;
 
-  constructor(props: PropsType) {
+  constructor(props: Props) {
     super(props);
-
     this.initializeJWPlayer = this.initializeJWPlayer.bind(this);
-    this.uniqueScriptId = 'jw-player-script';
   }
+
   componentDidMount() {
     const isJWPlayerScriptLoaded = !!global.window.jwplayer;
 
@@ -32,14 +34,14 @@ class ReactJWPlayerBase extends Component<*, *> {
       return;
     }
 
-    const existingScript = global.document.getElementById(this.uniqueScriptId);
+    const existingScript = global.document.getElementById(UNIQUE_SCRIPT_ID);
 
     if (!existingScript) {
       installJWPlayerScript({
         context: global.document,
         onLoadCallback: this.initializeJWPlayer,
         scriptSrc: this.props.playerScript,
-        uniqueScriptId: this.uniqueScriptId,
+        uniqueScriptId: UNIQUE_SCRIPT_ID,
       });
     } else {
       existingScript.onload = getCurriedOnLoad(
@@ -48,7 +50,8 @@ class ReactJWPlayerBase extends Component<*, *> {
       );
     }
   }
-  shouldComponentUpdate(newProps: PropsType) {
+
+  shouldComponentUpdate(newProps: Props) {
     const oldConfig = this.props.config;
     const newConfig = newProps.config;
 
@@ -57,19 +60,21 @@ class ReactJWPlayerBase extends Component<*, *> {
 
     return playlistHasChanged || fileHasChanged;
   }
+
   componentDidUpdate() {
     if (global.window.jwplayer) {
       this.initializeJWPlayer();
     }
   }
 
-  props: PropsType;
-  uniqueScriptId: string;
-
   initializeJWPlayer: Function;
   initializeJWPlayer() {
-    initializeJWPlayer(this);
+    const { config, events, playerId } = this.props;
+    const player = global.window.jwplayer(playerId);
+
+    initializeJWPlayer({ config, events, player });
   }
+
   render() {
     const { className, playerId } = this.props;
     return (
@@ -85,6 +90,7 @@ class ReactJWPlayerBase extends Component<*, *> {
 
 ReactJWPlayerBase.defaultProps = {
   className: null,
+  events: {},
 };
 
 export default ReactJWPlayerBase;
