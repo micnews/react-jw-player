@@ -5,6 +5,7 @@
     "A React component for launching JW Player instances on the client.",
   "main": "dist/react-jw-player.js",
   "scripts": {
+    "build:base": "babel src/base --out-dir base --ignore '*.test.js'",
     "precommit": "lint-staged",
     "test": "eslint 'src/**/*.js' && flow && npm run test:unit",
     "test:unit": "babel-tape-runner 'src/**/*.js' | tap-spec"
