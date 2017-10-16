@@ -1,7 +1,8 @@
 {
   "name": "react-jw-player",
   "version": "1.12.0",
-  "description": "A React component for launching JW Player instances on the client.",
+  "description":
+    "A React component for launching JW Player instances on the client.",
   "main": "dist/react-jw-player.js",
   "scripts": {
     "precommit": "lint-staged",
@@ -9,23 +10,13 @@
     "test:unit": "babel-tape-runner 'src/**/*.js' | tap-spec"
   },
   "lint-staged": {
-    "src/**/*.js": [
-      "eslint --fix",
-      "git add"
-    ]
+    "src/**/*.js": ["eslint --fix", "git add"]
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/micnews/react-jw-player.git"
   },
-  "keywords": [
-    "react",
-    "jwplayer",
-    "jw-player",
-    "video",
-    "autoplay",
-    "events"
-  ],
+  "keywords": ["react", "jwplayer", "jw-player", "video", "autoplay", "events"],
   "author": "Mic Network, Inc.",
   "license": "MIT",
   "bugs": {
