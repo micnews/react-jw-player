@@ -31,5 +31,6 @@
         ]
       }
     ],
+    "flowtype/define-flow-type": 2
   }
 }

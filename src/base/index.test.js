@@ -235,7 +235,7 @@ test('<ReactJWPlayer> componentDidUpdate()', t => {
     props: {
       playerId: 'foobar',
     },
-    _initialize: () => {
+    initializeJWPlayer: () => {
       initializeDidRun = true;
     },
   });
