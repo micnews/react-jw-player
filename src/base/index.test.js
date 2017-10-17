@@ -6,7 +6,7 @@ import test from 'tape';
 
 import ReactJWPlayerBase from './';
 
-test('<ReactJWPlayerBase />', t => {
+test('<ReactJWPlayerBase />', (t) => {
   const playerId = 'react-jw-player';
   const wrapper = shallow(<ReactJWPlayerBase playerId={playerId} />);
 
@@ -21,7 +21,7 @@ test('<ReactJWPlayerBase />', t => {
   t.end();
 });
 
-test('<ReactJWPlayerBase> with a supplied class', t => {
+test('<ReactJWPlayerBase> with a supplied class', (t) => {
   const className = 'className';
   const playerId = 'playerId';
   const wrapper = shallow(
@@ -36,7 +36,7 @@ test('<ReactJWPlayerBase> with a supplied class', t => {
   t.end();
 });
 
-test('ReactJWPlayer().shouldComponentUpdate() with no change', t => {
+test('ReactJWPlayer().shouldComponentUpdate() with no change', (t) => {
   const propsOne = {
     config: {
       file: null,
@@ -65,7 +65,7 @@ test('ReactJWPlayer().shouldComponentUpdate() with no change', t => {
   t.end();
 });
 
-test('ReactJWPlayer().shouldComponentUpdate() with playlist change', t => {
+test('ReactJWPlayer().shouldComponentUpdate() with playlist change', (t) => {
   const propsOne = {
     config: {
       file: null,
@@ -94,7 +94,7 @@ test('ReactJWPlayer().shouldComponentUpdate() with playlist change', t => {
   t.end();
 });
 
-test('ReactJWPlayer().shouldComponentUpdate() with file change', t => {
+test('ReactJWPlayer().shouldComponentUpdate() with file change', (t) => {
   const propsOne = {
     config: {
       file: 'file',
@@ -123,7 +123,7 @@ test('ReactJWPlayer().shouldComponentUpdate() with file change', t => {
   t.end();
 });
 
-test('<ReactJWPlayer> when no jwplayer script is present', t => {
+test('<ReactJWPlayer> when no jwplayer script is present', (t) => {
   const cleanup = initializeGlobals();
   const testPlayerId = 'playerOne';
   const initializeCalls = [];
@@ -137,7 +137,7 @@ test('<ReactJWPlayer> when no jwplayer script is present', t => {
   mount(
     <ReactJWPlayerBase
       playerId={testPlayerId}
-      playerScript="script"
+      playerScript='script'
       config={{
         playlist: 'playlist',
       }}
@@ -164,7 +164,7 @@ test('<ReactJWPlayer> when no jwplayer script is present', t => {
   cleanup();
 });
 
-test('<ReactJWPlayer> when jwplayer script is present', t => {
+test('<ReactJWPlayer> when jwplayer script is present', (t) => {
   const cleanup = initializeGlobals();
 
   const testPlayerId = 'playerOne';
@@ -186,7 +186,7 @@ test('<ReactJWPlayer> when jwplayer script is present', t => {
   mount(
     <ReactJWPlayerBase
       playerId={testPlayerId}
-      playerScript="script"
+      playerScript='script'
       config={{
         playlist: 'playlist',
       }}
@@ -196,15 +196,15 @@ test('<ReactJWPlayer> when jwplayer script is present', t => {
   mount(
     <ReactJWPlayerBase
       playerId={testPlayerIdTwo}
-      playerScript="script"
-      playlist="playlist"
+      playerScript='script'
+      playlist='playlist'
     />,
   );
 
   mount(
     <ReactJWPlayerBase
       playerId={testPlayerIdThree}
-      playerScript="script"
+      playerScript='script'
       playlist={testArrayPlaylist}
     />,
   );
@@ -227,7 +227,7 @@ test('<ReactJWPlayer> when jwplayer script is present', t => {
   cleanup();
 });
 
-test('<ReactJWPlayer> componentDidUpdate()', t => {
+test('<ReactJWPlayer> componentDidUpdate()', (t) => {
   const cleanup = initializeGlobals();
   let initializeDidRun;
 

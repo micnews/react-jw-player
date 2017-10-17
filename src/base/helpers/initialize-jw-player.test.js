@@ -2,7 +2,7 @@
 import test from 'tape';
 import initializeJWPlayer from './initialize-jw-player';
 
-test('initializeJWPlayer()', t => {
+test('initializeJWPlayer()', (t) => {
   let setupCalled = false;
   let setupArgs;
 

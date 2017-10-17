@@ -1,5 +1,15 @@
 {
   "extends": [
     "mic/flow"
-  ]
+  ],
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.js"
+        ]
+      }
+    ]
+  }
 }

@@ -1,5 +1,4 @@
 /* @flow */
-/* eslint-disable no-unused-vars */
 
 type OptsType = {
   config: any,
@@ -10,7 +9,7 @@ type OptsType = {
 const initializeJWPlayer = ({ config, events, player }: OptsType) => {
   player.setup(config);
 
-  Object.keys(events).forEach(key => {
+  Object.keys(events).forEach((key) => {
     player.on(key, events[key]);
   });
 };

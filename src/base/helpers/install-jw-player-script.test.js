@@ -2,7 +2,7 @@
 import test from 'tape';
 import installJWPlayerScript from './install-jw-player-script';
 
-test('installJWPlayerScript()', t => {
+test('installJWPlayerScript()', (t) => {
   let createElementCalled = false;
   let createElementTag;
   let appendChildElement;

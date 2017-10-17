@@ -1,4 +1,5 @@
 /* @flow */
+
 type OptsType = {
   context: any,
   onLoadCallback: Function,

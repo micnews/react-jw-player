@@ -7,7 +7,7 @@ import installJWPlayerScript from './helpers/install-jw-player-script';
 
 const UNIQUE_SCRIPT_ID = 'jw-player-script';
 
-type Props = {
+type PropsType = {
   config: {
     file?: string,
     playlist?: string | Array<any>,
@@ -18,10 +18,10 @@ type Props = {
   playerScript: string,
 };
 
-class ReactJWPlayerBase extends Component<Props, *> {
+class ReactJWPlayerBase extends Component<PropsType, *> {
   static defaultProps: any;
 
-  constructor(props: Props) {
+  constructor(props: PropsType) {
     super(props);
     this.initializeJWPlayer = this.initializeJWPlayer.bind(this);
   }
@@ -51,12 +51,12 @@ class ReactJWPlayerBase extends Component<Props, *> {
     }
   }
 
-  shouldComponentUpdate(newProps: Props) {
-    const oldConfig = this.props.config;
-    const newConfig = newProps.config;
+  shouldComponentUpdate(newProps: PropsType) {
+    const { file, playlist } = this.props.config;
+    const { file: newFile, playlist: newPlaylist } = newProps.config;
 
-    const playlistHasChanged = oldConfig.playlist !== newConfig.playlist;
-    const fileHasChanged = oldConfig.file !== newConfig.file;
+    const fileHasChanged = file !== newFile;
+    const playlistHasChanged = playlist !== newPlaylist;
 
     return playlistHasChanged || fileHasChanged;
   }

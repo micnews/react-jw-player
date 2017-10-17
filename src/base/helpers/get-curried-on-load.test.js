@@ -2,7 +2,7 @@
 import test from 'tape';
 import getCurriedOnLoad from './get-curried-on-load';
 
-test('getCurriedOnLoad()', t => {
+test('getCurriedOnLoad()', (t) => {
   let firstFunctionCalled = false;
   let secondFunctionCalled = false;
 
