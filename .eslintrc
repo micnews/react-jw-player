@@ -1,36 +1,5 @@
 {
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 2017
-  }, 
   "extends": [
-    "airbnb",
-    "prettier",
-    "prettier/flowtype",
-    "prettier/react"
-  ],
-  "plugins": [
-    "flowtype",
-    "prettier"
-  ],
-  "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "trailingComma": 'all',
-        "parser": flow
-      }
-    ],
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
-      }
-    ],
-    "flowtype/define-flow-type": 2
-  }
+    "mic/flow"
+  ]
 }
