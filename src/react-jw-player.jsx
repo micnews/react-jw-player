@@ -22,6 +22,9 @@ class ReactJWPlayer extends Component {
     };
     this.eventHandlers = createEventHandlers(this);
     this.uniqueScriptId = 'jw-player-script';
+    if (props && props.playerId) {
+      this.uniqueScriptId += `-${props.playerId}`;
+    }
     this._initialize = this._initialize.bind(this);
   }
   componentDidMount() {
