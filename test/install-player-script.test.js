@@ -26,14 +26,12 @@ test('installPlayerScript()', (t) => {
   const mockOnLoadCallback = 'onLoadCallback';
   const mockScriptSrc = 'scriptSrc';
   const mockUniqueScriptId = 'uniqueScriptId';
-  const mockPlayerId = 'playerId';
 
   const opts = {
     context: mockContext,
     onLoadCallback: mockOnLoadCallback,
     scriptSrc: mockScriptSrc,
     uniqueScriptId: mockUniqueScriptId,
-    playerId: mockPlayerId,
   };
 
   t.doesNotThrow(installPlayerScript.bind(null, opts), 'it does not error');
