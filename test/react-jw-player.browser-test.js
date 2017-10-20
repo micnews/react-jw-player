@@ -17,12 +17,13 @@ test('<ReactJWPlayer> when no jwplayer script is present', (t) => {
 
   ReactJWPlayer.prototype._initialize = stubbedInitialize;
 
-  mount(<
-        ReactJWPlayer playerId={testPlayerId}
-    playerScript='script'
-    playlist='playlist'
-  />,
-    );
+  mount(
+    <ReactJWPlayer
+      playerId={testPlayerId}
+      playerScript='script'
+      playlist='playlist'
+    />,
+  );
 
   const script = document.querySelector(`#jw-player-script-${testPlayerId}`);
   t.ok(script, 'it installs the jw player script');
@@ -31,9 +32,9 @@ test('<ReactJWPlayer> when no jwplayer script is present', (t) => {
 
   script.onload();
   t.deepEqual(
-        initializeCalls, [testPlayerId],
-        'script onload calls initialize on the mounted component',
-    );
+    initializeCalls, [testPlayerId],
+    'script onload calls initialize on the mounted component',
+  );
 
   t.end();
 });
@@ -53,30 +54,34 @@ test('<ReactJWPlayer> when jwplayer script is present', (t) => {
 
   ReactJWPlayer.prototype._initialize = stubbedInitialize;
 
-  mount(<
-        ReactJWPlayer playerId={testPlayerId}
-    playerScript='script'
-    playlist='playlist'
-  />,
-    );
+  mount(
+    <ReactJWPlayer
+      playerId={testPlayerId}
+      playerScript='script'
+      playlist='playlist'
+    />,
+  );
 
-  mount(<
-        ReactJWPlayer playerId={testPlayerIdTwo}
-    playerScript='script'
-    playlist='playlist'
-  />,
-    );
+  mount(
+    <ReactJWPlayer
+      playerId={testPlayerIdTwo}
+      playerScript='script'
+      playlist='playlist'
+    />,
+  );
 
-  mount(<
-        ReactJWPlayer playerId={testPlayerIdThree}
-    playerScript='script'
-    playlist={testArrayPlaylist}
-  />,
-    );
+  mount(
+    <ReactJWPlayer
+      playerId={testPlayerIdThree}
+      playerScript='script'
+      playlist={testArrayPlaylist}
+    />,
+  );
 
   const script = document.querySelector(`#jw-player-script-${testPlayerId}`);
   const scriptTwo = document.querySelector(`#jw-player-script-${testPlayerIdTwo}`);
   const scriptThree = document.querySelector(`#jw-player-script-${testPlayerIdThree}`);
+
   t.equal(typeof script.onload, 'function', 'it sets script.onload to a function');
   t.equal(typeof scriptTwo.onload, 'function', 'it sets script.onload to a function');
   t.equal(typeof scriptThree.onload, 'function', 'it sets script.onload to a function');
@@ -84,10 +89,11 @@ test('<ReactJWPlayer> when jwplayer script is present', (t) => {
   script.onload();
   scriptTwo.onload();
   scriptThree.onload();
+
   t.deepEqual(
-        initializeCalls, [testPlayerId, testPlayerIdTwo, testPlayerIdThree],
-        'script onload calls initialize on all mounted component',
-    );
+    initializeCalls, [testPlayerId, testPlayerIdTwo, testPlayerIdThree],
+    'script onload calls initialize on all mounted component',
+  );
 
   t.end();
 });
@@ -107,26 +113,26 @@ test('<ReactJWPlayer> componentDidUpdate()', (t) => {
   }
 
   t.doesNotThrow(
-        () => componentDidUpdate(),
-        'it runs without error when jwplayer has not initialized',
-    );
+    () => componentDidUpdate(),
+    'it runs without error when jwplayer has not initialized',
+  );
 
   t.notOk(
-        initializeDidRun,
-        'it does not call this._initialize() when jwplayer has not initialized yet',
-    );
+    initializeDidRun,
+    'it does not call this._initialize() when jwplayer has not initialized yet',
+  );
 
   global.window.jwplayer = () => 'jwplayer';
 
   t.doesNotThrow(
-        () => componentDidUpdate(),
-        'it runs without error when jwplayer has initialized',
-    );
+    () => componentDidUpdate(),
+    'it runs without error when jwplayer has initialized',
+  );
 
   t.ok(
-        initializeDidRun,
-        'it does call this._initialize() when jwplayer has not initialized yet',
-    );
+    initializeDidRun,
+    'it does call this._initialize() when jwplayer has not initialized yet',
+  );
 
   t.end();
 });
