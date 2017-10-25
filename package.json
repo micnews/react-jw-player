@@ -11,7 +11,8 @@
     "test": "npm run lint && npm run test:unit && npm run test:browser",
     "test:unit": "babel-tape-runner ./test/*.test.js* | faucet",
     "test:browser": "babel-tape-runner ./test/*.browser-test.js* | faucet",
-    "watch": "babel src --out-dir dist --watch"
+    "watch": "babel src --out-dir dist --watch",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
