@@ -1,6 +1,6 @@
 {
   "name": "react-jw-player",
-  "version": "1.12.0",
+  "version": "1.12.2",
   "description": "A React component for launching JW Player instances on the client.",
   "main": "dist/react-jw-player.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "test": "npm run lint && npm run test:unit && npm run test:browser",
     "test:unit": "babel-tape-runner ./test/*.test.js* | faucet",
     "test:browser": "babel-tape-runner ./test/*.browser-test.js* | faucet",
-    "watch": "babel src --out-dir dist --watch"
+    "watch": "babel src --out-dir dist --watch",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
