@@ -3,4 +3,3 @@ function onError(event) {
 }
   
 export default onError;
-  
