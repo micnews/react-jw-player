@@ -5,6 +5,7 @@ import onMute from './on-mute';
 import onPlay from './on-play';
 import onTime from './on-time';
 import onVideoLoad from './on-video-load';
+import onError from './on-error';
 
 function createEventHandlers(component) {
   return {
@@ -15,6 +16,7 @@ function createEventHandlers(component) {
     onPlay: onPlay.bind(component),
     onTime: onTime.bind(component),
     onVideoLoad: onVideoLoad.bind(component),
+    onError: onError.bind(component),
   };
 }
 
