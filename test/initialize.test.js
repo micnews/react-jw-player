@@ -31,6 +31,8 @@ test('initialize()', (t) => {
       onOneHundredPercent: 'onOneHundredPercent',
       onPause: 'onPause',
       onReady: 'onReady',
+      onBuffer: 'onBuffer',
+      onBufferChange: 'onBufferChange',
     },
   };
 
@@ -131,6 +133,16 @@ test('initialize()', (t) => {
   t.equal(
     playerFunctions.time, mockComponent.eventHandlers.onTime,
     'it sets the time event with the onTime() eventHandler',
+  );
+
+  t.equal(
+    playerFunctions.buffer, mockComponent.props.onBuffer,
+    'it sets the time event with the onBuffer() eventHandler',
+  );
+
+  t.equal(
+    playerFunctions.bufferChange, mockComponent.props.onBufferChange,
+    'it sets the time event with the onBufferChange() eventHandler',
   );
 
   t.end();

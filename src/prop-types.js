@@ -33,6 +33,8 @@ const propTypes = {
   onTwentyFivePercent: PropTypes.func,
   onUnmute: PropTypes.func,
   onVideoLoad: PropTypes.func,
+  onBuffer: PropTypes.func,
+  onBufferChange: PropTypes.func,
   playerId: PropTypes.string.isRequired,
   playerScript: PropTypes.string.isRequired,
   playlist: PropTypes.oneOfType([
