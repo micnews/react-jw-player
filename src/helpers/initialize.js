@@ -19,6 +19,8 @@ function initialize({ component, player, playerOpts }) {
   player.on('playlistItem', component.eventHandlers.onVideoLoad);
   player.on('time', component.eventHandlers.onTime);
   player.on('beforeComplete', component.props.onOneHundredPercent);
+  player.on('buffer', component.props.onBuffer);
+  player.on('bufferChange', component.props.onBufferChange);
 }
 
 export default initialize;
