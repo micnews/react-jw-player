@@ -28,6 +28,7 @@ test('initialize()', (t) => {
     props: {
       onAdPause: 'onAdPause',
       onAdSkipped: 'onAdSkipped',
+      onAdComplete: 'onAdComplete',
       onOneHundredPercent: 'onOneHundredPercent',
       onPause: 'onPause',
       onReady: 'onReady',
@@ -83,6 +84,11 @@ test('initialize()', (t) => {
   t.equal(
     playerFunctions.adSkipped, mockComponent.props.onAdSkipped,
     'it sets the adSkipped event with the onAdSkipped() prop',
+  );
+
+  t.equal(
+    playerFunctions.adComplete, mockComponent.props.onAdComplete,
+    'it sets the adComplete event with the onAdComplete() prop',
   );
 
   t.equal(

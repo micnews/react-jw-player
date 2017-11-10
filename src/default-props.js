@@ -8,6 +8,7 @@ const defaultProps = {
   onAdPlay: noOp,
   onAdResume: noOp,
   onAdSkipped: noOp,
+  onAdComplete: noOp,
   onEnterFullScreen: noOp,
   onExitFullScreen: noOp,
   onMute: noOp,

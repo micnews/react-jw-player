@@ -163,6 +163,12 @@ These are props that modify the basic behavior of the component.
   * Arguments:
     * `event`
       * This is the event object passed back from JW Player itself.
+* `onAdComplete(event)`
+  * A function that is run when an ad has finished playing.
+  * Type: `function`
+  * Arguments:
+    * `event`
+      * This is the event object passed back from JW Player itself.
 
 ## Optional Player Event Hook Props
 * `onAutoStart(event)`
