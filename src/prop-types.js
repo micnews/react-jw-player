@@ -14,6 +14,7 @@ const propTypes = {
   onAdPlay: PropTypes.func,
   onAdResume: PropTypes.func,
   onAdSkipped: PropTypes.func,
+  onAdComplete: PropTypes.func,
   onAutoStart: PropTypes.func,
   onEnterFullScreen: PropTypes.func,
   onError: PropTypes.func,
