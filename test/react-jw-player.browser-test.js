@@ -25,7 +25,7 @@ test('<ReactJWPlayer> when no jwplayer script is present', (t) => {
     />,
   );
 
-  const script = document.querySelector('#jw-player-script');
+  const script = document.querySelector(`#jw-player-script-${testPlayerId}`);
   t.ok(script, 'it installs the jw player script');
 
   t.equal(typeof script.onload, 'function', 'it sets script.onload to a function');
@@ -78,10 +78,18 @@ test('<ReactJWPlayer> when jwplayer script is present', (t) => {
     />,
   );
 
-  const script = document.querySelector('#jw-player-script');
+  const script = document.querySelector(`#jw-player-script-${testPlayerId}`);
+  const scriptTwo = document.querySelector(`#jw-player-script-${testPlayerIdTwo}`);
+  const scriptThree = document.querySelector(`#jw-player-script-${testPlayerIdThree}`);
+
   t.equal(typeof script.onload, 'function', 'it sets script.onload to a function');
+  t.equal(typeof scriptTwo.onload, 'function', 'it sets script.onload to a function');
+  t.equal(typeof scriptThree.onload, 'function', 'it sets script.onload to a function');
 
   script.onload();
+  scriptTwo.onload();
+  scriptThree.onload();
+
   t.deepEqual(
     initializeCalls, [testPlayerId, testPlayerIdTwo, testPlayerIdThree],
     'script onload calls initialize on all mounted component',

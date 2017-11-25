@@ -22,16 +22,19 @@ class ReactJWPlayer extends Component {
     };
     this.eventHandlers = createEventHandlers(this);
     this.uniqueScriptId = 'jw-player-script';
+    if (props && props.playerId) {
+      this.uniqueScriptId += `-${props.playerId}`;
+    }
     this._initialize = this._initialize.bind(this);
   }
   componentDidMount() {
     const isJWPlayerScriptLoaded = !!window.jwplayer;
-    if (isJWPlayerScriptLoaded) {
+    const existingScript = document.getElementById(this.uniqueScriptId);
+
+    if (isJWPlayerScriptLoaded && existingScript) {
       this._initialize();
       return;
     }
-
-    const existingScript = document.getElementById(this.uniqueScriptId);
 
     if (!existingScript) {
       installPlayerScript({
@@ -62,6 +65,18 @@ class ReactJWPlayer extends Component {
     const component = this;
     const player = window.jwplayer(this.props.playerId);
     const playerOpts = getPlayerOpts(this.props);
+
+    // initialize player configs object
+    window.jwplayer.playerConfigs = window.jwplayer.playerConfigs || {};
+
+    // check if the current player's config was already cached
+    if (window.jwplayer.playerConfigs[this.props.playerId]) {
+      // apply the cached config
+      window.jwplayer.defaults = window.jwplayer.playerConfigs[this.props.playerId];
+    } else {
+      // cache the new config
+      window.jwplayer.playerConfigs[this.props.playerId] = window.jwplayer.defaults;
+    }
 
     initialize({ component, player, playerOpts });
   }
