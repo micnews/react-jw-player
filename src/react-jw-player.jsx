@@ -22,16 +22,24 @@ class ReactJWPlayer extends Component {
     };
     this.eventHandlers = createEventHandlers(this);
     this.uniqueScriptId = 'jw-player-script';
-    if (props && props.playerId) {
+
+    if (props.useMultiplePlayers) {
       this.uniqueScriptId += `-${props.playerId}`;
     }
+
     this._initialize = this._initialize.bind(this);
   }
   componentDidMount() {
     const isJWPlayerScriptLoaded = !!window.jwplayer;
     const existingScript = document.getElementById(this.uniqueScriptId);
+    const isUsingMultiplePlayers = this.props.useMultiplePlayers;
 
-    if (isJWPlayerScriptLoaded && existingScript) {
+    if (!isUsingMultiplePlayers && isJWPlayerScriptLoaded) {
+      this._initialize();
+      return;
+    }
+
+    if (isUsingMultiplePlayers && existingScript) {
       this._initialize();
       return;
     }
@@ -62,21 +70,22 @@ class ReactJWPlayer extends Component {
     removeJWPlayerInstance(this.props.playerId, window);
   }
   _initialize() {
+    const { playerId, useMultiplePlayers } = this.props;
+
+    if (useMultiplePlayers) {
+      const playerConfigs = window.__JW_PLAYER_CONFIGS__ = (window.__JW_PLAYER_CONFIGS__ || {});
+      const existingConfig = playerConfigs[playerId];
+
+      if (existingConfig) {
+        window.jwplayer.defaults = existingConfig;
+      } else {
+        playerConfigs[playerId] = window.jwplayer.defaults;
+      }
+    }
+
     const component = this;
     const player = window.jwplayer(this.props.playerId);
     const playerOpts = getPlayerOpts(this.props);
-
-    // initialize player configs object
-    window.jwplayer.playerConfigs = window.jwplayer.playerConfigs || {};
-
-    // check if the current player's config was already cached
-    if (window.jwplayer.playerConfigs[this.props.playerId]) {
-      // apply the cached config
-      window.jwplayer.defaults = window.jwplayer.playerConfigs[this.props.playerId];
-    } else {
-      // cache the new config
-      window.jwplayer.playerConfigs[this.props.playerId] = window.jwplayer.defaults;
-    }
 
     initialize({ component, player, playerOpts });
   }
