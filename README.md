@@ -137,6 +137,9 @@ These are props that modify the basic behavior of the component.
 * `licenseKey`
   * License Key as supplied in the jwplayer dashboard, under: Players > Tools > Downloads > JW Player X (Self-Hosted)
   * Type: `string`
+* `useMultiplePlayers`
+  * EXPERIMENTAL - Allows you to load multiple player scripts and still load the proper configuration. Expect bugs, but report them!
+  * Type: `boolean`
 
 ## Optional Advertising Event Hook Props
 * `onAdPause(event)`
