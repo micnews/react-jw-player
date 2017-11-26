@@ -39,7 +39,7 @@ test('<ReactJWPlayer> when no jwplayer script is present', (t) => {
   t.end();
 });
 
-test('<ReactJWPlayer> when jwplayer script is present and useMultiplePlayers=false', (t) => {
+test('<ReactJWPlayer> when jwplayer script is present and useMultiplePlayerScripts=false', (t) => {
   const testPlayerId = 'playerOne';
   const testPlayerIdTwo = 'playerTwo';
   const testPlayerIdThree = 'playerThree';
@@ -92,7 +92,7 @@ test('<ReactJWPlayer> when jwplayer script is present and useMultiplePlayers=fal
   t.end();
 });
 
-test('<ReactJWPlayer> when jwplayer script is present and useMultiplePlayers=true', (t) => {
+test('<ReactJWPlayer> when jwplayer script is present and useMultiplePlayerScripts=true', (t) => {
   const testPlayerId = 'playerOne';
   const testPlayerIdTwo = 'playerTwo';
   const testPlayerIdThree = 'playerThree';
@@ -112,7 +112,7 @@ test('<ReactJWPlayer> when jwplayer script is present and useMultiplePlayers=tru
       playerId={testPlayerId}
       playerScript='script'
       playlist='playlist'
-      useMultiplePlayers={true}
+      useMultiplePlayerScripts={true}
     />,
   );
 
@@ -121,7 +121,7 @@ test('<ReactJWPlayer> when jwplayer script is present and useMultiplePlayers=tru
       playerId={testPlayerIdTwo}
       playerScript='script'
       playlist='playlist'
-      useMultiplePlayers={true}
+      useMultiplePlayerScripts={true}
     />,
   );
 
@@ -130,7 +130,7 @@ test('<ReactJWPlayer> when jwplayer script is present and useMultiplePlayers=tru
       playerId={testPlayerIdThree}
       playerScript='script'
       playlist={testArrayPlaylist}
-      useMultiplePlayers={true}
+      useMultiplePlayerScripts={true}
     />,
   );
 

@@ -24,7 +24,7 @@ class ReactJWPlayer extends Component {
     this.eventHandlers = createEventHandlers(this);
     this.uniqueScriptId = 'jw-player-script';
 
-    if (props.useMultiplePlayers) {
+    if (props.useMultiplePlayerScripts) {
       this.uniqueScriptId += `-${props.playerId}`;
     }
 
@@ -33,14 +33,14 @@ class ReactJWPlayer extends Component {
   componentDidMount() {
     const isJWPlayerScriptLoaded = !!window.jwplayer;
     const existingScript = document.getElementById(this.uniqueScriptId);
-    const isUsingMultiplePlayers = this.props.useMultiplePlayers;
+    const isUsingMultiplePlayerScripts = this.props.useMultiplePlayerScripts;
 
-    if (!isUsingMultiplePlayers && isJWPlayerScriptLoaded) {
+    if (!isUsingMultiplePlayerScripts && isJWPlayerScriptLoaded) {
       this._initialize();
       return;
     }
 
-    if (isUsingMultiplePlayers && existingScript) {
+    if (isUsingMultiplePlayerScripts && existingScript) {
       this._initialize();
       return;
     }
@@ -71,9 +71,9 @@ class ReactJWPlayer extends Component {
     removeJWPlayerInstance(this.props.playerId, window);
   }
   _initialize() {
-    const { playerId, useMultiplePlayers } = this.props;
+    const { playerId, useMultiplePlayerScripts } = this.props;
 
-    if (useMultiplePlayers) {
+    if (useMultiplePlayerScripts) {
       setJWPlayerDefaults({ context: window, playerId });
     }
 
