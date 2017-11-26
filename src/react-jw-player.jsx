@@ -6,6 +6,7 @@ import getPlayerOpts from './helpers/get-player-opts';
 import initialize from './helpers/initialize';
 import installPlayerScript from './helpers/install-player-script';
 import removeJWPlayerInstance from './helpers/remove-jw-player-instance';
+import setJWPlayerDefaults from './helpers/set-jw-player-defaults';
 
 import defaultProps from './default-props';
 import propTypes from './prop-types';
@@ -73,14 +74,7 @@ class ReactJWPlayer extends Component {
     const { playerId, useMultiplePlayers } = this.props;
 
     if (useMultiplePlayers) {
-      const playerConfigs = window.__JW_PLAYER_CONFIGS__ = (window.__JW_PLAYER_CONFIGS__ || {});
-      const existingConfig = playerConfigs[playerId];
-
-      if (existingConfig) {
-        window.jwplayer.defaults = existingConfig;
-      } else {
-        playerConfigs[playerId] = window.jwplayer.defaults;
-      }
+      setJWPlayerDefaults({ context: window, playerId });
     }
 
     const component = this;
