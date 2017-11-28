@@ -67,7 +67,7 @@ test('ReactJWPlayer().shouldComponentUpdate() with no change', (t) => {
     playlist: 'playlist',
   };
 
-  const shouldComponentUpdate = new ReactJWPlayer().shouldComponentUpdate.bind({
+  const shouldComponentUpdate = new ReactJWPlayer({}).shouldComponentUpdate.bind({
     props: propsOne,
   });
 
@@ -90,7 +90,7 @@ test('ReactJWPlayer().shouldComponentUpdate() with playlist change', (t) => {
     playlist: 'playlistTwo',
   };
 
-  const shouldComponentUpdate = new ReactJWPlayer().shouldComponentUpdate.bind({
+  const shouldComponentUpdate = new ReactJWPlayer({}).shouldComponentUpdate.bind({
     props: propsOne,
   });
 
@@ -113,7 +113,7 @@ test('ReactJWPlayer().shouldComponentUpdate() with file change', (t) => {
     playlist: null,
   };
 
-  const shouldComponentUpdate = new ReactJWPlayer().shouldComponentUpdate.bind({
+  const shouldComponentUpdate = new ReactJWPlayer({}).shouldComponentUpdate.bind({
     props: propsOne,
   });
 

@@ -42,6 +42,7 @@ const propTypes = {
     PropTypes.string,
     PropTypes.array,
   ]),
+  useMultiplePlayerScripts: PropTypes.bool,
 };
 
 export default propTypes;
