@@ -8,6 +8,7 @@ const defaultProps = {
   onAdPlay: noOp,
   onAdResume: noOp,
   onAdSkipped: noOp,
+  onAdComplete: noOp,
   onEnterFullScreen: noOp,
   onExitFullScreen: noOp,
   onMute: noOp,
@@ -30,7 +31,10 @@ const defaultProps = {
   onSeventyFivePercent: noOp,
   onNinetyFivePercent: noOp,
   onTime: noOp,
+  onBuffer: noOp,
+  onBufferChange: noOp,
   playlist: '',
+  useMultiplePlayerScripts: false,
 };
 
 export default defaultProps;

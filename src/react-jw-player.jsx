@@ -6,6 +6,7 @@ import getPlayerOpts from './helpers/get-player-opts';
 import initialize from './helpers/initialize';
 import installPlayerScript from './helpers/install-player-script';
 import removeJWPlayerInstance from './helpers/remove-jw-player-instance';
+import setJWPlayerDefaults from './helpers/set-jw-player-defaults';
 
 import defaultProps from './default-props';
 import propTypes from './prop-types';
@@ -22,16 +23,27 @@ class ReactJWPlayer extends Component {
     };
     this.eventHandlers = createEventHandlers(this);
     this.uniqueScriptId = 'jw-player-script';
+
+    if (props.useMultiplePlayerScripts) {
+      this.uniqueScriptId += `-${props.playerId}`;
+    }
+
     this._initialize = this._initialize.bind(this);
   }
   componentDidMount() {
     const isJWPlayerScriptLoaded = !!window.jwplayer;
-    if (isJWPlayerScriptLoaded) {
+    const existingScript = document.getElementById(this.uniqueScriptId);
+    const isUsingMultiplePlayerScripts = this.props.useMultiplePlayerScripts;
+
+    if (!isUsingMultiplePlayerScripts && isJWPlayerScriptLoaded) {
       this._initialize();
       return;
     }
 
-    const existingScript = document.getElementById(this.uniqueScriptId);
+    if (isUsingMultiplePlayerScripts && existingScript) {
+      this._initialize();
+      return;
+    }
 
     if (!existingScript) {
       installPlayerScript({
@@ -59,6 +71,12 @@ class ReactJWPlayer extends Component {
     removeJWPlayerInstance(this.props.playerId, window);
   }
   _initialize() {
+    const { playerId, useMultiplePlayerScripts } = this.props;
+
+    if (useMultiplePlayerScripts) {
+      setJWPlayerDefaults({ context: window, playerId });
+    }
+
     const component = this;
     const player = window.jwplayer(this.props.playerId);
     const playerOpts = getPlayerOpts(this.props);

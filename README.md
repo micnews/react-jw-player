@@ -137,6 +137,9 @@ These are props that modify the basic behavior of the component.
 * `licenseKey`
   * License Key as supplied in the jwplayer dashboard, under: Players > Tools > Downloads > JW Player X (Self-Hosted)
   * Type: `string`
+* `useMultiplePlayerScripts`
+  * EXPERIMENTAL - Allows you to load multiple player scripts and still load the proper configuration. Expect bugs, but report them!
+  * Type: `boolean`
 
 ## Optional Advertising Event Hook Props
 * `onAdPause(event)`
@@ -159,6 +162,12 @@ These are props that modify the basic behavior of the component.
       * This is the event object passed back from JW Player itself.
 * `onAdSkipped(event)`
   * A function that is run when the user skips an advertisement.
+  * Type: `function`
+  * Arguments:
+    * `event`
+      * This is the event object passed back from JW Player itself.
+* `onAdComplete(event)`
+  * A function that is run when an ad has finished playing.
   * Type: `function`
   * Arguments:
     * `event`

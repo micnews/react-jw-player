@@ -12,6 +12,7 @@ function initialize({ component, player, playerOpts }) {
   player.on('adPlay', component.eventHandlers.onAdPlay);
   player.on('adPause', component.props.onAdPause);
   player.on('adSkipped', component.props.onAdSkipped);
+  player.on('adComplete', component.props.onAdComplete);
   player.on('fullscreen', component.eventHandlers.onFullScreen);
   player.on('pause', component.props.onPause);
   player.on('play', component.eventHandlers.onPlay);
@@ -19,6 +20,8 @@ function initialize({ component, player, playerOpts }) {
   player.on('playlistItem', component.eventHandlers.onVideoLoad);
   player.on('time', component.eventHandlers.onTime);
   player.on('beforeComplete', component.props.onOneHundredPercent);
+  player.on('buffer', component.props.onBuffer);
+  player.on('bufferChange', component.props.onBufferChange);
 }
 
 export default initialize;
