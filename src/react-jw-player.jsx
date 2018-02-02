@@ -9,7 +9,7 @@ import removeJWPlayerInstance from './helpers/remove-jw-player-instance';
 import setJWPlayerDefaults from './helpers/set-jw-player-defaults';
 
 import defaultProps from './default-props';
-import propTypes from './prop-types';
+import propTypes from './player-prop-types';
 
 const displayName = 'ReactJWPlayer';
 
