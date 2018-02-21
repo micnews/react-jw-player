@@ -18,7 +18,6 @@ test('initialize()', (t) => {
         onBeforePlayPlayer = player;
       },
       onAdPlay: 'onAdPlay',
-      onError: 'onError',
       onFullScreen: 'onFullScreen',
       onPlay: 'onPlay',
       onMute: 'onMute',
@@ -32,8 +31,10 @@ test('initialize()', (t) => {
       onOneHundredPercent: 'onOneHundredPercent',
       onPause: 'onPause',
       onReady: 'onReady',
+      onError: 'onError',
       onBuffer: 'onBuffer',
       onBufferChange: 'onBufferChange',
+      onSetupError: 'onSetupError',
     },
   };
 
@@ -102,13 +103,13 @@ test('initialize()', (t) => {
   );
 
   t.equal(
-    playerFunctions.setupError, mockComponent.eventHandlers.onError,
-    'it sets the setupError event with the onError() eventHandler',
+    playerFunctions.setupError, mockComponent.props.onSetupError,
+    'it sets the setupError event with the onError() prop',
   );
 
   t.equal(
-    playerFunctions.error, mockComponent.eventHandlers.onError,
-    'it sets the error event with the onError() eventHandler',
+    playerFunctions.error, mockComponent.props.onError,
+    'it sets the error event with the onError() prop',
   );
 
   t.equal(

@@ -228,6 +228,12 @@ These are props that modify the basic behavior of the component.
   * Arguments:
     * `event`
       * This is the event object passed back from JW Player itself.
+* `onSetupError(event)`
+  * A function that is run when the player errors during setup.
+  * Type: `function`
+  * Arguments:
+    * `event`
+      * This is the event object passed back from JW Player itself.
 * `onTime(event)`
   * A function that is run whenever the playback position gets updated.
   * Type: `function`
