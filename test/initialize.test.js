@@ -34,6 +34,7 @@ test('initialize()', (t) => {
       onError: 'onError',
       onBuffer: 'onBuffer',
       onBufferChange: 'onBufferChange',
+      onSetupError: 'onSetupError',
     },
   };
 
@@ -102,7 +103,7 @@ test('initialize()', (t) => {
   );
 
   t.equal(
-    playerFunctions.setupError, mockComponent.props.onError,
+    playerFunctions.setupError, mockComponent.props.onSetupError,
     'it sets the setupError event with the onError() prop',
   );
 
