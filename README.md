@@ -10,7 +10,7 @@
   * [Required Props](#required-props)
   * Optional Props
     * [Configuration](#optional-configuration-props)
-    * Event Hooks
+    * [Event Hooks](#event-hooks)
       * [Advertising](#optional-advertising-event-hook-props)
       * [Player Events](#optional-player-event-hook-props)
       * [Time Events](#optional-time-event-hook-props)
@@ -140,6 +140,16 @@ These are props that modify the basic behavior of the component.
 * `useMultiplePlayerScripts`
   * EXPERIMENTAL - Allows you to load multiple player scripts and still load the proper configuration. Expect bugs, but report them!
   * Type: `boolean`
+
+# Event Hooks
+
+`react-jw-player` dynamically supports all events in JW Player. Simply preface the event name with `on` and pass it in as a prop.
+
+Examples:
+* `ready` => `onReady`
+* `setupError` => `onSetupError`
+
+`react-jw-player` has layered some different functionality on some of these events, so please check the docs below if you find any unexpected behavior!
 
 ## Optional Advertising Event Hook Props
 * `onAdPause(event)`
