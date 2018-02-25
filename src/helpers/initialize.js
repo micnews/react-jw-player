@@ -1,3 +1,5 @@
+import getEventNameFromProp from './get-event-name-from-prop';
+
 function initialize({ component, player, playerOpts }) {
   function _onBeforePlay(event) {
     component.eventHandlers.onBeforePlay(event, player);
@@ -5,23 +7,28 @@ function initialize({ component, player, playerOpts }) {
 
   player.setup(playerOpts);
 
-  player.on('beforePlay', _onBeforePlay);
-  player.on('ready', component.props.onReady);
-  player.on('setupError', component.props.onSetupError);
-  player.on('error', component.props.onError);
-  player.on('adPlay', component.eventHandlers.onAdPlay);
-  player.on('adPause', component.props.onAdPause);
-  player.on('adSkipped', component.props.onAdSkipped);
-  player.on('adComplete', component.props.onAdComplete);
-  player.on('fullscreen', component.eventHandlers.onFullScreen);
-  player.on('pause', component.props.onPause);
-  player.on('play', component.eventHandlers.onPlay);
-  player.on('mute', component.eventHandlers.onMute);
-  player.on('playlistItem', component.eventHandlers.onVideoLoad);
-  player.on('time', component.eventHandlers.onTime);
-  player.on('beforeComplete', component.props.onOneHundredPercent);
-  player.on('buffer', component.props.onBuffer);
-  player.on('bufferChange', component.props.onBufferChange);
+  const eventsToInitialize = {};
+
+  Object.keys(component.props).forEach((prop) => {
+    const eventName = getEventNameFromProp(prop);
+
+    if (eventName) {
+      eventsToInitialize[eventName] = component.props[prop];
+    }
+  });
+
+  eventsToInitialize.adPlay = component.eventHandlers.onAdPlay;
+  eventsToInitialize.beforeComplete = component.props.onOneHundredPercent;
+  eventsToInitialize.beforePlay = _onBeforePlay;
+  eventsToInitialize.fullscreen = component.eventHandlers.onFullScreen;
+  eventsToInitialize.mute = component.eventHandlers.onMute;
+  eventsToInitialize.play = component.eventHandlers.onPlay;
+  eventsToInitialize.playlistItem = component.eventHandlers.onVideoLoad;
+  eventsToInitialize.time = component.eventHandlers.onTime;
+
+  Object.keys(eventsToInitialize).forEach((event) => {
+    player.on(event, eventsToInitialize[event]);
+  });
 }
 
 export default initialize;
