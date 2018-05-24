@@ -80,6 +80,38 @@ test('eventHandlers.onBeforePlay() with preroll prop and player has played', (t)
   t.end();
 });
 
+test('eventHandlers.onBeforePlay() with preroll prop and player has not played but ad has player', (t) => {
+  let generatePrerollUrlCalled = false;
+  let playAdCalled = false;
+
+  const mockCurrentVideo = 'i am the current video';
+
+  const mockComponent = new MockComponent({
+    initialState: { hasPlayed: false, adHasPlayed: true },
+    generatePrerollUrl() {
+      generatePrerollUrlCalled = true;
+    },
+  });
+
+  const mockJWPlayerInstance = {
+    getPlaylistItem() {
+      return mockCurrentVideo;
+    },
+    playAd() {
+      playAdCalled = true;
+    },
+  };
+
+  const mockEvent = 'event';
+  const onBeforePlay = createEventHandlers(mockComponent).onBeforePlay;
+
+  t.doesNotThrow(onBeforePlay.bind(null, mockEvent, mockJWPlayerInstance), 'it runs without error');
+  t.notOk(generatePrerollUrlCalled, 'it does not call the supplied generatePrerollUrl() prop');
+  t.notOk(playAdCalled, 'it does not call playAd() on the supplied player instance');
+
+  t.end();
+});
+
 test('eventHandlers.onBeforePlay() without preroll prop and player has not played', (t) => {
   let playAdCalled = false;
 
