@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import isEqual from 'react-fast-compare';
 
 import createEventHandlers from './create-event-handlers';
 import getCurriedOnLoad from './helpers/get-curried-on-load';
@@ -58,7 +59,7 @@ class ReactJWPlayer extends Component {
   }
   shouldComponentUpdate(nextProps) {
     const hasFileChanged = this.props.file !== nextProps.file;
-    const hasPlaylistChanged = this.props.playlist !== nextProps.playlist;
+    const hasPlaylistChanged = !isEqual(this.props.playlist, nextProps.playlist);
 
     return hasFileChanged || hasPlaylistChanged;
   }
