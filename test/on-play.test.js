@@ -55,7 +55,7 @@ test('eventHandlers.onPlay() when video has played before and is currently pause
     },
   });
 
-  const mockEvent = { oldstate: 'buffering' };
+  const mockEvent = { oldstate: 'paused' };
   const onPlay = createEventHandlers(mockComponent).onPlay;
 
   t.doesNotThrow(onPlay.bind(null, mockEvent), 'it runs without error');
