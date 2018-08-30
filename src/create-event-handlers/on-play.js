@@ -4,7 +4,7 @@ function onPlay(event) {
       hasPlayed: true,
     });
     this.props.onAutoStart(event);
-  } else if (this.state.hasPlayed && event.oldstate === 'buffering') {
+  } else if (this.state.hasPlayed && (event.oldstate === 'buffering' || event.oldstate === 'paused')) {
     this.props.onResume(event);
   } else {
     this.props.onPlay(event);
