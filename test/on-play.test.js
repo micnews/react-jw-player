@@ -35,7 +35,7 @@ test('eventHandlers.onPlay() when event.playReason is autostart', (t) => {
   t.end();
 });
 
-test('eventHandlers.onPlay() when video has played before and is currently paused', (t) => {
+test('eventHandlers.onPlay() when video has played before and is currently paused for version 7 and lower', (t) => {
   let onAutoStartCalled = false;
   let onPlayCalled = false;
   let onResumeCalled = false;
@@ -56,6 +56,39 @@ test('eventHandlers.onPlay() when video has played before and is currently pause
   });
 
   const mockEvent = { oldstate: 'paused' };
+  const onPlay = createEventHandlers(mockComponent).onPlay;
+
+  t.doesNotThrow(onPlay.bind(null, mockEvent), 'it runs without error');
+  t.ok(onResumeCalled, 'it calls the supplied onResume() prop');
+  t.notOk(onPlayCalled, 'it does not call onPlay()');
+  t.notOk(onAutoStartCalled, 'it does not call onAutoStart()');
+  t.equal(onResumeArgs, mockEvent, 'it passes the event to onResume()');
+  t.equal(mockComponent.state, mockComponent.props.initialState, 'it does not set state');
+
+  t.end();
+});
+
+test('eventHandlers.onPlay() when video has played before and is currently paused for version 8+', (t) => {
+  let onAutoStartCalled = false;
+  let onPlayCalled = false;
+  let onResumeCalled = false;
+  let onResumeArgs;
+
+  const mockComponent = new MockComponent({
+    initialState: { hasPlayed: true },
+    onAutoStart() {
+      onAutoStartCalled = true;
+    },
+    onPlay() {
+      onPlayCalled = true;
+    },
+    onResume(event) {
+      onResumeCalled = true;
+      onResumeArgs = event;
+    },
+  });
+
+  const mockEvent = { oldstate: 'buffering' };
   const onPlay = createEventHandlers(mockComponent).onPlay;
 
   t.doesNotThrow(onPlay.bind(null, mockEvent), 'it runs without error');
