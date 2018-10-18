@@ -91,7 +91,9 @@ class ReactJWPlayer extends Component {
   }
   render() {
     return (
-      <div ref={this._setVideoRef} className={this.props.className} >
+      <div className={this.props.className} >
+        <div ref={this._setVideoRef}>
+        </div>
       </div>
     );
   }
