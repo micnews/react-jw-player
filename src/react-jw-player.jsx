@@ -76,8 +76,6 @@ class ReactJWPlayer extends Component {
   _initialize() {
     const { playerId, useMultiplePlayerScripts } = this.props;
 
-    this.videoRef.id = playerId;
-
     if (useMultiplePlayerScripts) {
       setJWPlayerDefaults({ context: window, playerId });
     }
@@ -94,7 +92,7 @@ class ReactJWPlayer extends Component {
   render() {
     return (
       <div className={this.props.className} >
-        <div ref={this._setVideoRef} />
+        <div id={this.props.playerId} ref={this._setVideoRef} />
       </div>
     );
   }
