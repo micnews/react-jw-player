@@ -29,7 +29,9 @@ class ReactJWPlayer extends Component {
       this.uniqueScriptId += `-${props.playerId}`;
     }
 
+    this.videoRef = null;
     this._initialize = this._initialize.bind(this);
+    this._setVideoRef = this._setVideoRef.bind(this);
   }
   componentDidMount() {
     const isJWPlayerScriptLoaded = !!window.jwplayer;
@@ -64,12 +66,12 @@ class ReactJWPlayer extends Component {
     return hasFileChanged || hasPlaylistChanged;
   }
   componentDidUpdate() {
-    if (window.jwplayer && window.jwplayer(this.props.playerId)) {
+    if (window.jwplayer && window.jwplayer(this.videoRef)) {
       this._initialize();
     }
   }
   componentWillUnmount() {
-    removeJWPlayerInstance(this.props.playerId, window);
+    removeJWPlayerInstance(this.videoRef, window);
   }
   _initialize() {
     const { playerId, useMultiplePlayerScripts } = this.props;
@@ -79,19 +81,19 @@ class ReactJWPlayer extends Component {
     }
 
     const component = this;
-    const player = window.jwplayer(this.props.playerId);
+    const player = window.jwplayer(this.videoRef);
     const playerOpts = getPlayerOpts(this.props);
 
     initialize({ component, player, playerOpts });
   }
+  _setVideoRef(element) {
+    this.videoRef = element;
+  }
   render() {
     return (
-      <div
-        className={this.props.className}
-        dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
-          __html: `<div id="${this.props.playerId}"></div>`,
-        }}
-      />
+      <div className={this.props.className} >
+        <div id={this.props.playerId} ref={this._setVideoRef} />
+      </div>
     );
   }
 }

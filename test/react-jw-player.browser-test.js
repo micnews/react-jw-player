@@ -7,6 +7,35 @@ import ReactJWPlayer from '../src/react-jw-player';
 
 jsdomGlobal();
 
+test('<ReactJWPlayer> can get video DOM element reference', (t) => {
+  const testPlayerId = 'playerOne';
+  let videoRef = null;
+
+  function stubbedInitialize() { }
+
+  function stubbedSetVideoRef(element) {
+    videoRef = element;
+  }
+
+  ReactJWPlayer.prototype._initialize = stubbedInitialize;
+  ReactJWPlayer.prototype._setVideoRef = stubbedSetVideoRef;
+
+  mount(
+    <ReactJWPlayer
+      playerId={testPlayerId}
+      playerScript='script'
+      playlist='playlist'
+    />,
+  );
+
+  t.ok(
+    !!videoRef,
+    'can get player ref',
+  );
+
+  t.end();
+});
+
 test('<ReactJWPlayer> when no jwplayer script is present', (t) => {
   const testPlayerId = 'playerOne';
   const initializeCalls = [];
