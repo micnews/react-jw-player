@@ -1,4 +1,4 @@
-# react-jw-player :movie_camera: [![Build Status](https://travis-ci.com/micnews/react-jw-player.svg?token=oCXvx519mb3xud77T3xi&branch=master)](https://travis-ci.com/micnews/react-jw-player)
+# `@firstlookmedia/react-jw-player` :movie_camera: [![Build Status](https://travis-ci.com/micnews/react-jw-player.svg?token=oCXvx519mb3xud77T3xi&branch=master)](https://travis-ci.com/micnews/react-jw-player)
 
 `<ReactJWPlayer>` is a React Component for initializing client-side instances of JW Player. Simply give `<ReactJWPlayer>` the id of your player script, and the id of a JW Player video or playlist. The component comes with several event hooks that can be accessed through component props.
 
@@ -17,11 +17,14 @@
 * [Example Container Component](#example-container-component)
 * [Contributing](#contributing)
 
-## Installation
 
-```shell
-npm install react-jw-player
+## Install
+
+``` shell
+yarn add @firstlookmedia/react-jw-player
 ```
+
+> 🔒 This is a private NPM package, so make sure the project is configured to [use private packages](https://github.com/firstlookmedia/readme/tree/stable/private-npm#using-private-packages) if it isn't already.
 
 ## Usage
 
@@ -291,3 +294,7 @@ export default ReactJWPlayerContainer;
 **Just do it!**
 
 ![shia](https://media.giphy.com/media/87xihBthJ1DkA/giphy.gif)
+
+## Publishing
+
+See our docs on [publishing private packages to NPM](https://github.com/firstlookmedia/readme/tree/stable/private-npm#publishing-private-packages)
