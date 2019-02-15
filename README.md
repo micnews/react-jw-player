@@ -92,7 +92,7 @@ ReactDOM.render(
 
 For more complex interaction, check out the container component example [here](#example-container-component)
 
-To generate preroll, supply the player with the `generatePrerollUrl` prop. This prop just needs to be a function that returns a valid VAST tag! See (Optional Configuration Props)[#optional-configuration-props] for more info.
+To generate preroll, supply the player with the `generatePrerollUrl` prop. This prop just needs to be a function that returns a valid VAST tag! See [Optional Configuration Props](#optional-configuration-props) for more info.
 
 ## Required Props
 
