@@ -26,6 +26,7 @@ const propTypes = {
   onPause: PropTypes.func,
   onPlay: PropTypes.func,
   onReady: PropTypes.func,
+  onFirstFrame: PropTypes.func,
   onResume: PropTypes.func,
   onSeventyFivePercent: PropTypes.func,
   onTenSeconds: PropTypes.func,

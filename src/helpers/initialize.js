@@ -23,6 +23,7 @@ function initialize({ component, player, playerOpts }) {
   eventsToInitialize.fullscreen = component.eventHandlers.onFullScreen;
   eventsToInitialize.mute = component.eventHandlers.onMute;
   eventsToInitialize.play = component.eventHandlers.onPlay;
+  eventsToInitialize.firstFrame = component.eventHandlers.onFirstFrame;
   eventsToInitialize.playlistItem = component.eventHandlers.onVideoLoad;
   eventsToInitialize.time = component.eventHandlers.onTime;
 
