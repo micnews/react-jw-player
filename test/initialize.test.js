@@ -31,6 +31,7 @@ test('initialize()', (t) => {
       onOneHundredPercent: 'onOneHundredPercent',
       onPause: 'onPause',
       onReady: 'onReady',
+      onFirstFrame: 'onFirstFrame',
       onError: 'onError',
       onBuffer: 'onBuffer',
       onBufferChange: 'onBufferChange',

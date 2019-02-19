@@ -18,6 +18,7 @@ const defaultProps = {
   onPlay: noOp,
   onClose: noOp,
   onReady: noOp,
+  onFirstFrame: noOp,
   onError: noOp,
   onAdPause: noOp,
   onPause: noOp,
