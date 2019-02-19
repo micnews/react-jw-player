@@ -262,6 +262,12 @@ Examples:
   * Arguments:
     * `event`
       * This is the event object passed back from JW Player itself.
+* `onFirstFrame(event)`
+  * A function used to determine the period of time between a user pressing play and the same user viewing their content.
+  * Type: `function`
+  * Arguments:
+    * `event`
+      * This is the event object passed back from JW Player itself.
 
 ## Optional Time Event Hook Props
 * `onThreeSeconds(event)`
