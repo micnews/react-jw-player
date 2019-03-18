@@ -34,6 +34,7 @@ const propTypes = {
   onTwentyFivePercent: PropTypes.func,
   onUnmute: PropTypes.func,
   onVideoLoad: PropTypes.func,
+  onSeek: PropTypes.func,
   onBuffer: PropTypes.func,
   onBufferChange: PropTypes.func,
   playerId: PropTypes.string.isRequired,

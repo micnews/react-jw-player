@@ -32,6 +32,7 @@ test('initialize()', (t) => {
       onPause: 'onPause',
       onReady: 'onReady',
       onError: 'onError',
+      onSeek: 'onSeek',
       onBuffer: 'onBuffer',
       onBufferChange: 'onBufferChange',
       onSetupError: 'onSetupError',
@@ -140,6 +141,11 @@ test('initialize()', (t) => {
   t.equal(
     playerFunctions.time, mockComponent.eventHandlers.onTime,
     'it sets the time event with the onTime() eventHandler',
+  );
+
+  t.equal(
+    playerFunctions.seek, mockComponent.props.onSeek,
+    'it sets the seek event with the onSeek() eventHandler',
   );
 
   t.equal(
