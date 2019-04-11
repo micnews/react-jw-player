@@ -4,14 +4,14 @@
   "description": "A React component for launching JW Player instances on the client.",
   "main": "dist/react-jw-player.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build": "node_modules/.bin/babel src --out-dir dist",
     "clean": "rimraf dist",
     "lint": "eslint .",
     "prepublish": "npm run lint && npm run test && npm run clean && npm run build",
     "test": "npm run lint && npm run test:unit && npm run test:browser",
-    "test:unit": "babel-tape-runner ./test/*.test.js* | faucet",
-    "test:browser": "babel-tape-runner ./test/*.browser-test.js* | faucet",
-    "watch": "babel src --out-dir dist --watch"
+    "test:unit": "node_modules/.bin/babel-tape-runner ./test/*.test.js* | faucet",
+    "test:browser": "node_modules/.bin/babel-tape-runner ./test/*.browser-test.js* | faucet",
+    "watch": "node_modules/.bin/babel src --out-dir dist --watch"
   },
   "repository": {
     "type": "git",
