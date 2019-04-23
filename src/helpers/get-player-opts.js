@@ -34,6 +34,11 @@ function getPlayerOpts(opts) {
       client: 'googima',
       admessage: 'Ad — xxs left',
       autoplayadsmuted: true,
+      companiondiv: {
+        height: opts.companiondivheight,
+        id: opts.companiondivid,
+        width: opts.companiondivwidth
+      },
     };
   }
 
@@ -49,7 +54,13 @@ function getPlayerOpts(opts) {
     playerOpts.image = image;
   }
 
-  return Object.assign(playerOpts, customProps);
+
+
+  var retObj = Object.assign(playerOpts, customProps);
+
+  console.log(retObj);
+
+  return retObj;
 }
 
 export default getPlayerOpts;
