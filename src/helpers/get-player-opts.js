@@ -54,13 +54,7 @@ function getPlayerOpts(opts) {
     playerOpts.image = image;
   }
 
-
-
-  var retObj = Object.assign(playerOpts, customProps);
-
-  console.log(retObj);
-
-  return retObj;
+  return Object.assign(playerOpts, customProps);
 }
 
 export default getPlayerOpts;
