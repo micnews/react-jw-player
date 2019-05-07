@@ -118,3 +118,30 @@ test('ReactJWPlayer().shouldComponentUpdate() with file change', (t) => {
 
   t.end();
 });
+
+test('ReactJWPlayer().shouldComponentUpdate() with sources change', (t) => {
+  const propsOne = {
+    sources: [
+      { file: 'mock file hd 1', label: 'HD' },
+      { file: 'mock file sd 1', label: 'SD' },
+    ],
+  };
+
+  const propsTwo = {
+    sources: [
+      { file: 'mock file hd 2', label: 'HD' },
+      { file: 'mock file sd 2', label: 'SD' },
+    ],
+  };
+
+  const shouldComponentUpdate = new ReactJWPlayer({}).shouldComponentUpdate.bind({
+    props: propsOne,
+  });
+
+  t.ok(
+    shouldComponentUpdate(propsTwo),
+    'it returns true when the file prop changes',
+  );
+
+  t.end();
+});
