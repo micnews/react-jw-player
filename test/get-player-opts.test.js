@@ -118,6 +118,19 @@ test('getPlayerOpts() with both only a file', (t) => {
   t.end();
 });
 
+test('getPlayerOpts() with sources', (t) => {
+  const mockSources = [
+    { file: 'mock file hd', label: 'HD' },
+    { file: 'mock file sd', label: 'SD' },
+  ];
+
+  const actual = getPlayerOpts({ sources: mockSources });
+
+  t.equal(actual.sources, mockSources, 'it sets the sources properly');
+
+  t.end();
+});
+
 test('getPlayerOpts() with image', (t) => {
   const mockImage = 'mock image';
 
