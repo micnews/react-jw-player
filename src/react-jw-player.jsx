@@ -82,6 +82,11 @@ class ReactJWPlayer extends Component {
 
     const component = this;
     const player = window.jwplayer(this.videoRef);
+    if (!player) {
+      // this player ref may have been destroyed already
+      return; 
+    }
+    
     const playerOpts = getPlayerOpts(this.props);
 
     initialize({ component, player, playerOpts });
