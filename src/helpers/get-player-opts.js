@@ -34,6 +34,11 @@ function getPlayerOpts(opts) {
       client: 'googima',
       admessage: 'Ad — xxs left',
       autoplayadsmuted: true,
+      companiondiv: {
+        height: opts.companiondivheight,
+        id: opts.companiondivid,
+        width: opts.companiondivwidth
+      },
     };
   }
 
