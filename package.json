@@ -1,6 +1,6 @@
 {
   "name": "react-jw-player",
-  "version": "1.19.0",
+  "version": "1.19.1",
   "description": "A React component for launching JW Player instances on the client.",
   "main": "dist/react-jw-player.js",
   "scripts": {
