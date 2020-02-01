@@ -62,8 +62,9 @@ class ReactJWPlayer extends Component {
   shouldComponentUpdate(nextProps) {
     const hasFileChanged = this.props.file !== nextProps.file;
     const hasPlaylistChanged = !isEqual(this.props.playlist, nextProps.playlist);
+    const hasSourcesChanged = !isEqual(this.props.sources, nextProps.sources);
 
-    return hasFileChanged || hasPlaylistChanged;
+    return hasFileChanged || hasPlaylistChanged || hasSourcesChanged;
   }
   componentDidUpdate() {
     if (window.jwplayer && window.jwplayer(this.videoRef)) {

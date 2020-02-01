@@ -9,6 +9,7 @@ function getPlayerOpts(opts) {
     isMuted,
     licenseKey,
     playlist,
+    sources,
   } = opts;
 
   const hasAdvertising = !!generatePrerollUrl;
@@ -23,6 +24,8 @@ function getPlayerOpts(opts) {
     playerOpts.playlist = playlist;
   } else if (file) {
     playerOpts.file = file;
+  } else if (sources) {
+    playerOpts.sources = sources;
   }
 
   if (aspectRatio && aspectRatio !== 'inherit') {

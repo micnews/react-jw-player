@@ -5,6 +5,14 @@ const propTypes = {
   className: PropTypes.string,
   customProps: PropTypes.object,
   file: PropTypes.string,
+  sources: PropTypes.arrayOf(
+    PropTypes.shape({
+      file: PropTypes.string,
+      label: PropTypes.string,
+      default: PropTypes.bool,
+      type: PropTypes.string,
+    }),
+  ),
   generatePrerollUrl: PropTypes.func,
   image: PropTypes.string,
   isAutoPlay: PropTypes.bool,
