@@ -84,9 +84,9 @@ class ReactJWPlayer extends Component {
     const player = window.jwplayer(this.videoRef);
     if (!player) {
       // this player ref may have been destroyed already
-      return; 
+      return;
     }
-    
+
     const playerOpts = getPlayerOpts(this.props);
 
     initialize({ component, player, playerOpts });
@@ -96,8 +96,9 @@ class ReactJWPlayer extends Component {
   }
   render() {
     return (
-      <div className={this.props.className} >
+      <div className={this.props.className}>
         <div id={this.props.playerId} ref={this._setVideoRef} />
+        {this.props.children}
       </div>
     );
   }
