@@ -74,7 +74,7 @@ class ReactJWPlayer extends Component {
     removeJWPlayerInstance(this.videoRef, window);
   }
   _initialize() {
-    const { playerId, useMultiplePlayerScripts } = this.props;
+    const { playerId, useMultiplePlayerScripts, onPlayerInitialized } = this.props;
 
     if (useMultiplePlayerScripts) {
       setJWPlayerDefaults({ context: window, playerId });
@@ -90,6 +90,10 @@ class ReactJWPlayer extends Component {
     const playerOpts = getPlayerOpts(this.props);
 
     initialize({ component, player, playerOpts });
+
+    if (onPlayerInitialized) {
+      onPlayerInitialized(player);
+    }
   }
   _setVideoRef(element) {
     this.videoRef = element;
