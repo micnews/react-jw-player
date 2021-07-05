@@ -9,6 +9,7 @@ function getPlayerOpts(opts) {
     isMuted,
     licenseKey,
     playlist,
+    pipIcon,
   } = opts;
 
   const hasAdvertising = !!generatePrerollUrl;
@@ -47,6 +48,10 @@ function getPlayerOpts(opts) {
 
   if (image) {
     playerOpts.image = image;
+  }
+
+  if (pipIcon !== undefined) {
+    playerOpts.pipIcon = pipIcon;
   }
 
   return Object.assign(playerOpts, customProps);
