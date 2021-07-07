@@ -61,7 +61,7 @@
   },
   "peerDependencies": {
     "prop-types": "^15.5.10",
-    "react": "^15.4.1 || ^16.0.0"
+    "react": "^15.4.1 || ^16.0.0 || ^17.0.0"
   },
   "dependencies": {
     "react-fast-compare": "^2.0.1"
