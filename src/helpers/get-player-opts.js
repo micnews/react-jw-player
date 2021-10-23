@@ -9,6 +9,7 @@ function getPlayerOpts(opts) {
     isMuted,
     licenseKey,
     playlist,
+    seekTo,
   } = opts;
 
   const hasAdvertising = !!generatePrerollUrl;

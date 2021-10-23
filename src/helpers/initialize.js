@@ -15,6 +15,11 @@ function initialize({ component, player, playerOpts }) {
     if (eventName) {
       eventsToInitialize[eventName] = component.props[prop];
     }
+
+      if(prop === 'seekTo' && component.props[prop] > 0){
+          player.seek(component.props[prop]);
+      }
+
   });
 
   eventsToInitialize.adPlay = component.eventHandlers.onAdPlay;

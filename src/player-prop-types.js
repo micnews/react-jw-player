@@ -43,6 +43,8 @@ const propTypes = {
     PropTypes.array,
   ]),
   useMultiplePlayerScripts: PropTypes.bool,
+  seekTo: _propTypes2.default.number,
+
 };
 
 export default propTypes;
