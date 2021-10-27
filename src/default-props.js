@@ -35,6 +35,8 @@ const defaultProps = {
   onBufferChange: noOp,
   playlist: '',
   useMultiplePlayerScripts: false,
+  seekTo: noOp,
+
 };
 
 export default defaultProps;
