@@ -48,7 +48,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.10.3",
     "faucet": "0.0.1",
-    "jsdom": "^9.9.1",
+    "jsdom": "^16.5.0",
     "jsdom-global": "^2.1.1",
     "miclint": "^4.1.0",
     "prop-types": "^15.5.10",
