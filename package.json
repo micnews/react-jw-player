@@ -65,5 +65,8 @@
   },
   "dependencies": {
     "react-fast-compare": "^2.0.1"
-  }
+  },
+  "files": [
+    "dist/**/*"
+  ]
 }
