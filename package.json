@@ -67,6 +67,24 @@
     "react-fast-compare": "^2.0.1"
   },
   "files": [
-    "dist/**/*"
+    "dist/react-jw-player.js",
+    "dist/player-prop-types.js",
+    "dist/default-props.js",
+    "dist/create-event-handlers/index.js",
+    "dist/create-event-handlers/on-ad-play.js",
+    "dist/create-event-handlers/on-before-play.js",
+    "dist/create-event-handlers/on-full-screen.js",
+    "dist/create-event-handlers/on-mute.js",
+    "dist/create-event-handlers/on-play.js",
+    "dist/create-event-handlers/on-time.js",
+    "dist/create-event-handlers/on-video-load.js",
+    "dist/helpers/get-curried-on-load.js",
+    "dist/helpers/get-event-name-from-prop.js",
+    "dist/helpers/get-player-opts.js",
+    "dist/helpers/initialize.js",
+    "dist/helpers/install-player-script.js",
+    "dist/helpers/remove-jw-player-instance.js",
+    "dist/helpers/set-jw-player-defaults.js",
+    "dist/helpers/should-component-update.js"
   ]
 }
