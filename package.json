@@ -5,6 +5,7 @@
   "main": "dist/react-jw-player.js",
   "scripts": {
     "build": "babel src --out-dir dist",
+    "prepare": "npm run build",
     "clean": "rimraf dist",
     "lint": "eslint .",
     "prepublish": "npm run lint && npm run test && npm run clean && npm run build",
